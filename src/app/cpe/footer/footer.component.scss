@@ -1,0 +1,10 @@
+.footer-container {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+
+  .footer-item {
+    border: 1px dotted lightgreen;
+    flex-grow: 1;
+  }
+}

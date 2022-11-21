@@ -1,0 +1,10 @@
+.header-container {
+  border: 1px solid cadetblue;
+  display: flex;
+  flex-direction: row;
+
+  .header-item {
+    border: 1px dotted lightblue;
+    flex-grow: 1;
+  }
+}
