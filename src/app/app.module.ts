@@ -7,6 +7,10 @@ import { CpeComponent } from './cpe/cpe.component';
 import { HeaderComponent } from './cpe/header/header.component';
 import { BodyComponent } from './cpe/body/body.component';
 import { FooterComponent } from './cpe/footer/footer.component';
+import {GridsterModule} from "angular-gridster2";
+import { Widget1Component } from './widgets/widget1/widget1.component';
+import { Widget2Component } from './widgets/widget2/widget2.component';
+import { Widget3Component } from './widgets/widget3/widget3.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,15 @@ import { FooterComponent } from './cpe/footer/footer.component';
     CpeComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    Widget1Component,
+    Widget2Component,
+    Widget3Component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GridsterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
