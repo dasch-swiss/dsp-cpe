@@ -7,6 +7,8 @@ import { CpeComponent } from './cpe/cpe.component';
 import { HeaderComponent } from './cpe/header/header.component';
 import { BodyComponent } from './cpe/body/body.component';
 import { FooterComponent } from './cpe/footer/footer.component';
+import {GuiElementsModule} from "./gui-elements-module/gui-elements.module";
+import {PlaygroundModule} from "./playground/playground.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FooterComponent } from './cpe/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GuiElementsModule, // our gui elements to use
+    PlaygroundModule
   ],
   providers: [],
   bootstrap: [AppComponent]
