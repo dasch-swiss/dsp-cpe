@@ -1,29 +1,55 @@
 import { testWidgetData } from "../widgets/test-widget/test-widget.component"
-export interface Page {
-    header: Header,
-    body: Body,
-    footer: Footer
+export class Page {
+    header: Header;
+    body: Body;
+    footer: Footer;
+    constructor(header: Header, body: Body, footer: Footer) {
+        this.header = header;
+        this.body = body;
+        this.footer = footer;
+    }
 }
-interface PagePart {
-    widgets: testWidgetData[]
+export class PagePart {
+    widgets: WidgetData[];
+    constructor(widgets: WidgetData[]) {
+        this.widgets = widgets;
+    }
 }
 
-interface Header extends PagePart {
+export class Header extends PagePart {
+    constructor(widgets: WidgetData[]) {
+        super(widgets);
+    }
 }
-interface Footer extends PagePart{}
-interface Body extends PagePart{
-    gridDimensions: gridCoordinates
+
+export class Footer extends PagePart {
+    constructor(widgets: WidgetData[]) {
+        super(widgets);
+    }
+}
+export class Body extends PagePart {
+    gridDimensions: gridCoordinates;
+    constructor(widgets: WidgetData[], gridDimensions: gridCoordinates) {
+        super(widgets);
+        this.gridDimensions = gridDimensions;
+    }
 }
 /**
  * TODO: Check for integers, might be hard in typescript
- */   
-export interface WidgetData {
-    id: number,
-    coordinates: gridCoordinates, // TODO: Check that y must be 1 for header & footer
-    width: number,
-    height: number // TODO: Check that height must be 1 for header & footer
+ */
+export class WidgetData {
+    id: number;
+    coordinates: gridCoordinates; // TODO: Check that y must be 1 for header & footer
+    width: number;
+    height: number; // TODO: Check that height must be 1 for header & footer
+    constructor(id: number, coordinates: gridCoordinates, width: number, height: number) {
+        this.id = id;
+        this.coordinates = coordinates;
+        this.width = width;
+        this.height = height;
+    }
 }
-interface gridCoordinates {
+export interface gridCoordinates {
     x: number,
     y: number
 }

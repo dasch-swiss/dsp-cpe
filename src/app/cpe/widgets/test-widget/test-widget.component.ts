@@ -1,10 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WidgetData } from 'src/app/cpe/blue-boxes/page-data-structure'
+import { WidgetData, gridCoordinates } from 'src/app/cpe/blue-boxes/page-data-structure';
 
-export interface testWidgetData extends WidgetData {
-  text: string,
-  img: string,
-  alt: string
+export class testWidgetData extends WidgetData {
+  text: string;
+  img: string;
+  alt: string;
+  constructor(id: number, coordinates: gridCoordinates, width: number, height: number, text: string, img: string, alt: string) {
+    super(id, coordinates, width, height);
+    this.text = text;
+    this.img = img;
+    this.alt = alt;
+  }
 }
 @Component({
   selector: 'app-test-widget',
@@ -14,11 +20,13 @@ export interface testWidgetData extends WidgetData {
 
 
 export class TestWidgetComponent implements OnInit {
-  @Input() data: testWidgetData;
+  @Input() text: string;
+  @Input() img: string;
+  @Input() alt: string;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data.img);
+    //console.log(this.data.img);
   }
 
 }

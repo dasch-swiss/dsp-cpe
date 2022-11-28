@@ -13,6 +13,7 @@ import { Widget2Component } from './widgets/widget2/widget2.component';
 import { Widget3Component } from './widgets/widget3/widget3.component';
 import { TestWidgetComponent } from './cpe/widgets/test-widget/test-widget.component';
 import { ExcecutorComponent } from './cpe/blue-boxes/excecutor/excecutor.component';
+import { AnotherTestWidgetComponent } from './cpe/widgets/another-test-widget/another-test-widget.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ExcecutorComponent } from './cpe/blue-boxes/excecutor/excecutor.compone
     Widget2Component,
     Widget3Component,
     TestWidgetComponent,
-    ExcecutorComponent
+    ExcecutorComponent,
+    AnotherTestWidgetComponent
   ],
   imports: [
     BrowserModule,
