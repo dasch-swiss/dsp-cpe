@@ -17,7 +17,6 @@ export class CpeButtonComponent extends GuiElement implements OnInit {
 
   @Output() click = new EventEmitter();
 
-  // the buttons class string
   style = ''
 
   constructor() {
@@ -25,10 +24,19 @@ export class CpeButtonComponent extends GuiElement implements OnInit {
   }
 
   ngOnInit() {
-    this.style = "inline-flex items-center rounded border border-transparent bg-primary-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2";
+    switch (this.variant) {
+      case "Primary": {
+        this.style = "inline-flex items-center rounded border border-transparent bg-blue-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2";
+        break;
+      }
+      case "Secondary": {
+        this.style = "inline-flex items-center rounded border border-transparent bg-blue-100 px-2.5 py-1.5 text-xs font-medium text-blue-700 shadow-sm hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2";
+        break;
+      }
+    }
   }
   /**
-   * disables the callbacks execution if disabled
+   * disables the callbacks execution if disabled equals true
    */
   public onClickEvent(event: Event) {
     if (this.disabled) {

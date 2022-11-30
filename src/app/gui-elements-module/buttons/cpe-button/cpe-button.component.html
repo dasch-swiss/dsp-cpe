@@ -1,2 +1,7 @@
-<button type="button" [class]= style (click)="onClickEvent($event)">{{text}}</button>
-<div>{{style}}</div>
+<button
+  [id]="id"
+  type="button"
+  [class]=style
+  (click)="onClickEvent($event)">
+  {{text}}
+</button>

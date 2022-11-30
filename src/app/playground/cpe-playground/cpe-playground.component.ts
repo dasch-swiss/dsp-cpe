@@ -12,8 +12,7 @@ export class CpePlaygroundComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logToConsole() {
-    console.log('clicked!')
+  logToConsole(me: string) {
+    console.log('clicked ' + me);
   }
-
 }

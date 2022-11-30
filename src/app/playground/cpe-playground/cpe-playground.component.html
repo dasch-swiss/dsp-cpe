@@ -1,3 +1,15 @@
 <div class="text-4xl">Playground</div>
-<div class="text-2xl">Buttons</div>
-<cpe-button [text]="'button text'" (click)="logToConsole()" [variant]="'Primary'"></cpe-button>
+<cpe-button
+  [id]="'button-01'"
+  [text]="'Primary button'"
+  (click)="logToConsole('Primary button')"
+  [disabled] = "false"
+  [variant]="'Primary'">
+</cpe-button>
+<cpe-button
+  [id]="'button-02'"
+  [text]="'Secondary button'"
+  (click)="logToConsole('Secondary button')"
+  [disabled] = "false"
+  [variant]="'Secondary'">
+</cpe-button>
