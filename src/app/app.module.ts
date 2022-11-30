@@ -21,7 +21,7 @@ import {PlaygroundModule} from "./playground/playground.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GuiElementsModule, // our gui elements to use
+    GuiElementsModule,
     PlaygroundModule
   ],
   providers: [],
