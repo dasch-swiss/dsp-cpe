@@ -9,6 +9,10 @@ import { BodyComponent } from './cpe/body/body.component';
 import { FooterComponent } from './cpe/footer/footer.component';
 import {GuiElementsModule} from "./gui-elements-module/gui-elements.module";
 import {PlaygroundModule} from "./playground/playground.module";
+import {GridsterModule} from "angular-gridster2";
+import { Widget1Component } from './widgets/widget1/widget1.component';
+import { Widget2Component } from './widgets/widget2/widget2.component';
+import { Widget3Component } from './widgets/widget3/widget3.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,17 @@ import {PlaygroundModule} from "./playground/playground.module";
     CpeComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    Widget1Component,
+    Widget2Component,
+    Widget3Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GuiElementsModule,
-    PlaygroundModule
+    PlaygroundModule,
+    GridsterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
