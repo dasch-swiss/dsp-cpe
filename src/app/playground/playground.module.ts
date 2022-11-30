@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CpePlaygroundComponent } from './cpe-playground/cpe-playground.component';
-import {GuiElementsModule} from "../gui-elements-module/gui-elements.module";
+import { GuiElementsModule } from "../gui-elements-module/gui-elements.module";
 
 
 
