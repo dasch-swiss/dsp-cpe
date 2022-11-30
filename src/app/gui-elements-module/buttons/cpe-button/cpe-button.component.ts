@@ -1,14 +1,13 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
-import {Tw} from "../../../tailwind/tailwind";
+import {GuiElement} from "../../gui-element";
 
 export type Variant = 'Primary' | 'Secondary';
 
 @Component({
   selector: 'cpe-button',
-  templateUrl: './cpe-button.component.html',
-  styleUrls: ['./cpe-button.component.scss']
+  templateUrl: './cpe-button.component.html'
 })
-export class CpeButtonComponent implements OnInit {
+export class CpeButtonComponent extends GuiElement implements OnInit {
 
   @Input() disabled? = false;
 
@@ -18,22 +17,19 @@ export class CpeButtonComponent implements OnInit {
 
   @Output() click = new EventEmitter();
 
+  // the buttons class string
   style = ''
-  style2 = "inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2";
-  
-  ngOnInit() {
-    this.style = Tw()
-      .inline_flex
-      .bg_indigo_400
-      .focus.inline_flex
-      .hover.bg_indigo_700
-      .tw_block
-      .$()
+
+  constructor() {
+    super();
   }
 
-
-
-
+  ngOnInit() {
+    this.style = "inline-flex items-center rounded border border-transparent bg-primary-700 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2";
+  }
+  /**
+   * disables the callbacks execution if disabled
+   */
   public onClickEvent(event: Event) {
     if (this.disabled) {
       // no event propagated
