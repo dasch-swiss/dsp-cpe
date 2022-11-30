@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
 
 @Component({
@@ -6,7 +6,9 @@ import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.scss']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit, OnChanges {
+  @Input() editMode = false;
+
   static itemChange(item: any, itemComponent: any) {
     console.info('itemChanged', item, itemComponent);
   }
@@ -23,10 +25,10 @@ export class BodyComponent implements OnInit {
       itemChangeCallback: BodyComponent.itemChange,
       itemResizeCallback: BodyComponent.itemResize,
       draggable: {
-        enabled: true
+        enabled: false
       },
       resizable: {
-        enabled: true
+        enabled: false
       },
     };
 
@@ -34,9 +36,32 @@ export class BodyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.options.draggable) {
+      this.options.draggable.enabled = this.editMode;
+    }
+
+    if(this.options.resizable) {
+      this.options.resizable.enabled = this.editMode;
+    }
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('edit changed: ', this.editMode);
+
+    if(this.options.draggable) {
+      this.options.draggable.enabled = this.editMode;
+    }
+
+    if(this.options.resizable) {
+      this.options.resizable.enabled = this.editMode;
+    }
+
+    this.changedOptions();
   }
 
   changedOptions() {
+    console.log('changed options: ', this.options);
     if (this.options.api && this.options.api.optionsChanged) {
       this.options.api?.optionsChanged();
     }
