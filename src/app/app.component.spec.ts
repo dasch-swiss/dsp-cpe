@@ -20,7 +20,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  fit(`should have as title 'dsp-cpe'`, () => {
+  xit(`should have as title 'dsp-cpe'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('dsp-cpe');
