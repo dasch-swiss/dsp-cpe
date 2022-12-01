@@ -1,6 +1,15 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+/**
+ * mock CpeComponent.
+ */
+ @Component({
+  selector: '<app-cpe></app-cpe>'
+})
+class MockCpeComponent { }
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +18,8 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MockCpeComponent
       ],
     }).compileComponents();
   });

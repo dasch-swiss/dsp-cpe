@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GridsterModule } from 'angular-gridster2';
 
 import { BodyComponent } from './body.component';
 
@@ -8,7 +9,8 @@ describe('BodyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BodyComponent ]
+      declarations: [ BodyComponent ],
+      imports: [ GridsterModule ]
     })
     .compileComponents();
 
