@@ -30,27 +30,32 @@ export class ExcecutorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerDashboard = this.buildPagePart(this.pageStructure.page.header);
-    this.bodyDashboard = this.buildPagePart(this.pageStructure.page.body);
-    this.footerDashboard = this.buildPagePart(this.pageStructure.page.footer);
+    this.headerDashboard = this.pageStructure.page.header ? this.buildPagePart(this.pageStructure.page.header): [];
+    this.bodyDashboard = this.pageStructure.page.body ? this.buildPagePart(this.pageStructure.page.body): [];
+    this.footerDashboard = this.pageStructure.page.footer ? this.buildPagePart(this.pageStructure.page.footer): [];
     this.bodyGridOptions = {
       draggable: {
         enabled: false
       },
       resizable: {
         enabled: false
-      },
-      minCols: this.pageStructure.page.body.gridDimensions.x,
-      maxCols: this.pageStructure.page.body.gridDimensions.x,
-      minRows: this.pageStructure.page.body.gridDimensions.y,
-      maxRows: this.pageStructure.page.body.gridDimensions.y
+      }
+    }
+    if (this.pageStructure.page.body) {
+      this.bodyGridOptions.minCols = this.pageStructure.page.body.gridDimensions.x;
+      this.bodyGridOptions.maxCols = this.pageStructure.page.body.gridDimensions.x;
+      this.bodyGridOptions.minRows = this.pageStructure.page.body.gridDimensions.y;
+      this.bodyGridOptions.maxRows = this.pageStructure.page.body.gridDimensions.y;
     }
   }
 
   buildPagePart(pagePart: PagePart): Array<GridsterItem> {
+    console.log(pagePart);
     const dashboard = [];
     for (let x = 0; x < pagePart.widgets.length; x++) {
-      const widget = this.pageStructure.page.body.widgets[x];
+      console.log(x, this.pageStructure.page)
+      const widget = pagePart.widgets[x];
+      console.log(widget);
       if (widget instanceof testWidgetData) {
         dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: "test-widget" });
       }
