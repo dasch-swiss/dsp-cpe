@@ -1,4 +1,3 @@
-import { testWidgetData } from "../widgets/test-widget/test-widget.component"
 export class Page {
   private _header: Header;
   private _body: Body;
@@ -28,8 +27,6 @@ export class Page {
   }
 
   constructor() {}
-
-  // constructor(private _header: Header, private _body: Body, private _footer: Footer) {}
 }
 export class PagePart {
   get widgets(): WidgetData[] {
