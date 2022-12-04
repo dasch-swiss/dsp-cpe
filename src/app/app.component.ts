@@ -10,12 +10,10 @@ import {PageStructure} from "./cpe/blue-boxes/model/page-data-structure";
 export class AppComponent {
   data: PageStructure;
   constructor(private pageStructure: PageStructureService, private validatorService: PageStructureValidatorService) {
-    const mls_ps = this.pageStructure.getMLS();
-    const beol_ps = this.pageStructure.getBeol();
-    const ww_ps = this.pageStructure.getWordWeb();
+    const projectPageStructure = this.pageStructure.getMLS();
 
-    if (validatorService.validate(mls_ps)) {
-      this.data = mls_ps;
+    if (validatorService.validate(projectPageStructure)) {
+      this.data = projectPageStructure;
     }
   }
 }
