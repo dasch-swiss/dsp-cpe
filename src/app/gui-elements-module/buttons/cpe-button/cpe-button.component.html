@@ -1,7 +1,8 @@
 <button
   [id]="id"
   type="button"
-  [class]=style
+  [class]="style"
+  [disabled]="disabled"
   (click)="onClickEvent($event)">
   {{text}}
 </button>
