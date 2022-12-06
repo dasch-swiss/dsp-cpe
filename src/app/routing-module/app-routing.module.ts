@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CpeComponent } from './cpe/cpe.component';
+import { CpeComponent } from '../cpe/cpe.component';
 
 const routes: Routes = [
   {
