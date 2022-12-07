@@ -22,7 +22,9 @@ export class ExcecutorComponent implements OnInit {
     minRows: 1,
     maxRows: 1
   }
+  headerGridOptions: GridsterConfig;
   headerDashboard: Array<GridsterItem> = [];
+  footerGridOptions: GridsterConfig;
   footerDashboard: Array<GridsterItem> = [];
   bodyGridOptions: GridsterConfig;
   bodyDashboard: Array<GridsterItem> = [];
@@ -33,6 +35,29 @@ export class ExcecutorComponent implements OnInit {
     this.headerDashboard = this.buildPagePart(this.page.header);
     this.bodyDashboard = this.buildPagePart(this.page.body);
     this.footerDashboard = this.buildPagePart(this.page.footer);
+    this.headerGridOptions = {
+      draggable: {
+        enabled: false
+      },
+      resizable: {
+        enabled: false
+      },
+      minCols: 3,
+      maxCols: 3,
+      minRows: 1,
+      maxRows: 1
+    }
+    this.footerGridOptions = {
+      draggable: {
+        enabled: false
+      },
+      resizable: {
+        enabled: false
+      },
+      minCols: 3,
+      minRows: 1,
+      maxRows: 1
+    }
     this.bodyGridOptions = {
       draggable: {
         enabled: false
@@ -50,7 +75,7 @@ export class ExcecutorComponent implements OnInit {
   buildPagePart(pagePart: PagePart): Array<GridsterItem> {
     const dashboard = [];
     for (let x = 0; x < pagePart.widgets.length; x++) {
-      const widget = this.page.body.widgets[x];
+      const widget = pagePart.widgets[x];
       if (widget instanceof testWidgetData) {
         dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: "test-widget" });
       }

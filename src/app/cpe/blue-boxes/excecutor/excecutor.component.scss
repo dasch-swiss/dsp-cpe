@@ -1,4 +1,18 @@
-.gridster-container {
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.body-container {
     border: 1px solid lightsalmon;
     height: 500px;
   }
+.header-container, .footer-container {
+    border: 1px solid lightsalmon;
+    height: 150px;
+  }
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  
+}

@@ -1,7 +1,23 @@
-<gridster class="gridster-container" [options]="bodyGridOptions">
-    <gridster-item *ngFor="let item of bodyDashboard" [item]="item" [ngSwitch]="item['type']">
-        <app-test-widget *ngSwitchCase="'test-widget'" [text]="item['text']" [img]="item['img']" [alt]="item['alt']">
-        </app-test-widget>
-        <app-another-test-widget *ngSwitchCase="'another-test-widget'" [text]="item['text']"></app-another-test-widget>
-    </gridster-item>
-</gridster>
+<div class="container">
+    <gridster class="header-container" [options]="headerGridOptions">
+        <gridster-item *ngFor="let item of headerDashboard" [item]="item" [ngSwitch]="item['type']">
+            <app-test-widget *ngSwitchCase="'test-widget'" [text]="item['text']" [img]="item['img']" [alt]="item['alt']">
+            </app-test-widget>
+            <app-another-test-widget *ngSwitchCase="'another-test-widget'" [text]="item['text']"></app-another-test-widget>
+        </gridster-item>
+    </gridster>
+    <gridster class="body-container" [options]="bodyGridOptions">
+        <gridster-item *ngFor="let item of bodyDashboard" [item]="item" [ngSwitch]="item['type']">
+            <app-test-widget *ngSwitchCase="'test-widget'" [text]="item['text']" [img]="item['img']" [alt]="item['alt']">
+            </app-test-widget>
+            <app-another-test-widget *ngSwitchCase="'another-test-widget'" [text]="item['text']"></app-another-test-widget>
+        </gridster-item>
+    </gridster>
+    <gridster class="footer-container" [options]="footerGridOptions">
+        <gridster-item *ngFor="let item of footerDashboard" [item]="item" [ngSwitch]="item['type']">
+            <app-test-widget *ngSwitchCase="'test-widget'" [text]="item['text']" [img]="item['img']" [alt]="item['alt']">
+            </app-test-widget>
+            <app-another-test-widget *ngSwitchCase="'another-test-widget'" [text]="item['text']"></app-another-test-widget>
+        </gridster-item>
+    </gridster>
+</div>
