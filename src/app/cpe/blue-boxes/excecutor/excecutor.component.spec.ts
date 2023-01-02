@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Widget2Component } from './widget2.component';
+import { ExcecutorComponent } from './excecutor.component';
 
-describe('Widget2Component', () => {
-  let component: Widget2Component;
-  let fixture: ComponentFixture<Widget2Component>;
+describe('ExcecutorComponent', () => {
+  let component: ExcecutorComponent;
+  let fixture: ComponentFixture<ExcecutorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Widget2Component ]
+      declarations: [ ExcecutorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Widget2Component);
+    fixture = TestBed.createComponent(ExcecutorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
