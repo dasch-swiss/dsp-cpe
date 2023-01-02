@@ -9,8 +9,8 @@ import {PageStructure} from "./cpe/blue-boxes/model/page-data-structure";
 })
 export class AppComponent {
   data: PageStructure;
-  constructor(private pageStructure: PageStructureService, private validatorService: PageStructureValidatorService) {
-    const projectPageStructure = this.pageStructure.getMLS();
+  constructor(private pageStructureService: PageStructureService, private validatorService: PageStructureValidatorService) {
+    const projectPageStructure = this.pageStructureService.getMLS();
 
     if (validatorService.validate(projectPageStructure)) {
       this.data = projectPageStructure;
