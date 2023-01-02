@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {PagePart, PageStructure} from "src/app/cpe/blue-boxes/model/page-data-structure"
+import { PagePart, PageStructure } from 'src/app/cpe/blue-boxes/model/page-data-structure'
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { testWidgetData } from '../../widgets/test-widget/test-widget.component';
 import { anotherTestWidgetData } from '../../widgets/another-test-widget/another-test-widget.component';
@@ -43,10 +43,10 @@ export class ExcecutorComponent implements OnInit {
     for (let x = 0; x < pagePart.widgets.length; x++) {
       const widget = pagePart.widgets[x];
       if (widget instanceof testWidgetData) {
-        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: "test-widget" });
+        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: 'test-widget' });
       }
       if (widget instanceof anotherTestWidgetData) {
-        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, type: "another-test-widget" });
+        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, type: 'another-test-widget' });
       }
     }
     return dashboard;
