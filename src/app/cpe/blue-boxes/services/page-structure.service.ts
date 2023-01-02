@@ -13,7 +13,7 @@ export class PageStructureService {
   getMLS() {
     const w1 = new testWidgetData(1, { x: 0, y: 0 }, 5, 1, "MLS text 1", "https://picsum.photos/200/300", "Alt");
     const w2 = new anotherTestWidgetData(2, { x: 1, y: 1 }, 1, 3, "MLS title 1");
-    const w3 = new testWidgetData(3, { x: 4, y: 2 }, 5, 1, "MLS text 2", "https://picsum.photos/100", "Alt");
+    const w3 = new testWidgetData(3, { x: 0, y: 1 }, 5, 1, "MLS text 2", "https://picsum.photos/100", "Alt");
 
     const page = new Page({ x: 5, y: 5 });
     page.header = new Header([w1]);
