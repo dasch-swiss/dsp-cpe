@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WidgetData, gridCoordinates } from 'src/app/cpe/blue-boxes/page-data-structure';
+import { WidgetData, gridCoordinates } from 'src/app/cpe/blue-boxes/model/page-data-structure';
 
 export class testWidgetData extends WidgetData {
   text: string;
@@ -25,8 +25,6 @@ export class TestWidgetComponent implements OnInit {
   @Input() alt: string;
   constructor() { }
 
-  ngOnInit(): void {
-    //console.log(this.data.img);
-  }
+  ngOnInit(): void {}
 
 }

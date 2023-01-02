@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Page, PagePart } from 'src/app/cpe/blue-boxes/page-data-structure'
+import { PagePart, PageStructure } from 'src/app/cpe/blue-boxes/model/page-data-structure'
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { testWidgetData } from '../../widgets/test-widget/test-widget.component';
 import { anotherTestWidgetData } from '../../widgets/another-test-widget/another-test-widget.component';
@@ -9,20 +9,7 @@ import { anotherTestWidgetData } from '../../widgets/another-test-widget/another
   styleUrls: ['./excecutor.component.scss']
 })
 export class ExcecutorComponent implements OnInit {
-  @Input() page: Page;
-  headerFooterGridOptions: GridsterConfig = {
-    draggable: {
-      enabled: false
-    },
-    resizable: {
-      enabled: false
-    },
-    minCols: 3,
-    maxCols: 3,
-    minRows: 1,
-    maxRows: 1
-  }
-  headerGridOptions: GridsterConfig;
+  @Input() pageStructure: PageStructure;
   headerDashboard: Array<GridsterItem> = [];
   footerGridOptions: GridsterConfig;
   footerDashboard: Array<GridsterItem> = [];
@@ -32,32 +19,10 @@ export class ExcecutorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerDashboard = this.buildPagePart(this.page.header);
-    this.bodyDashboard = this.buildPagePart(this.page.body);
-    this.footerDashboard = this.buildPagePart(this.page.footer);
-    this.headerGridOptions = {
-      draggable: {
-        enabled: false
-      },
-      resizable: {
-        enabled: false
-      },
-      minCols: 3,
-      maxCols: 3,
-      minRows: 1,
-      maxRows: 1
-    }
-    this.footerGridOptions = {
-      draggable: {
-        enabled: false
-      },
-      resizable: {
-        enabled: false
-      },
-      minCols: 3,
-      minRows: 1,
-      maxRows: 1
-    }
+    this.headerDashboard = this.pageStructure.page.header ? this.buildPagePart(this.pageStructure.page.header): [];
+    this.bodyDashboard = this.pageStructure.page.body ? this.buildPagePart(this.pageStructure.page.body): [];
+    this.footerDashboard = this.pageStructure.page.footer ? this.buildPagePart(this.pageStructure.page.footer): [];
+
     this.bodyGridOptions = {
       draggable: {
         enabled: false
@@ -65,10 +30,13 @@ export class ExcecutorComponent implements OnInit {
       resizable: {
         enabled: false
       },
-      minCols: this.page.body.gridDimensions.x,
-      maxCols: this.page.body.gridDimensions.x,
-      minRows: this.page.body.gridDimensions.y,
-      maxRows: this.page.body.gridDimensions.y
+      displayGrid: 'always'
+    }
+    if (this.pageStructure.page.body) {
+      this.bodyGridOptions.minCols = this.pageStructure.page.gridDimensions.x;
+      this.bodyGridOptions.maxCols = this.pageStructure.page.gridDimensions.x;
+      this.bodyGridOptions.minRows = this.pageStructure.page.gridDimensions.y;
+      this.bodyGridOptions.maxRows = this.pageStructure.page.gridDimensions.y;
     }
   }
 
@@ -77,10 +45,10 @@ export class ExcecutorComponent implements OnInit {
     for (let x = 0; x < pagePart.widgets.length; x++) {
       const widget = pagePart.widgets[x];
       if (widget instanceof testWidgetData) {
-        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: "test-widget" });
+        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, img: widget.img, alt: widget.alt, type: 'test-widget' });
       }
       if (widget instanceof anotherTestWidgetData) {
-        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, type: "another-test-widget" });
+        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, type: 'another-test-widget' });
       }
     }
     return dashboard;
