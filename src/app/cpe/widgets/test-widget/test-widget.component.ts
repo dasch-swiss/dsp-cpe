@@ -25,8 +25,6 @@ export class TestWidgetComponent implements OnInit {
   @Input() alt: string;
   constructor() { }
 
-  ngOnInit(): void {
-    //console.log(this.data.img);
-  }
+  ngOnInit(): void {}
 
 }
