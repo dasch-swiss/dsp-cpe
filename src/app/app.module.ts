@@ -20,6 +20,8 @@ import { AnotherTestWidgetComponent } from './cpe/widgets/another-test-widget/an
   imports: [
     BrowserModule,
     AppRoutingModule,
+    GuiElementsModule,
+    PlaygroundModule,
     GridsterModule
   ],
   providers: [],

@@ -11,6 +11,7 @@ import { anotherTestWidgetData } from '../../widgets/another-test-widget/another
 export class ExcecutorComponent implements OnInit {
   @Input() pageStructure: PageStructure;
   headerDashboard: Array<GridsterItem> = [];
+  footerGridOptions: GridsterConfig;
   footerDashboard: Array<GridsterItem> = [];
   bodyGridOptions: GridsterConfig;
   bodyDashboard: Array<GridsterItem> = [];
@@ -21,6 +22,7 @@ export class ExcecutorComponent implements OnInit {
     this.headerDashboard = this.pageStructure.page.header ? this.buildPagePart(this.pageStructure.page.header): [];
     this.bodyDashboard = this.pageStructure.page.body ? this.buildPagePart(this.pageStructure.page.body): [];
     this.footerDashboard = this.pageStructure.page.footer ? this.buildPagePart(this.pageStructure.page.footer): [];
+
     this.bodyGridOptions = {
       draggable: {
         enabled: false
