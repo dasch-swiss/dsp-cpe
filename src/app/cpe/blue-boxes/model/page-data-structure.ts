@@ -26,7 +26,11 @@ export class Page {
     this._footer = footer;
   }
 
-  constructor() {}
+  get gridDimensions(): gridCoordinates {
+    return this._gridDimensions;
+  }
+
+  constructor(private _gridDimensions: gridCoordinates) {}
 }
 export class PagePart {
   get widgets(): WidgetData[] {
@@ -47,10 +51,8 @@ export class Footer extends PagePart {
   }
 }
 export class Body extends PagePart {
-  gridDimensions: gridCoordinates;
-  constructor(widgets: WidgetData[], gridDimensions: gridCoordinates) {
+  constructor(widgets: WidgetData[]) {
     super(widgets);
-    this.gridDimensions = gridDimensions;
   }
 }
 /**
