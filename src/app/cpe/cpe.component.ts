@@ -1,36 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import {PageStructure} from "./blue-boxes/model/page-data-structure";
+import {PageStructureService} from "./blue-boxes/services/page-structure.service";
+import {PageStructureValidatorService} from "./blue-boxes/validator/page-structure-validator.service";
 
 @Component({
   selector: 'app-cpe',
   templateUrl: './cpe.component.html',
   styleUrls: ['./cpe.component.scss']
 })
-export class CpeComponent implements OnInit {
-   // editParam$: Observable<boolean | null>;
-   editParam: boolean = false;
+export class CpeComponent {
+  data: PageStructure;
+  constructor(private pageStructureService: PageStructureService, private validatorService: PageStructureValidatorService) {
+    const projectPageStructure = this.pageStructureService.getMLS();
 
-  constructor(
-    private _route: ActivatedRoute
-  ) {
-    // this.editParam$ = this._route.queryParamMap.pipe(
-    //   map((params: ParamMap) => {
-    //     const value = params.get('edit');
-    //     return value ? value.toLocaleLowerCase() === 'true' : false;
-    //   }));
-
-    // this.editParam$.subscribe(param => console.log(param));
-
-    this._route.queryParamMap.subscribe((param) => {
-      const value = param.get('edit');
-      this.editParam = value ? value.toLocaleLowerCase() === 'true' : false;
-    });
-
-    console.log('edit: ', this.editParam);
+    if (validatorService.validate(projectPageStructure)) {
+      this.data = projectPageStructure;
+    }
   }
-
-  ngOnInit(): void {
-  }
-
 }
