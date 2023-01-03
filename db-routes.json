@@ -1,0 +1,8 @@
+{
+  "/projects/list": "/projects",
+  "/projects/get/:id": "/projects-data/:id",
+  "/pages/listForProject/:id": "/pages/:id",
+  "/pages/get/:id": "/pages-data/:id",
+  "/widgets/listForPage/:id": "/widgets/:id",
+  "/widgets/get/:id": "/widgets-data/:id"
+}
