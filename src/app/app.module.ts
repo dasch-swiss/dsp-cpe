@@ -13,6 +13,9 @@ import { GridsterModule } from "angular-gridster2";
 import { Widget1Component } from './widgets/widget1/widget1.component';
 import { Widget2Component } from './widgets/widget2/widget2.component';
 import { Widget3Component } from './widgets/widget3/widget3.component';
+import { ProjectComponent } from './cpe/project/project.component';
+import { PageComponent } from './cpe/page/page.component';
+import { ProjectsComponent } from './cpe/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { Widget3Component } from './widgets/widget3/widget3.component';
     FooterComponent,
     Widget1Component,
     Widget2Component,
-    Widget3Component
+    Widget3Component,
+    ProjectComponent,
+    PageComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
