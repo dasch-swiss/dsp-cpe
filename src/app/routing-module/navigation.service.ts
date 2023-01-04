@@ -29,7 +29,10 @@ export class NavigationService {
     return this.projectService.isProjectExisting(projectId).then( exists => {
       if (exists) {
         return this.router.navigate(["project/" + projectId]);
-      } else return;
+      } else {
+        console.warn(`Project not found. There is no project with id ${projectId}.`)
+        return;
+      }
     });
   }
 
@@ -47,9 +50,8 @@ export class NavigationService {
             relativeTo: this.route,
             queryParamsHandling: 'merge'
           });
-        console.log('paaaaa')
       } else {
-        console.warn('this project has no such page');
+        console.warn(`Page not found. The project ${projectId} does not have a page with id ${pageId}`);
         return;
       }
     });
