@@ -1,6 +1,22 @@
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Variant } from 'src/app/gui-elements-module/buttons/cpe-button/cpe-button.component';
 
 import { CpePlaygroundComponent } from './cpe-playground.component';
+
+/**
+ * mock CpeButtonComponent.
+ */
+ @Component({
+  selector: '<cpe-button></cpe-button>'
+})
+class MockCpeButtonComponent {
+  @Input() disabled? = false;
+
+  @Input() text? = '';
+
+  @Input() variant?: Variant  = 'Primary';
+}
 
 describe('CpePlaygroundComponent', () => {
   let component: CpePlaygroundComponent;
@@ -8,7 +24,10 @@ describe('CpePlaygroundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CpePlaygroundComponent ]
+      declarations: [
+        CpePlaygroundComponent,
+        MockCpeButtonComponent
+      ]
     })
     .compileComponents();
 
