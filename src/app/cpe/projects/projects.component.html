@@ -1,0 +1,9 @@
+<div style="border: aquamarine solid 2px;" *ngIf="projects">
+  <div style="font-weight: bold">List of projects</div>
+  <div style="display: flex; flex-direction: row;">
+    <div *ngFor="let project of projects" style="margin: 10px">
+      <cpe-button (click) ="goToProject(project.id)" [text]="project.label"></cpe-button>
+    </div>
+  </div>
+</div>
+

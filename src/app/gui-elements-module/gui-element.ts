@@ -1,7 +1,7 @@
 import {Directive, Input} from "@angular/core";
 
 /**
- * super class GuiElement with all commonalities; enables tailwind to be used by subclasses within their template.
+ * super class GuiElement with all commonalities
  */
 @Directive()
 export class GuiElement {
