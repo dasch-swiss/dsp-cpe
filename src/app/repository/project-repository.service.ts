@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {CpeApiService} from "./cpe-api.service";
-import {Project, CpeResource, iCpeListResource } from "./repository-model";
-import {firstValueFrom, lastValueFrom } from "rxjs";
+import {Injectable} from '@angular/core';
+import {CpeApiService, iCpeListResource} from "./cpe-api.service";
+import {Project, CpeResource} from "./repository-model";
+import {firstValueFrom, lastValueFrom} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 
@@ -14,7 +14,7 @@ export class ProjectRepositoryService {
   }
 
   /**
-   * gets the array of CpeResource instances via the api service. Returns it as a Promise.
+   * get the array of CpeResource instances via the api service. Return it as a Promise.
    */
   async getProjectsList(): Promise<CpeResource[]> {
     const resources$ = this.apiService.getList('projects');
@@ -23,7 +23,7 @@ export class ProjectRepositoryService {
   }
 
   /**
-   * gets a projects data via the api service. Returns an instanced Project as Promise.
+   * get a project via the api service. Return a Project as Promise.
    */
   async getProjectById(id: string): Promise<Project> {
     const resource$ =  this.apiService.getProject(id);
@@ -32,7 +32,7 @@ export class ProjectRepositoryService {
   }
 
   /**
-   * checks if a project is existing ior not. Returns a bool as promise.
+   * check if a project is existing ior not. Return a boolean as promise.
    */
   async isProjectExisting(projectId: string): Promise<boolean> {
     return !!await this.getProjectById(projectId)

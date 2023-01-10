@@ -35,7 +35,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Loads the project's data. If there is no data for the given project id, it navigates to the projects component.
+   * Load the project's data. Navigate to the projects component if there is no data for the given project id.
    * @param projectId: The project to which is navigated.
    */
   loadProject(projectId: string) {
@@ -45,7 +45,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * navigates to a specific page of this project
+   * navigate to a specific page of this project
    * @param pageId: The page to which is navigated.
    */
   goToPage(pageId: string){
@@ -54,7 +54,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * navigates to the projects component..
+   * navigate to the projects component..
    */
   goToProjectsOverview(){
     this.naviService.navigateToProjectsPage();

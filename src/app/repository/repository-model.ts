@@ -1,25 +1,4 @@
-/**
- * The base interface for all resources.
- */
-export interface iCpeListResource {
-  id: string;
-  label: string;
-  description: string;
-}
-
-/**
- * The interface for getting projects
- */
-export interface iProject extends iCpeListResource {
-  pages: string[];
-}
-
-/**
- * The interface for getting projects
- */
-export interface iPage extends iCpeListResource {
-  widgets: string[];
-}
+import {iCpeListResource, iPage, iProject} from "./cpe-api.service";
 
 /**
  * The base class for all resources. Used by inheritance as well as for lists.
@@ -62,7 +41,7 @@ export class Project extends CpeResource{
   set pages(pages) { this._pages = pages; }
 
   /**
-   * returns the first page of the project if there is a page. Returns an empty string if there is
+   * return the first page of the project if there is a page. Return an empty string if there is
    * no page at all for this project.
    */
   firstPage(): string {
@@ -70,7 +49,7 @@ export class Project extends CpeResource{
   }
 
   /**
-   * returns true if a project contains a page with the given id.
+   * return true if a project contains a page with the given id.
    * @param pageId: the page which is checked
    */
   hasPage(pageId: string): boolean {
@@ -94,7 +73,7 @@ export class Page extends CpeResource {
   set widgets(widgets) { this._widgets = widgets; }
 
   /**
-   * returns true if a page contains a widget with a given id.
+   * return true if a page contains a widget with a given id.
    * @param widgetId: the widget which is checked
    */
   hasWidget(widgetId: string): boolean {

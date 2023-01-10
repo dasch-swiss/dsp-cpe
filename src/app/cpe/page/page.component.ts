@@ -38,7 +38,7 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * loads the page passed. Navigates to the default page, if no page data can be retrieved from the api.
+   * load the page passed. Navigate to the default page, if no page data can be retrieved from the api.
    * @param pageId: The id of the page to be loaded.
    */
   loadPage(pageId: string) {
@@ -48,7 +48,7 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * loads the default page, i.e. the very first page in the projects pages list.
+   * load the default page, i.e. the very first page in the projects pages list.
    */
   navigateToDefaultPage() {
     if (!this.project || !this.project.firstPage()) { // guard

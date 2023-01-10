@@ -17,10 +17,10 @@ export class PageRepositoryService implements iPageRepo {
   }
 
   /**
-   * gets a projects data via the api service. Returns an instanced Project as Promise.
+   * get a page via the api service. Return a Page as Promise.
    */
   async getPageById(id: string): Promise<Page> {
-    const resource$ =  this.apiService.getPageB(id);
+    const resource$ =  this.apiService.getPage(id);
     const page = await firstValueFrom(resource$)
     return new Page(page);
   }

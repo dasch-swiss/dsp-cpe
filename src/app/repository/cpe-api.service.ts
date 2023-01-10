@@ -1,12 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {iCpeListResource, iPage, iProject} from "./repository-model";
 import {catchError, Observable, of, tap} from "rxjs";
 
 export const getProjectRoute = 'http://localhost:3000/projects/get/'
 export const getPagesRoute = 'http://localhost:3000/pages/get/'
 
-export type CpeResourceClass = 'projects' | 'pages';
+/**
+ * Classes available for lists to get
+ */
+export type CpeResourceClass = 'projects' | 'pages' | 'widgets';
+
+/**
+ * The interface for getting projects from the api service
+ */
+export interface iProject extends iCpeListResource {
+  pages: string[];
+}
+
+/**
+ * The interface for getting projects from the api service
+ */
+export interface iPage extends iCpeListResource {
+  widgets: string[];
+}
+
+/**
+ * The base interface for all resources.
+ */
+export interface iCpeListResource {
+  id: string;
+  label: string;
+  description: string;
+}
+
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +42,7 @@ export class CpeApiService {
   constructor(private http: HttpClient) { }
 
   /**
-   * returns af a resource classes instances from the api route
+   * return a list of instances of the desired resource class from the api route
    */
   getList(cpeClass: CpeResourceClass): Observable<iCpeListResource[]> {
     return this.http.get<iCpeListResource[]>(`http://localhost:3000/${cpeClass}`).pipe(
@@ -26,16 +52,9 @@ export class CpeApiService {
   }
 
   /**
-   * gets a pages data via the api route
+   * get a projects data via the api route
    */
   getPage(id: string) {
-    return fetch(`http://localhost:3000/pages/get/${id}`);
-  }
-
-  /**
-   * gets a projects data via the api route
-   */
-  getPageB(id: string) {
     const url = `${getPagesRoute}${id}`;
     return this.http.get<iPage>(url).pipe(
       // tap(_ => console.info(`fetched project id = ${id}`)),
@@ -44,7 +63,7 @@ export class CpeApiService {
   }
 
   /**
-   * gets a projects data via the api route
+   * get a projects data via the api route
    */
   getProject(id: string) {
     const url = `${getProjectRoute}${id}`;
