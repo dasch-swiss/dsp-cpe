@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RepositoryObject} from "../../repository/repository-model";
+import {Component, OnInit} from '@angular/core';
+import {CpeResource} from "../../repository/repository-model";
 import {ProjectRepositoryService} from "../../repository/project-repository.service";
 import {NavigationService} from "../../routing-module/navigation.service";
 
@@ -9,12 +9,14 @@ import {NavigationService} from "../../routing-module/navigation.service";
 })
 export class ProjectsComponent implements OnInit {
 
-  projects: RepositoryObject[] = [];
+  projects: CpeResource[] = [];
 
   constructor(private repo: ProjectRepositoryService, private naviService: NavigationService) { }
 
   ngOnInit(): void {
-    this.repo.getProjectsList().then( pList => this.projects = pList);
+    this.repo.getProjectsList().then( projects => {
+      this.projects = projects;
+    });
   }
 
   goToProject(projectId: string) {

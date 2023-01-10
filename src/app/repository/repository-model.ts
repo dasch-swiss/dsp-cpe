@@ -1,14 +1,38 @@
+/**
+ * The base interface for all resources.
+ */
+export interface iCpeListResource {
+  id: string;
+  label: string;
+  description: string;
+}
+
+/**
+ * The interface for getting projects
+ */
+export interface iProject extends iCpeListResource {
+  pages: string[];
+}
+
+/**
+ * The interface for getting projects
+ */
+export interface iPage extends iCpeListResource {
+  widgets: string[];
+}
 
 /**
  * The base class for all resources. Used by inheritance as well as for lists.
  */
-export class RepositoryObject {
+export class CpeResource {
   readonly _id: string = '';
   protected _label: string = '';
   protected _description: string = '';
 
-  constructor(id: string) {
-    this._id = id;
+  constructor(resource: iCpeListResource) {
+    this._id = resource.id;
+    this._label = resource.label;
+    this._description = resource.description;
   }
 
   get id() { return this._id; }
@@ -25,11 +49,12 @@ export class RepositoryObject {
 /**
  * The Project class
  */
-export class Project extends RepositoryObject{
+export class Project extends CpeResource{
   private _pages: string[] = [];
 
-  constructor(id: string) {
-    super(id);
+  constructor(project: iProject) {
+    super(project);
+    this._pages = project.pages;
   }
 
   get pages() { return this._pages; }
@@ -51,17 +76,17 @@ export class Project extends RepositoryObject{
   hasPage(pageId: string): boolean {
     return this._pages.indexOf(pageId) > -1;
   }
-
 }
 
 /**
  * The Page class
  */
-export class Page extends RepositoryObject {
+export class Page extends CpeResource {
   private _widgets: string[] = [];
 
-  constructor(id: string) {
-    super(id);
+  constructor(page: iPage) {
+    super(page);
+    this._widgets = page.widgets;
   }
 
   get widgets() { return this._widgets; }

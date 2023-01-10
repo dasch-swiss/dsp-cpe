@@ -12,7 +12,6 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProjectComponent implements OnInit, OnDestroy {
 
-  private _projectId = '';
   private _project: Project | undefined = undefined;
 
   private projectRouteSubscription: Subscription;
@@ -25,8 +24,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.projectRouteSubscription = this.route.params.subscribe(parameter => {
-      if (parameter['id'] && parameter['id'] !== this._projectId) {
-        this.initProject(parameter['id']);
+      if (parameter['id'] && parameter['id'] !== this.project?.id) {
+        this.loadProject(parameter['id']);
       }
     });
   }
@@ -36,33 +35,13 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * inits a specific project id passed. If there is no project with that id, the app navigates
-   * to the projects component
-   * @param projectId: The project which is loaded.
-   */
-  initProject(projectId: string | null) {
-    if ( projectId ) {
-      this.loadProject(projectId);
-    } else { // if no project id given, route to default project page
-      console.warn(`No project id passed - navigating to projects overview.`)
-      this.goToProjectsOverview();
-    }
-  }
-
-  /**
    * Loads the project's data. If there is no data for the given project id, it navigates to the projects component.
    * @param projectId: The project to which is navigated.
    */
   loadProject(projectId: string) {
-    this._projectId = projectId;
-    this.projectService.getProjectByID(this._projectId).then(p => {
-      if (p) {
+    this.projectService.getProjectById(projectId).then(p => {
         this._project = p;
-      } else {
-        console.warn(`Project with id ${projectId} not found - navigating to projects overview.`);
-        this.goToProjectsOverview();
-      }
-    });
+    }).catch(err => this.goToProjectsOverview());
   }
 
   /**
@@ -70,8 +49,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
    * @param pageId: The page to which is navigated.
    */
   goToPage(pageId: string){
-    if (!pageId) { return; }
-    this.naviService.navigateToPage(this._projectId, pageId);
+    const projectId = this.project? this.project.id : '';
+    this.naviService.navigateToPage(projectId, pageId);
   }
 
   /**
@@ -80,7 +59,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
   goToProjectsOverview(){
     this.naviService.navigateToProjectsPage();
   }
-
 
   ngOnDestroy() {
     this.projectRouteSubscription.unsubscribe();

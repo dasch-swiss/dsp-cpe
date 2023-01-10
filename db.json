@@ -1,12 +1,12 @@
 {
   "projects": [
     {
-      "iri": "p-001",
+      "id": "p-001",
       "label": "project 1",
       "description": "This is the first project"
     },
     {
-      "iri": "p-002",
+      "id": "p-002",
       "label": "project 2",
       "description": "This is the second project"
     }
@@ -63,12 +63,12 @@
 
   "widgets": [
     {
-      "iri": "w-001",
-      "id": "page-01"
+      "id": "w-001",
+      "page-id": "page-01"
     },
     {
-      "iri": "w-002",
-      "id": "page-02"
+      "id": "w-002",
+      "page-id": "page-02"
     }
   ],
   "widgets-data": [

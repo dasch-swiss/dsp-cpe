@@ -1,54 +1,40 @@
 import { Injectable } from '@angular/core';
 import {CpeApiService} from "./cpe-api.service";
-import {Project, RepositoryObject} from "./repository-model";
+import {Project, CpeResource, iCpeListResource } from "./repository-model";
+import {firstValueFrom, lastValueFrom } from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
-
-interface iProjectRepo {
-  getProjectByID(id: string): any;
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectRepositoryService implements iProjectRepo{
+export class ProjectRepositoryService {
 
-  constructor(private apiService: CpeApiService) {
+  constructor(private apiService: CpeApiService, private http: HttpClient) {
   }
 
   /**
-   * gets the list of projects via the api service. Returns it as a RepositoryObject array.
+   * gets the array of CpeResource instances via the api service. Returns it as a Promise.
    */
-  async getProjectsList():Promise<RepositoryObject[]> {
-    const pList: RepositoryObject[] = [];
-    const rJson: any[] = await this.apiService.getProjects().then(response => {
-      return response.json();
-    });
-    if(!Object.keys(rJson).length) { return []; } // if no projects exists
-    for (let i=0; i < rJson.length; i++){
-      const repObject = new RepositoryObject(rJson[i]['iri']);
-      repObject.label = rJson[i]['label'];
-      repObject.description = rJson[i]['description'];
-      pList.push(repObject);
-    }
-    return pList;
+  async getProjectsList(): Promise<CpeResource[]> {
+    const resources$ = this.apiService.getList('projects');
+    const resources: iCpeListResource[] = await lastValueFrom(resources$);
+    return resources.map(r => new CpeResource(r))
   }
 
+  /**
+   * gets a projects data via the api service. Returns an instanced Project as Promise.
+   */
+  async getProjectById(id: string): Promise<Project> {
+    const resource$ =  this.apiService.getProject(id);
+    const project = await firstValueFrom(resource$)
+    return new Project(project);
+  }
+
+  /**
+   * checks if a project is existing ior not. Returns a bool as promise.
+   */
   async isProjectExisting(projectId: string): Promise<boolean> {
-    return !!await this.getProjectByID(projectId)
-  }
-
-  /**
-   * gets a projects data via the api service. Returns a Project object.
-   */
-  async getProjectByID(id: string): Promise<Project | undefined> {
-    const rJson = await this.apiService.getProject(id).then(response => {
-      return response.json()
-    });
-    if(!Object.keys(rJson).length) { return undefined; } // if no such project exists
-    const p = new Project(rJson['id']);
-    p.label = rJson['label'];
-    p.description = rJson['description'];
-    p.pages = rJson['pages'];
-    return p;
+    return !!await this.getProjectById(projectId)
   }
 }

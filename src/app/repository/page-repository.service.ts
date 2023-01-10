@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {CpeApiService} from "./cpe-api.service";
 import {Page} from "./repository-model";
+import {firstValueFrom} from "rxjs";
 
 
 interface iPageRepo {
-  getPageByID(id: string): any;
+  getPageById(id: string): any;
 }
 
 @Injectable({
@@ -16,18 +17,11 @@ export class PageRepositoryService implements iPageRepo {
   }
 
   /**
-   * gets the pages data via the api service. Returns a Page object
+   * gets a projects data via the api service. Returns an instanced Project as Promise.
    */
-  async getPageByID(id: string): Promise<Page | undefined> {
-    const rJson = await this.apiService.getPage(id).then(response => {
-      return response.json()
-    });
-    if(!Object.keys(rJson).length) {
-      return undefined; } // if no such project exists
-    const p = new Page(rJson['id']);
-    p.label = rJson['label'];
-    p.description = rJson['description'];
-    p.widgets = rJson['widgets'];
-    return p;
+  async getPageById(id: string): Promise<Page> {
+    const resource$ =  this.apiService.getPageB(id);
+    const page = await firstValueFrom(resource$)
+    return new Page(page);
   }
 }
