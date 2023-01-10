@@ -1,0 +1,51 @@
+name: CI
+env:
+  node-version: 16.15.0
+
+on:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  find-ignored-tests:
+    name: Find ignored tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Run the script
+        run: ./find-ignored-tests.sh
+
+  unit-tests:
+    name: Run unit tests
+    needs: [find-ignored-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Set up Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run the tests
+        run: npm run test-ci
+        env:
+          TZ: Europe/Zurich
+
+  build:
+    name: Build the app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Set up Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Build in prod mode
+        run: npm run build-prod
