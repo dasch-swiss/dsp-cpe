@@ -2,34 +2,45 @@
   "projects": [
     {
       "id": "p-001",
-      "label": "project 1",
-      "description": "This is the first project"
+      "label": "MLS",
+      "description": "This is the MLS project"
     },
     {
       "id": "p-002",
-      "label": "project 2",
-      "description": "This is the second project"
+      "label": "BEOL",
+      "description": "This is the beol project"
+    },
+    {
+      "id": "p-003",
+      "label": "Playground",
+      "description": "This is the playground project"
     }
   ],
 
   "projects-data": [
     {
       "id": "p-001",
-      "label": "Project 1",
-      "description": "This is the first project",
+      "label": "MLS",
+      "description": "This is the MLS project",
       "pages": [
         "page-001-001",
-        "page-001-002",
-        "page-001-003"
+        "page-001-002"
       ]
     },
     {
       "id": "p-002",
-      "label": "Project 2",
-      "description": "This is the second project",
+      "label": "beol",
+      "description": "This is the beol project",
       "pages": [
         "page-002-001",
         "page-002-002"
+      ]
+    },
+    {
+      "id": "p-003",
+      "label": "playground",
+      "description": "This is the playground project",
+      "pages": [
       ]
     }
   ],
@@ -38,39 +49,74 @@
     {
       "id": "page-001-001",
       "label": "First page",
-      "description": "First page of first project",
-      "widgets": []
+      "description": "First page of MLS project",
+      "grid_dimensions": {
+        "x": 5,
+        "y": 5
+      },
+      "header":  "pp-001-001-h",
+      "body":  "pp-001-001-b",
+      "footer": "pp-001-001-f"
     },
     {
       "id": "page-001-002",
       "label": "Second page",
-      "description": "Second page of first project",
-      "widgets": []
+      "description": "Second page of MLS project",
+      "header": "pp-001-002-h",
+      "body": "pp-001-002-b",
+      "footer": "pp-001-002-f",
+      "grid-dimensions": {
+        "x": 5,
+        "y": 5
+      }
     },
     {
       "id": "page-002-001",
       "label": "First page",
-      "description": "First page of second project",
-      "widgets": []
+      "description": "First page of beol project",
+      "header": "pp-002-001-h",
+      "body": "pp-002-001-b",
+      "footer": "pp-002-001-f",
+      "grid_dimensions": {
+        "x": 5,
+        "y": 5
+      }
     },
     {
       "id": "page-002-002",
       "label": "Second page",
-      "description": "Second page of second project",
+      "description": "Second page of beol project",
+      "header": "pp-002-002-h",
+      "body": "pp-002-002-b",
+      "footer": "pp-002-002-f",
+      "grid_dimensions": {
+        "x": 5,
+        "y": 5
+      }
+    }
+  ],
+
+  "page-part-data": [
+    {
+      "id": "pp-001-001-h",
+      "page_id": "page-001-001",
+      "pp_type": "header",
+      "widgets": []
+    },
+    {
+      "id": "pp-001-001-h",
+      "page_id": "page-001-001",
+      "pp_type": "body",
+      "widgets": []
+    },
+    {
+      "id": "pp-001-001-f",
+      "page_id": "page-001-001",
+      "pp_type": "footer",
       "widgets": []
     }
   ],
 
-  "widgets": [
-    {
-      "id": "w-001",
-      "page-id": "page-01"
-    },
-    {
-      "id": "w-002",
-      "page-id": "page-02"
-    }
-  ],
   "widgets-data": [
     {
       "id": "w-001",

@@ -2,13 +2,20 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
 
-export const getProjectRoute = 'http://localhost:3000/projects/get/'
-export const getPagesRoute = 'http://localhost:3000/pages/get/'
+export const getProjectRoute = 'http://localhost:3000/projects/get/';
+export const getPageRoute = 'http://localhost:3000/pages/get/';
+export const getPagePartRoute = 'http://localhost:3000/page-parts/get/';
 
 /**
  * Classes available for lists to get
  */
-export type CpeResourceClass = 'projects' | 'pages' | 'widgets';
+export type CpeResourceClass = 'projects' | 'pages' | 'page-parts' | 'widgets';
+
+export type CpePagePart = 'header' | 'body' | 'footer';
+
+export type CpeWidget = 'text' | 'image';
+
+export type Coordinates = {x: number, y: number};
 
 /**
  * The interface for getting projects from the api service
@@ -21,8 +28,43 @@ export interface iProject extends iCpeListResource {
  * The interface for getting projects from the api service
  */
 export interface iPage extends iCpeListResource {
-  widgets: string[];
+  header: string,
+  body: string,
+  footer: string,
+  grid_dimensions: Coordinates,
 }
+
+/**
+ * The interface for getting page parts from the api service
+ */
+export interface iPagePart extends iCpeListResource {
+  page_id: string,
+  pp_type: CpePagePart,
+  widgets: string[]
+}
+
+/**
+ * The interface for getting widgets from the api service
+ */
+export interface iWidget extends iCpeListResource {
+  page_part_id: string,
+  widget_type: CpeWidget,
+  coordinates: Coordinates;
+  height: number,
+  width: number
+}
+
+export interface iImageWidget extends iWidget {
+  text: string,
+  image: string,
+  alt: string
+
+}
+
+export interface iTextWidget extends iWidget {
+  text: string,
+}
+
 
 /**
  * The base interface for all resources.
@@ -54,22 +96,33 @@ export class CpeApiService {
   /**
    * get a projects data via the api route
    */
-  getPage(id: string) {
-    const url = `${getPagesRoute}${id}`;
-    return this.http.get<iPage>(url).pipe(
-      // tap(_ => console.info(`fetched project id = ${id}`)),
-      catchError(this.handleError<iPage>(`getProject id = ${id}`))
+  getProject(id: string): Observable<iProject> {
+    const url = `${getProjectRoute}${id}`;
+    return this.http.get<iProject>(url).pipe(
+      tap(_ => console.info(`fetched project id = ${id}`)),
+      catchError(this.handleError<iProject>(`getProject id = ${id}`))
     );
   }
 
   /**
    * get a projects data via the api route
    */
-  getProject(id: string) {
-    const url = `${getProjectRoute}${id}`;
-    return this.http.get<iProject>(url).pipe(
-      tap(_ => console.info(`fetched project id = ${id}`)),
-      catchError(this.handleError<iProject>(`getProject id = ${id}`))
+  getPage(id: string): Observable<iPage> {
+    const url = `${getPageRoute}${id}`;
+    return this.http.get<iPage>(url).pipe(
+      // tap(_ => console.info(`fetched page id = ${id}`)),
+      catchError(this.handleError<iPage>(`get page id = ${id}`))
+    );
+  }
+
+  /**
+   * get a projects data via the api route
+   */
+  getPagePart(id: string): Observable<iPagePart> {
+    const url = `${getPagePartRoute}${id}`;
+    return this.http.get<iPagePart>(url).pipe(
+      // tap(_ => console.info(`fetched page id = ${id}`)),
+      catchError(this.handleError<iPagePart>(`get page id = ${id}`))
     );
   }
 

@@ -1,4 +1,13 @@
-import {iCpeListResource, iPage, iProject} from "./cpe-api.service";
+import {
+  Coordinates,
+  iCpeListResource,
+  iImageWidget,
+  iPage,
+  iPagePart,
+  iProject,
+  iTextWidget,
+  iWidget
+} from "./cpe-api.service";
 
 /**
  * The base class for all resources. Used by inheritance as well as for lists.
@@ -61,22 +70,124 @@ export class Project extends CpeResource{
  * The Page class
  */
 export class Page extends CpeResource {
-  private _widgets: string[] = [];
+  private _header: string;
+  private _body: string;
+  private _footer: string;
+  private _girdDimensions: Coordinates;
 
   constructor(page: iPage) {
     super(page);
-    this._widgets = page.widgets;
+    this._header = page.header;
+    this._body = page.body;
+    this._footer = page.footer;
+    this._girdDimensions = page.grid_dimensions;
   }
 
+  get header() { return this._header; }
+
+  get body() { return this._body; }
+
+  get footer() { return this._footer; }
+
+  get gridDimensions() { return this._girdDimensions; }
+}
+
+export class PagePart extends CpeResource{
+  protected _page_id: string;
+  protected _widgets: any[]; // todo: type it
+  constructor(pagePart: iPagePart) {
+    super(pagePart);
+    this._page_id = pagePart.page_id;
+    this._widgets = pagePart.widgets;
+  }
+
+  get pageId() { return this. _page_id; }
+
   get widgets() { return this._widgets; }
+}
 
-  set widgets(widgets) { this._widgets = widgets; }
+export class Header extends PagePart {
+  constructor(pagePart: iPagePart) {
+    super(pagePart);
+  }
+}
 
-  /**
-   * return true if a page contains a widget with a given id.
-   * @param widgetId: the widget which is checked
-   */
-  hasWidget(widgetId: string): boolean {
-    return this._widgets.indexOf(widgetId) > -1;
+export class Body extends PagePart {
+  constructor(pagePart: iPagePart) {
+    super(pagePart);
+  }
+}
+
+export class Footer extends PagePart {
+  constructor(pagePart: iPagePart) {
+    super(pagePart);
+  }
+}
+
+export class NullPagePart extends PagePart {
+  constructor(pagePart: iPagePart) {
+    super(pagePart);
+  }
+}
+
+export class PagePartFactory {
+  static build(pagePart: iPagePart): PagePart {
+    switch (pagePart.pp_type) {
+      case 'header':
+        return new Header(pagePart);
+      case 'body':
+        return new Body(pagePart);
+      case 'footer':
+        return new Footer(pagePart);
+      default:
+        return new NullPagePart(pagePart);
+    }
+  }
+}
+
+export class Widget extends CpeResource{
+  constructor(widget: iWidget) {
+    super(widget);
+  }
+}
+
+export class ImageWidget extends Widget{
+  private text: string;
+  private image: string;
+  private alt: string;
+
+  constructor(widget: iImageWidget) {
+    super(widget);
+    this.text = widget.text;
+    this.image = widget.image;
+    this.alt = widget.alt;
+  }
+}
+
+export class TextWidget extends Widget{
+  private text: string;
+
+  constructor(widget: iTextWidget) {
+    super(widget);
+    this.text = widget.text;
+  }
+}
+
+export class NullWidget extends Widget{
+  constructor(widget: iTextWidget) {
+    super(widget);
+  }
+}
+
+export class WidgetFactory {
+  static build(widget: iImageWidget): Widget {
+    switch (widget.widget_type) {
+      case 'text':
+        return new TextWidget(widget);
+      case 'image':
+        return new ImageWidget(widget);
+      default:
+        return new NullWidget(widget);
+    }
   }
 }
