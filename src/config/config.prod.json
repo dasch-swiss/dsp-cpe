@@ -1,0 +1,9 @@
+{
+    "instrumentation": {
+      "environment": "prod",
+      "rollbar": {
+        "enabled": false,
+        "accessToken": ""
+      }
+    }
+}
