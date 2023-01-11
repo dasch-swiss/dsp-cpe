@@ -1,36 +1,35 @@
-import * as Rollbar from 'rollbar'; // When using Typescript < 3.6.0.
-// `import Rollbar from 'rollbar';` is the required syntax for Typescript 3.6.x. 
-// However, it will only work when setting either `allowSyntheticDefaultImports` 
-// or `esModuleInterop` in your Typescript options.
+import * as Rollbar from 'rollbar';
 
-import {
-  Injectable,
-  Inject,
-  InjectionToken,
-  ErrorHandler
-} from '@angular/core';
-
-const rollbarConfig = {
-  accessToken: 'POST_CLIENT_ITEM_TOKEN',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-  payload: {
-    code_version: '1.0.0',
-    custom_data: 'foo'
-  }
-};
-
-export const RollbarService = new InjectionToken<Rollbar>('rollbar');
+import { Injectable, Inject, ErrorHandler } from '@angular/core';
+import { AppInitService } from './app-init.service';
 
 @Injectable()
 export class RollbarErrorHandler implements ErrorHandler {
-  constructor(@Inject(RollbarService) private rollbar: Rollbar) {}
+    
+    public rollbar: Rollbar;
 
-  handleError(err:any) : void {
-    this.rollbar.error(err.originalError || err);
-  }
-}
+    constructor(
+        @Inject(AppInitService) private _appInitService: AppInitService
+    ) {
+        this.rollbar = new Rollbar(
+            {
+                accessToken: this._appInitService.cpeInstrumentationConfig.rollbar.accessToken,
+                enabled: this._appInitService.cpeInstrumentationConfig.rollbar.enabled,
+                environment: this._appInitService.cpeInstrumentationConfig.environment,
+                captureUncaught: true,
+                captureUnhandledRejections: true,
+                nodeSourceMaps: false,
+                inspectAnonymousErrors: true,
+                ignoreDuplicateErrors: true,
+                wrapGlobalEventHandlers: false,
+                scrubRequestBody: true,
+                exitOnUncaughtException: false,
+                stackTraceLimit: 20
+            }
+        );
+    }
 
-export function rollbarFactory() {
-  return new Rollbar(rollbarConfig);
+    handleError(err: any): void {
+        this.rollbar.error(err.originalError || err);
+    }
 }
