@@ -57,7 +57,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
    * navigate to the projects component..
    */
   goToProjectsOverview(){
-    this.naviService.navigateToProjectsPage();
+    this.naviService.navigateToProjectsPages();
   }
 
   ngOnDestroy() {

@@ -34,7 +34,7 @@ export class ProjectRepositoryService {
   /**
    * check if a project is existing ior not. Return a boolean as promise.
    */
-  async isProjectExisting(projectId: string): Promise<boolean> {
+  async exists(projectId: string): Promise<boolean> {
     return !!await this.getProjectById(projectId)
   }
 }

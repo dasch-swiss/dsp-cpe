@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectRepositoryService} from "../repository/project-repository.service";
+import {Project} from "../repository/repository-model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class NavigationService {
    * navigates to a specific project
    * @param projectId: The project to which is navigated.
    */
-  public navigateToProjectsPage() {
+  public navigateToProjectsPages() {
     this.router.navigate(['projects'])
   }
 
@@ -26,11 +27,11 @@ export class NavigationService {
    * @param projectId: The project to which is navigated.
    */
   public navigateToProject(projectId: string) {
-    this.projectService.isProjectExisting(projectId).then( exists => {
+    this.projectService.exists(projectId).then(exists => {
       if (exists) {
         return this.router.navigate(["project/" + projectId]);
       } else {
-        this.navigateToProjectsPage();
+        this.navigateToProjectsPages();
         return ;
       }
     });
@@ -44,7 +45,7 @@ export class NavigationService {
   public navigateToPage(projectId: string, pageId: string) {
     this.projectService.getProjectById(projectId).then( p => {
       if (!p) { // navigate to projects overview
-        this.navigateToProjectsPage();
+        this.navigateToProjectsPages();
         return;
       } else { // navigate
         if (p.hasPage(pageId)) {

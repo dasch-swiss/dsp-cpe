@@ -24,4 +24,12 @@ export class PageRepositoryService implements iPageRepo {
     const page = await firstValueFrom(resource$)
     return new Page(page);
   }
+
+  /**
+   * check if a page exists in the api. Return a boolean as Promise.
+   */
+  async exists(id: string): Promise<boolean> {
+    return !!await this.getPageById(id);
+  }
+
 }
