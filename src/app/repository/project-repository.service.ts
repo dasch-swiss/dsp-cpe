@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {CpeApiService, iCpeListResource} from "./cpe-api.service";
 import {Project, CpeResource} from "./repository-model";
 import {firstValueFrom, lastValueFrom} from "rxjs";
-import {HttpClient} from "@angular/common/http";
 
 
 @Injectable({
@@ -10,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProjectRepositoryService {
 
-  constructor(private apiService: CpeApiService, private http: HttpClient) {
+  constructor(private apiService: CpeApiService) {
   }
 
   /**
