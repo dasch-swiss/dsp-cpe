@@ -10,10 +10,10 @@ import {PageStructureValidatorService} from "./blue-boxes/validator/page-structu
 })
 export class CpeComponent {
   data: PageStructure;
-  constructor(private pageStructureService: PageStructureService, private validatorService: PageStructureValidatorService) {
-    const projectPageStructure = this.pageStructureService.getMLS();
+  constructor(private _pageStructureService: PageStructureService, private _validatorService: PageStructureValidatorService) {
+    const projectPageStructure = this._pageStructureService.getMLS();
 
-    if (validatorService.validate(projectPageStructure)) {
+    if (this._validatorService.validate(projectPageStructure)) {
       this.data = projectPageStructure;
     }
   }
