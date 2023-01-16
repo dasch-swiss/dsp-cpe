@@ -1,6 +1,6 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing-module/app-routing.module';
 import { AppComponent } from './app.component';
 import { CpeComponent } from './cpe/cpe.component';
 import { GridsterModule } from 'angular-gridster2';
@@ -12,11 +12,17 @@ import { PlaygroundModule } from "./playground/playground.module";
 import { RollbarErrorHandler } from './rollbar';
 import { AppInitService } from './app-init.service';
 import { CpeInstrumentationToken } from '../config/cpe-tokens';
+import { PageComponent } from './cpe/page/page.component';
+import { ProjectComponent } from './cpe/project/project.component';
+import { ProjectsComponent } from './cpe/projects/projects.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CpeComponent,
+        ProjectComponent,
+    	PageComponent,
+    	ProjectsComponent,
         TestWidgetComponent,
         ExcecutorComponent,
         AnotherTestWidgetComponent

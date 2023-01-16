@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "id": "p-001",
+      "label": "project 1",
+      "description": "This is the first project"
+    },
+    {
+      "id": "p-002",
+      "label": "project 2",
+      "description": "This is the second project"
+    }
+  ],
+
+  "projects-data": [
+    {
+      "id": "p-001",
+      "label": "Project 1",
+      "description": "This is the first project",
+      "pages": [
+        "page-001-001",
+        "page-001-002",
+        "page-001-003"
+      ]
+    },
+    {
+      "id": "p-002",
+      "label": "Project 2",
+      "description": "This is the second project",
+      "pages": [
+        "page-002-001",
+        "page-002-002"
+      ]
+    }
+  ],
+
+  "pages-data": [
+    {
+      "id": "page-001-001",
+      "label": "First page",
+      "description": "First page of first project",
+      "widgets": []
+    },
+    {
+      "id": "page-001-002",
+      "label": "Second page",
+      "description": "Second page of first project",
+      "widgets": []
+    },
+    {
+      "id": "page-002-001",
+      "label": "First page",
+      "description": "First page of second project",
+      "widgets": []
+    },
+    {
+      "id": "page-002-002",
+      "label": "Second page",
+      "description": "Second page of second project",
+      "widgets": []
+    }
+  ],
+
+  "widgets": [
+    {
+      "id": "w-001",
+      "page-id": "page-01"
+    },
+    {
+      "id": "w-002",
+      "page-id": "page-02"
+    }
+  ],
+  "widgets-data": [
+    {
+      "id": "w-001",
+      "type": "plain"
+    },
+    {
+      "id": "w-002",
+      "type": "text"
+    }
+  ]
+}
