@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   loadProject(projectId: string) {
     this.projectService.getProjectById(projectId).then(p => {
         this._project = p;
-    }).catch(err => this.goToProjectsOverview());
+    }).catch(err => console.error(err));
   }
 
   /**
