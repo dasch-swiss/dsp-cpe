@@ -4,7 +4,7 @@ import {iCpeListResource, iPage, iProject} from "./cpe-api.service";
  * The base class for all resources. Used by inheritance as well as for lists.
  */
 export class CpeResource {
-  readonly _id: string = '';
+  protected _id: string = '';
   protected _label: string = '';
   protected _description: string = '';
 
