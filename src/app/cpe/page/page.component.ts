@@ -20,8 +20,7 @@ export class PageComponent implements OnInit, OnDestroy {
   pageRouteSubscription: Subscription;
 
   constructor(private pageService: PageRepositoryService,
-              private route: ActivatedRoute,
-              private navigationService: NavigationService) {
+              private route: ActivatedRoute) {
     this.pageRouteSubscription = new Subscription();
   }
 

@@ -29,9 +29,6 @@ export class NavigationService {
     this.projectService.isProjectExisting(projectId).then( exists => {
       if (exists) {
         this.router.navigate(["project/" + projectId], { replaceUrl: false });
-      } else {
-        this.navigateToProjectsPage();
-        return ;
       }
     });
   }
@@ -43,21 +40,15 @@ export class NavigationService {
    */
   public navigateToPage(projectId: string, pageId: string) {
     this.projectService.getProjectById(projectId).then( p => {
-      if (!p) { // navigate to projects overview
-        this.navigateToProjectsPage();
-        return;
-      } else { // navigate
-        if (p.hasPage(pageId)) {
-          this.router.navigate(
-            ['project/' + projectId + '/' + pageId],
-            {
-              relativeTo: this.route,
-              replaceUrl: false,
-              queryParamsHandling: 'merge'
-            });
-        } else { // do not navigate, but stay on projects page
-          return;
-        }
+      if (p && p.hasPage(pageId)) {
+        this.router.navigate(
+          ['project/' + projectId + '/' + pageId],
+          {
+            relativeTo: this.route,
+            replaceUrl: false,
+            queryParamsHandling: 'merge'
+            }
+          );
       }
     });
   }
