@@ -32,9 +32,6 @@ export class PageComponent implements OnInit, OnDestroy {
         this.loadPage(this.pageId);
       }
     });
-    if (!this.pageId) { // in case it is routed to the page component without a page id
-      this.navigateToDefaultPage();
-    }
   }
 
   /**
@@ -44,19 +41,7 @@ export class PageComponent implements OnInit, OnDestroy {
   loadPage(pageId: string) {
     this.pageService.getPageById(pageId).then(p => {
         this.page = p;
-    }).catch(err => this.navigateToDefaultPage() );
-  }
-
-  /**
-   * load the default page, i.e. the very first page in the projects pages list.
-   */
-  navigateToDefaultPage() {
-    if (!this.project || !this.project.firstPage()) { // guard
-      console.warn(`no pages available for project with id ${this.project?.id}`);
-      return;
-    }
-    console.warn('navigate to default page')
-    this.navigationService.navigateToPage(this.project?.id, this.project.firstPage());
+    }).catch(err => console.error(err) );
   }
 
   ngOnDestroy() {

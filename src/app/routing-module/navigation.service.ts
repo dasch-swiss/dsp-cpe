@@ -18,7 +18,7 @@ export class NavigationService {
    * @param projectId: The project to which is navigated.
    */
   public navigateToProjectsPage() {
-    this.router.navigate(['projects'])
+    this.router.navigate(['projects'], { replaceUrl: false })
   }
 
   /**
@@ -28,7 +28,7 @@ export class NavigationService {
   public navigateToProject(projectId: string) {
     this.projectService.isProjectExisting(projectId).then( exists => {
       if (exists) {
-        return this.router.navigate(["project/" + projectId]);
+        this.router.navigate(["project/" + projectId], { replaceUrl: false });
       } else {
         this.navigateToProjectsPage();
         return ;
@@ -48,10 +48,11 @@ export class NavigationService {
         return;
       } else { // navigate
         if (p.hasPage(pageId)) {
-          return this.router.navigate(
+          this.router.navigate(
             ['project/' + projectId + '/' + pageId],
             {
               relativeTo: this.route,
+              replaceUrl: false,
               queryParamsHandling: 'merge'
             });
         } else { // do not navigate, but stay on projects page
