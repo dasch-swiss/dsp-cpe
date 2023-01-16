@@ -16,14 +16,14 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
   private projectRouteSubscription: Subscription;
 
-  constructor( private projectService: ProjectRepositoryService,
-               private route: ActivatedRoute,
-               private naviService: NavigationService ) {
+  constructor( private _projectService: ProjectRepositoryService,
+               private _route: ActivatedRoute,
+               private _naviService: NavigationService ) {
     this.projectRouteSubscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.projectRouteSubscription = this.route.params.subscribe(parameter => {
+    this.projectRouteSubscription = this._route.params.subscribe(parameter => {
       if (parameter['id'] && parameter['id'] !== this.project?.id) {
         this.loadProject(parameter['id']);
       }
@@ -39,9 +39,9 @@ export class ProjectComponent implements OnInit, OnDestroy {
    * @param projectId: The project to which is navigated.
    */
   loadProject(projectId: string) {
-    this.projectService.getProjectById(projectId).then(p => {
+    this._projectService.getProjectById(projectId).then(p => {
         this._project = p;
-    }).catch(err => console.error(err));
+    }).catch(err => console.error());
   }
 
   /**
@@ -50,14 +50,14 @@ export class ProjectComponent implements OnInit, OnDestroy {
    */
   goToPage(pageId: string){
     const projectId = this.project? this.project.id : '';
-    this.naviService.navigateToPage(projectId, pageId);
+    this._naviService.navigateToPage(projectId, pageId);
   }
 
   /**
    * navigate to the projects component..
    */
   goToProjectsOverview(){
-    this.naviService.navigateToProjectsPage();
+    this._naviService.navigateToProjectsPage();
   }
 
   ngOnDestroy() {

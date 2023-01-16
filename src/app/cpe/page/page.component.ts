@@ -19,13 +19,13 @@ export class PageComponent implements OnInit, OnDestroy {
 
   pageRouteSubscription: Subscription;
 
-  constructor(private pageService: PageRepositoryService,
-              private route: ActivatedRoute) {
+  constructor(private _pageService: PageRepositoryService,
+              private _route: ActivatedRoute) {
     this.pageRouteSubscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.pageRouteSubscription = this.route.params.subscribe(parameter => {
+    this.pageRouteSubscription = this._route.params.subscribe(parameter => {
       if (parameter['pageId'] && parameter['pageId'] !== this.pageId) {
         this.pageId = parameter['pageId'];
         this.loadPage(this.pageId);
@@ -38,7 +38,7 @@ export class PageComponent implements OnInit, OnDestroy {
    * @param pageId: The id of the page to be loaded.
    */
   loadPage(pageId: string) {
-    this.pageService.getPageById(pageId).then(p => {
+    this._pageService.getPageById(pageId).then(p => {
         this.page = p;
     }).catch(err => console.error(err) );
   }

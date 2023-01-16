@@ -13,14 +13,14 @@ interface iPageRepo {
 })
 export class PageRepositoryService implements iPageRepo {
 
-  constructor( private apiService: CpeApiService) {
+  constructor( private _apiService: CpeApiService) {
   }
 
   /**
    * get a page via the api service. Return a Page as Promise.
    */
   async getPageById(id: string): Promise<Page> {
-    const resource$ =  this.apiService.getPage(id);
+    const resource$ =  this._apiService.getPage(id);
     const page = await firstValueFrom(resource$)
     return new Page(page);
   }

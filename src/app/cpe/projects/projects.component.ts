@@ -11,16 +11,16 @@ export class ProjectsComponent implements OnInit {
 
   projects: CpeResource[] = [];
 
-  constructor(private repo: ProjectRepositoryService, private naviService: NavigationService) { }
+  constructor(private _repo: ProjectRepositoryService, private _naviService: NavigationService) { }
 
   ngOnInit(): void {
-    this.repo.getProjectsList().then( projects => {
+    this._repo.getProjectsList().then( projects => {
       this.projects = projects;
     });
   }
 
   goToProject(projectId: string) {
-    this.naviService.navigateToProject(projectId);
+    this._naviService.navigateToProject(projectId);
   }
 
 }

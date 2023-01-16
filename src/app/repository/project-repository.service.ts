@@ -9,14 +9,14 @@ import {firstValueFrom, lastValueFrom} from "rxjs";
 })
 export class ProjectRepositoryService {
 
-  constructor(private apiService: CpeApiService) {
+  constructor(private _apiService: CpeApiService) {
   }
 
   /**
    * get the array of CpeResource instances via the api service. Return it as a Promise.
    */
   async getProjectsList(): Promise<CpeResource[]> {
-    const resources$ = this.apiService.getList('projects');
+    const resources$ = this._apiService.getList('projects');
     const resources: iCpeListResource[] = await lastValueFrom(resources$);
     return resources.map(r => new CpeResource(r))
   }
@@ -25,7 +25,7 @@ export class ProjectRepositoryService {
    * get a project via the api service. Return a Project as Promise.
    */
   async getProjectById(id: string): Promise<Project> {
-    const resource$ =  this.apiService.getProject(id);
+    const resource$ =  this._apiService.getProject(id);
     const project = await firstValueFrom(resource$)
     return new Project(project);
   }

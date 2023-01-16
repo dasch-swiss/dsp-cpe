@@ -39,13 +39,13 @@ export interface iCpeListResource {
 })
 
 export class CpeApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
   /**
    * return a list of instances of the desired resource class from the api route
    */
   getList(cpeClass: CpeResourceClass): Observable<iCpeListResource[]> {
-    return this.http.get<iCpeListResource[]>(`http://localhost:3000/${cpeClass}`).pipe(
+    return this._http.get<iCpeListResource[]>(`http://localhost:3000/${cpeClass}`).pipe(
       // tap(_ => console.info(`fetched list for class =${cpeClass}`)),
       catchError(this.handleError<iCpeListResource[]>(`getList class =${cpeClass}`))
     );
@@ -56,7 +56,7 @@ export class CpeApiService {
    */
   getPage(id: string) {
     const url = `${getPagesRoute}${id}`;
-    return this.http.get<iPage>(url).pipe(
+    return this._http.get<iPage>(url).pipe(
       // tap(_ => console.info(`fetched project id = ${id}`)),
       catchError(this.handleError<iPage>(`getProject id = ${id}`))
     );
@@ -67,7 +67,7 @@ export class CpeApiService {
    */
   getProject(id: string) {
     const url = `${getProjectRoute}${id}`;
-    return this.http.get<iProject>(url).pipe(
+    return this._http.get<iProject>(url).pipe(
       tap(_ => console.info(`fetched project id = ${id}`)),
       catchError(this.handleError<iProject>(`getProject id = ${id}`))
     );
