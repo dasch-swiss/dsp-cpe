@@ -1,0 +1,10 @@
+{
+    "instrumentation": {
+      "environment": "local-dev",
+      "rollbar": {
+        "enabled": true,
+        "accessToken": "c01694ee3b104c5a93ee2eef1e1a085e"
+      }
+    }
+}
+  
