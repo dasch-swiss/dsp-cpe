@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageStructureValidatorService } from './cpe/blue-boxes/validator/page-structure-validator.service';
 import { PageStructureService } from './cpe/blue-boxes/services/page-structure.service';
 import { PageStructure } from './cpe/blue-boxes/model/page-data-structure';
