@@ -49,3 +49,17 @@ jobs:
         run: npm install
       - name: Build in prod mode
         run: npm run build-prod
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Start JSON server
+        run: npx json-server --routes db-routes.json --watch db.json
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm start
