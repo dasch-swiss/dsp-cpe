@@ -62,7 +62,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Start JSON server
-        run: npx json-server --routes db-routes.json db.json
+        run: npx json-server --routes db-routes.json db.json &
       - name: Run e2e tests
         uses: cypress-io/github-action@v5
         with:
