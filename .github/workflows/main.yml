@@ -55,6 +55,10 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
+      - name: Set up Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
       - name: Install dependencies
         run: npm install
       - name: Start JSON server
