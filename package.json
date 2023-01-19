@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-ci": "ng test --watch=false --browsers=ChromeHeadless",
-    "e2e": "ng e2e",
+    "e2e": "ng run dsp-cpe:cypress-open",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
