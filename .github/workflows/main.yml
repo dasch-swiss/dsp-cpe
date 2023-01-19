@@ -69,15 +69,3 @@ jobs:
           browser: chrome
           build: npm run build
           start: npm start
-      - name: Upload Cypress screenshots in case of failed tests
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
