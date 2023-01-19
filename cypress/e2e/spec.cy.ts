@@ -6,7 +6,7 @@ describe('Test Navigation', () => {
 
   it('should visit the projects list', () => {
     cy.visit('/projects')
-    cy.get('.project-buttons').find('cpe-buttonn').its('length').should('eq', 2)
+    cy.get('.project-buttons').find('cpe-button').its('length').should('eq', 2)
   })
 
   it('should navigate to a project', () => {
