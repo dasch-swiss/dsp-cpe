@@ -49,3 +49,36 @@ jobs:
         run: npm install
       - name: Build in prod mode
         run: npm run build-prod
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Set up Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Start JSON server
+        run: npx json-server --routes db-routes.json db.json &
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm start
+          wait-on: "http://localhost:4200"
+      - name: Upload Cypress screenshots (in case of failed tests)
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - name: Upload Cypress video
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos

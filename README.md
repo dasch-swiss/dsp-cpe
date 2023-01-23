@@ -24,7 +24,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng e2e` to execute the end-to-end tests. This command requires a local instance of the app running as well as the mock api. Running this command will open the Cypress tools. Select the browser of your choice and click the green `Start` button. Once the browser opens, click on the `.cy.ts` spec file you wish to run.
 
 ## Rollbar error logging
 
