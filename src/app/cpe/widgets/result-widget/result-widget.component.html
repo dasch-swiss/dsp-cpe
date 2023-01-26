@@ -1,0 +1,10 @@
+<div [ngStyle]="{'background-color': color}">Result widget</div>
+
+<div *ngIf="!loading">
+    <div *ngFor="let r of result">
+        <div class="bg-emerald-800 border">{{r.title}}</div>
+    </div>
+</div>
+
+<div *ngIf="loading">... Search is going on</div>
+
