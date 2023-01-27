@@ -19,8 +19,8 @@ export class ComponentCommunicationService {
                 // filter down based on event name to any events that are emitted out of the subject from the emit method below.
                 filter((e: CpeEvent, i: any) => e.name === event),
             ).subscribe((e: CpeEvent) => {
-                if ((e.status == Status.starting) && loading) {
-                    loading();
+                if (e.status == Status.starting) {
+                    if (loading) loading();
                 } else {
                     action(e.value);
                 }
