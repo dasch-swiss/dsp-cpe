@@ -14,23 +14,39 @@ export class ResultWidgetData extends WidgetData {
   styleUrls: ['./result-widget.component.scss']
 })
 export class ResultWidgetComponent implements OnInit {
+  color = "#ffffff";
   result: any[]
   loading: Boolean;
-  color = "#ffffff";
+  error: Boolean;
 
   constructor(private _communicationService: ComponentCommunicationService) { }
 
   ngOnInit(): void {
+      this.setUp();
+
       this._communicationService.on(Events.searchExecuted, (value) => {
+          this.setUp();
           this.loading = false;
           this.result = value;
       }, () => {
-          this.loading = true
+          this.error = false;
+          this.result = [];
+          this.loading = true;
+      }, _ => {
+          this.error = true;
       });
 
       this._communicationService.on(Events.changeBackground, _ => {
           this.color = "#729eee";
-      });
+      }, () => {},
+          _ => {}
+      );
+  }
+
+  setUp() {
+      this.error = false;
+      this.loading = false;
+      this.result = [];
   }
 
 }

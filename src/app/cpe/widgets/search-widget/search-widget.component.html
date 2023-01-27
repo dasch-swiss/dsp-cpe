@@ -1,5 +1,5 @@
 <div>Search widget</div>
-
+<br>
 <cpe-button
     [id]="'button-01'"
     [text]="'Change background'"
@@ -7,11 +7,19 @@
     [disabled] = "false"
     [variant]="'Primary'">
 </cpe-button>
-
+<br>
 <cpe-button
-    [id]="'button-01'"
+    [id]="'button-02'"
     [text]="'Search'"
     (click)="search()"
+    [disabled] = "false"
+    [variant]="'Primary'">
+</cpe-button>
+<br>
+<cpe-button
+    [id]="'button-03'"
+    [text]="'Search Fail'"
+    (click)="searchWithError()"
     [disabled] = "false"
     [variant]="'Primary'">
 </cpe-button>

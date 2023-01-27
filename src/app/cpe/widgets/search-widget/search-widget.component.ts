@@ -1,13 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {gridCoordinates, WidgetData} from "../../blue-boxes/model/page-data-structure";
-import {Observable, of} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
 import {delay} from "rxjs/operators";
-import {
-    ComponentCommunicationService,
-    CpeEvent,
-    Events,
-    Status
-} from "../../../services/component-communication.service";
+import {ComponentCommunicationService, Events, Status} from "../../../services/component-communication.service";
 
 export class SearchWidgetData extends WidgetData {
     constructor(id: number, coordinates: gridCoordinates, width: number, height: number) {
@@ -34,14 +29,28 @@ export class SearchWidgetComponent implements OnInit {
       ]).pipe(delay(2000))
   }
 
+  getMockFail(): Observable<any> {
+      return throwError(() => new Error("Failed!"));
+  }
+
   changeBG() {
-    this._communicationService.emit(new CpeEvent(Events.changeBackground, Status.finished));
+      this._communicationService.emit({event: Events.changeBackground, status: Status.finished});
   }
 
   search() {
-      this._communicationService.emit(new CpeEvent(Events.searchExecuted, Status.starting));
-      this.getMockData().subscribe(data => {
-          this._communicationService.emit(new CpeEvent(Events.searchExecuted, Status.finished, data));
-      });
+      this._communicationService.emit({event: Events.searchExecuted, status: Status.started});
+      this.getMockData()
+          .subscribe(data => {
+              this._communicationService.emit({event: Events.searchExecuted, status: Status.finished, value: data});
+          });
+  }
+
+  searchWithError() {
+      this.getMockFail()
+          .subscribe({
+              error: _ => {
+                  this._communicationService.emit({event: Events.searchExecuted, status: Status.failed, errorMsg: "Search failed!"});
+              }
+          })
   }
 }
