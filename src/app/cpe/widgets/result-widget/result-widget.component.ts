@@ -28,7 +28,7 @@ export class ResultWidgetComponent implements OnInit {
           this.loading = true
       });
 
-      this._communicationService.on(Events.changeBackground, (value) => {
+      this._communicationService.on(Events.changeBackground, _ => {
           this.color = "#729eee";
       });
   }
