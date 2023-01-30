@@ -3,6 +3,8 @@ import { PagePart, PageStructure } from 'src/app/cpe/blue-boxes/model/page-data-
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { testWidgetData } from '../../widgets/test-widget/test-widget.component';
 import { anotherTestWidgetData } from '../../widgets/another-test-widget/another-test-widget.component';
+import {SearchWidgetData} from "../../widgets/search-widget/search-widget.component";
+import {ResultWidgetData} from "../../widgets/result-widget/result-widget.component";
 @Component({
   selector: 'app-excecutor',
   templateUrl: './excecutor.component.html',
@@ -49,6 +51,12 @@ export class ExcecutorComponent implements OnInit {
       }
       if (widget instanceof anotherTestWidgetData) {
         dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, text: widget.text, type: 'another-test-widget' });
+      }
+      if (widget instanceof SearchWidgetData) {
+        dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, type: 'search-widget' });
+      }
+      if (widget instanceof ResultWidgetData) {
+         dashboard.push({ x: widget.coordinates.x, y: widget.coordinates.y, cols: widget.width, rows: widget.height, type: 'result-widget' });
       }
     }
     return dashboard;

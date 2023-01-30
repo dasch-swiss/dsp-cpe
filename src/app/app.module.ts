@@ -15,6 +15,8 @@ import { CpeInstrumentationToken } from '../config/cpe-tokens';
 import { PageComponent } from './cpe/page/page.component';
 import { ProjectComponent } from './cpe/project/project.component';
 import { ProjectsComponent } from './cpe/projects/projects.component';
+import { SearchWidgetComponent } from './cpe/widgets/search-widget/search-widget.component';
+import { ResultWidgetComponent } from './cpe/widgets/result-widget/result-widget.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import { ProjectsComponent } from './cpe/projects/projects.component';
     	ProjectsComponent,
         TestWidgetComponent,
         ExcecutorComponent,
-        AnotherTestWidgetComponent
+        AnotherTestWidgetComponent,
+        SearchWidgetComponent,
+        ResultWidgetComponent
     ],
     imports: [
         BrowserModule,
