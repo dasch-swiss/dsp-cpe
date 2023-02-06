@@ -15,7 +15,6 @@ export class NavigationService {
 
   /**
    * navigates to a specific project
-   * @param projectId: The project to which is navigated.
    */
   public navigateToProjectsPage() {
     this._router.navigate(['projects'], { replaceUrl: false })

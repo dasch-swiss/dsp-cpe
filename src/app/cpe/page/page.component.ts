@@ -3,7 +3,6 @@ import {PageRepositoryService} from "../../repository/page-repository.service";
 import {Page, Project} from "../../repository/repository-model";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {NavigationService} from "../../routing-module/navigation.service";
 
 @Component({
   selector: 'app-page',
