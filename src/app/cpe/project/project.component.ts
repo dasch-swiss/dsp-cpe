@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProjectComponent implements OnInit, OnDestroy {
 
-  private _project: Project | undefined = undefined;
+  project: Project | undefined = undefined;
 
   private projectRouteSubscription: Subscription;
 
@@ -30,18 +30,19 @@ export class ProjectComponent implements OnInit, OnDestroy {
     });
   }
 
-  get project() {
-    return this._project;
-  }
-
   /**
    * Load the project's data. Navigate to the projects component if there is no data for the given project id.
    * @param projectId: The project to which is navigated.
    */
   loadProject(projectId: string) {
-    this._projectService.getProjectById(projectId).then(p => {
-        this._project = p;
-    }).catch(err => console.error());
+    this._projectService.getProjectById(projectId).subscribe({
+        next: (project) => {
+            this.project = project;
+        },
+        error: (error) => {
+            console.error(error);
+        }
+    })
   }
 
   /**
