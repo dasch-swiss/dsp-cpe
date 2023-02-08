@@ -14,9 +14,14 @@ export class ProjectsComponent implements OnInit {
   constructor(private _repo: ProjectRepositoryService, private _naviService: NavigationService) { }
 
   ngOnInit(): void {
-    this._repo.getProjectsList().then( projects => {
-      this.projects = projects;
-    });
+    this._repo.getProjectsList().subscribe({
+        next: (projects) => {
+            this.projects = projects;
+        },
+        error: (error) => {
+            console.log(error);
+        }
+    })
   }
 
   goToProject(projectId: string) {

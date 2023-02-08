@@ -15,7 +15,6 @@ export class NavigationService {
 
   /**
    * navigates to a specific project
-   * @param projectId: The project to which is navigated.
    */
   public navigateToProjectsPage() {
     this._router.navigate(['projects'], { replaceUrl: false })
@@ -26,11 +25,7 @@ export class NavigationService {
    * @param projectId: The project to which is navigated.
    */
   public navigateToProject(projectId: string) {
-    this._projectService.isProjectExisting(projectId).then( exists => {
-      if (exists) {
-        this._router.navigate(["project/" + projectId], { replaceUrl: false });
-      }
-    });
+    this._router.navigate(["project/" + projectId], { replaceUrl: false });
   }
 
   /**
@@ -39,17 +34,22 @@ export class NavigationService {
    * @param pageId: The id of the page to which is navigated.
    */
   public navigateToPage(projectId: string, pageId: string) {
-    this._projectService.getProjectById(projectId).then( p => {
-      if (p && p.hasPage(pageId)) {
-        this._router.navigate(
-          ['project/' + projectId + '/' + pageId],
-          {
-            relativeTo: this._route,
-            replaceUrl: false,
-            queryParamsHandling: 'merge'
+    this._projectService.getProjectById(projectId).subscribe({
+        next: (project) => {
+            if (project.hasPage(pageId)) {
+                this._router.navigate(
+                    ['project/' + projectId + '/' + pageId],
+                    {
+                        relativeTo: this._route,
+                        replaceUrl: false,
+                        queryParamsHandling: 'merge'
+                    }
+                );
             }
-          );
-      }
-    });
+        },
+        error: (error) => {
+            console.error(error);
+        }
+    })
   }
 }

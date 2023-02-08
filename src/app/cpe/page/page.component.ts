@@ -3,7 +3,6 @@ import {PageRepositoryService} from "../../repository/page-repository.service";
 import {Page, Project} from "../../repository/repository-model";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {NavigationService} from "../../routing-module/navigation.service";
 
 @Component({
   selector: 'app-page',
@@ -38,9 +37,14 @@ export class PageComponent implements OnInit, OnDestroy {
    * @param pageId: The id of the page to be loaded.
    */
   loadPage(pageId: string) {
-    this._pageService.getPageById(pageId).then(p => {
-        this.page = p;
-    }).catch(err => console.error(err) );
+    this._pageService.getPageById(pageId).subscribe({
+        next: (page) => {
+            this.page = page;
+        },
+        error: (error) => {
+            console.error(error);
+        }
+    })
   }
 
   ngOnDestroy() {
