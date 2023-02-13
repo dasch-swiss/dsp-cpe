@@ -29,12 +29,12 @@ export interface iProject extends iCpeResource {
  */
 export interface iPage extends iCpeResource {
     gridDimension: Dimension
-    header: Widget[];
-    body: Widget[];
-    footer: Widget[]
+    header: iWidget[];
+    body: iWidget[];
+    footer: iWidget[]
 }
 
-type Widget = {
+export interface iWidget {
     id: string;
     widgetType: string;
     coordinates: Coordinate
