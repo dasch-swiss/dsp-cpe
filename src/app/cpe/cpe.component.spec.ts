@@ -1,62 +1,48 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CpeComponent } from './cpe.component';
-
-/**
- * mock headerComponent.
- */
- @Component({
-  selector: '<app-header></app-header>'
-})
-class MockHeaderComponent { }
+import {Component} from "@angular/core";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {CpeComponent} from "./cpe.component";
+import {ProjectRepositoryService} from "../services/project-repository.service";
+import {NavigationService} from "../routing-module/navigation.service";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterTestingModule} from "@angular/router/testing";
 
 /**
- * mock BodyComponent.
+ * mock host component.
  */
- @Component({
-  selector: '<app-body></app-body>'
+@Component({
+    template: "<app-cpe></app-cpe>"
 })
-class MockBodyComponent { }
+class MockHostComponent {
+    constructor() {
+    }
+}
 
-/**
- * mock FooterComponent.
- */
- @Component({
-  selector: '<app-footer></app-footer>'
-})
-class MockFooterComponent { }
+describe("CpeComponent", () => {
+    let component: CpeComponent;
+    let fixture: ComponentFixture<CpeComponent>;
 
-/**
- * mock CpePlaygroundComponent.
- */
- @Component({
-  selector: '<app-cpe-playground></app-cpe-playground>'
-})
-class MockCpePlaygroundComponent { }
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [
+                CpeComponent
+            ],
+            imports: [
+                HttpClientTestingModule,
+                RouterTestingModule
+            ],
+            providers: [
+                ProjectRepositoryService,
+                NavigationService
+            ]
+        })
+            .compileComponents();
 
-describe('CpeComponent', () => {
-  let component: CpeComponent;
-  let fixture: ComponentFixture<CpeComponent>;
+        fixture = TestBed.createComponent(CpeComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [
-        CpeComponent,
-        MockHeaderComponent,
-        MockBodyComponent,
-        MockFooterComponent,
-        MockCpePlaygroundComponent
-      ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(CpeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it("should create", () => {
+        expect(component).toBeTruthy();
+    });
 });

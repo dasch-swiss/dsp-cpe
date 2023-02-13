@@ -1,0 +1,26 @@
+<gridster class="gridster-container" [options]="bodyGridOptions">
+
+    <!--  header  -->
+    <gridster-item *ngFor="let item of headerDashboard" [item]="item" [ngSwitch]="item['type']">
+        <app-title-widget *ngSwitchCase="'wt-001'" [title]="item['data']"></app-title-widget>
+        <app-image-widget *ngSwitchCase="'wt-002'" [data]="item['data']"></app-image-widget>
+        <app-text-widget *ngSwitchCase="'wt-003'" [text]="item['data']"></app-text-widget>
+    </gridster-item>
+
+    <!--  body  -->
+    <gridster-item *ngFor="let item of bodyDashboard" [item]="item" [ngSwitch]="item['type']">
+        <app-title-widget *ngSwitchCase="'wt-001'" [title]="item['data']"></app-title-widget>
+        <app-image-widget *ngSwitchCase="'wt-002'" [data]="item['data']"></app-image-widget>
+        <app-text-widget *ngSwitchCase="'wt-003'" [text]="item['data']"></app-text-widget>
+        <app-search-widget *ngSwitchCase="'wt-004'"></app-search-widget>
+        <app-result-widget *ngSwitchCase="'wt-005'"></app-result-widget>
+    </gridster-item>
+
+    <!--  footer  -->
+    <gridster-item *ngFor="let item of footerDashboard" [item]="item" [ngSwitch]="item['type']">
+        <app-title-widget *ngSwitchCase="'wt-001'" [title]="item['data']"></app-title-widget>
+        <app-image-widget *ngSwitchCase="'wt-002'" [data]="item['data']"></app-image-widget>
+        <app-text-widget *ngSwitchCase="'wt-003'" [text]="item['data']"></app-text-widget>
+    </gridster-item>
+
+</gridster>
