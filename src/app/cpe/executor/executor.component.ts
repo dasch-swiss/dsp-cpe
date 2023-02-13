@@ -1,15 +1,14 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
     selector: "app-executor",
     templateUrl: "./executor.component.html",
     styleUrls: ["./executor.component.scss"]
 })
-export class ExecutorComponent implements OnInit, OnDestroy {
+export class ExecutorComponent implements OnInit {
     @Input() pageStructure: Project;
     @Input() pageId: string;
     headerDashboard: Array<GridsterItem> = [];
@@ -17,21 +16,11 @@ export class ExecutorComponent implements OnInit, OnDestroy {
     footerDashboard: Array<GridsterItem> = [];
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
-    private projectRouteSubscription: Subscription;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-        this.projectRouteSubscription = new Subscription();
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
-        this.activatedRoute.params.subscribe(
-            parameter => {
-                console.log(parameter);
-                if (parameter["pageId"] && parameter["pageId"] !== this.pageId) {
-
-                }
-            });
-
         let page;
         if (this.pageId) {
             page = this.pageStructure.pages.find((page: Page) => page.hasPageID(this.pageId));
@@ -86,10 +75,6 @@ export class ExecutorComponent implements OnInit, OnDestroy {
             });
         }
         return dashboard;
-    }
-
-    ngOnDestroy() {
-        this.projectRouteSubscription.unsubscribe();
     }
 
 }
