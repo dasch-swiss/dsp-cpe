@@ -1,18 +1,18 @@
 <div *ngIf="project">
-  <div id="project.id" style="border: blue solid 2px; height: 70vh; width: 90%;">
-    <div style="font-weight: bold; margin: 10px;">{{project.label}}</div>
-    <div style="margin: 10px">{{project.description}}</div>
-    <div style="margin: 10px">
-      <h2 style="font-weight: bold">It has pages:</h2>
-      <div style="display: flex; flex-direction: row">
-        <div *ngFor="let page of project.pages" style="margin: 10px">
-          <cpe-button (click) ="goToPage(page)" [text]="page"></cpe-button>
+    <div id="project.id" style="border: blue solid 2px;">
+        <div style="font-weight: bold; margin: 10px;">{{project.label}}</div>
+        <div style="margin: 10px">{{project.description}}</div>
+        <div style="margin: 10px">
+            <h2 style="font-weight: bold">It has pages:</h2>
+            <div style="display: flex; flex-direction: row; gap: 10px;">
+                <div *ngFor="let page of project.pages">
+                    <cpe-button (click)="goToPage(page.id)" [text]="page.id"></cpe-button>
+                </div>
+                <div>
+                    <cpe-button (click)="goToProjectsOverview()" [text]="'back to projects overview'"></cpe-button>
+                </div>
+            </div>
         </div>
-        <div>
-          <cpe-button (click)="goToProjectsOverview()" [text]="'back to projects overview'"></cpe-button>
-        </div>
-      </div>
     </div>
-    <app-page [project]="project"></app-page>
-  </div>
+    <app-executor [pageStructure]="project" [pageId]="page_id"></app-executor>
 </div>

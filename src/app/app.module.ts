@@ -4,32 +4,30 @@ import { AppRoutingModule } from './routing-module/app-routing.module';
 import { AppComponent } from './app.component';
 import { CpeComponent } from './cpe/cpe.component';
 import { GridsterModule } from 'angular-gridster2';
-import { TestWidgetComponent } from './cpe/widgets/test-widget/test-widget.component';
-import { ExcecutorComponent } from './cpe/blue-boxes/excecutor/excecutor.component';
-import { AnotherTestWidgetComponent } from './cpe/widgets/another-test-widget/another-test-widget.component';
+import { ExecutorComponent } from './cpe/executor/executor.component';
 import { GuiElementsModule } from "./gui-elements-module/gui-elements.module";
 import { PlaygroundModule } from "./playground/playground.module";
 import { RollbarErrorHandler } from './rollbar';
 import { AppInitService } from './app-init.service';
 import { CpeInstrumentationToken } from '../config/cpe-tokens';
-import { PageComponent } from './cpe/page/page.component';
 import { ProjectComponent } from './cpe/project/project.component';
-import { ProjectsComponent } from './cpe/projects/projects.component';
 import { SearchWidgetComponent } from './cpe/widgets/search-widget/search-widget.component';
 import { ResultWidgetComponent } from './cpe/widgets/result-widget/result-widget.component';
+import { ImageWidgetComponent } from './cpe/widgets/image-widget/image-widget.component';
+import { TitleWidgetComponent } from './cpe/widgets/title-widget/title-widget.component';
+import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CpeComponent,
         ProjectComponent,
-    	PageComponent,
-    	ProjectsComponent,
-        TestWidgetComponent,
-        ExcecutorComponent,
-        AnotherTestWidgetComponent,
+        ExecutorComponent,
         SearchWidgetComponent,
-        ResultWidgetComponent
+        ResultWidgetComponent,
+        ImageWidgetComponent,
+        TitleWidgetComponent,
+        TextWidgetComponent
     ],
     imports: [
         BrowserModule,

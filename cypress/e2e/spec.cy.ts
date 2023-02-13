@@ -1,17 +1,14 @@
-describe('Test Navigation', () => {
-  it('should visit the home page', () => {
-    cy.visit('/')
-    cy.contains('Musikalisches Lexikon')
-  })
+describe("Test Navigation", () => {
+    it("should visit the home page with all the projects", () => {
+        cy.visit("/")
+        cy.contains("Project 1: MLS")
+        cy.contains("Project 2: Beol")
+        cy.contains("Project 3: WordWeb")
+    })
 
-  it('should visit the projects list', () => {
-    cy.visit('/projects')
-    cy.get('.project-buttons').find('cpe-button').its('length').should('eq', 2)
-  })
-
-  it('should navigate to a project', () => {
-    cy.visit('/projects')
-    cy.get('.project-buttons').find('cpe-button').first().click()
-    cy.contains('This is the first project')
-  })
+    it("should navigate to a project", () => {
+        cy.visit("/projects")
+        cy.get(".project-buttons").find("cpe-button").first().click()
+        cy.contains("This is the first project")
+    })
 })

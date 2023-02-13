@@ -1,84 +1,190 @@
 {
-  "projects": [
-    {
-      "id": "p-001",
-      "label": "project 1",
-      "description": "This is the first project"
-    },
-    {
-      "id": "p-002",
-      "label": "project 2",
-      "description": "This is the second project"
-    }
-  ],
-
-  "projects-data": [
-    {
-      "id": "p-001",
-      "label": "Project 1",
-      "description": "This is the first project",
-      "pages": [
-        "page-001-001",
-        "page-001-002",
-        "page-001-003"
-      ]
-    },
-    {
-      "id": "p-002",
-      "label": "Project 2",
-      "description": "This is the second project",
-      "pages": [
-        "page-002-001",
-        "page-002-002"
-      ]
-    }
-  ],
-
-  "pages-data": [
-    {
-      "id": "page-001-001",
-      "label": "First page",
-      "description": "First page of first project",
-      "widgets": []
-    },
-    {
-      "id": "page-001-002",
-      "label": "Second page",
-      "description": "Second page of first project",
-      "widgets": []
-    },
-    {
-      "id": "page-002-001",
-      "label": "First page",
-      "description": "First page of second project",
-      "widgets": []
-    },
-    {
-      "id": "page-002-002",
-      "label": "Second page",
-      "description": "Second page of second project",
-      "widgets": []
-    }
-  ],
-
-  "widgets": [
-    {
-      "id": "w-001",
-      "page-id": "page-01"
-    },
-    {
-      "id": "w-002",
-      "page-id": "page-02"
-    }
-  ],
-  "widgets-data": [
-    {
-      "id": "w-001",
-      "type": "plain"
-    },
-    {
-      "id": "w-002",
-      "type": "text"
-    }
-  ]
+    "projects": [
+        {
+            "id": "p-001",
+            "label": "Project 1: MLS",
+            "description": "This is the first project",
+            "mainPageID": "page-001-001",
+            "pages": [
+                "page-001-001"
+            ]
+        },
+        {
+            "id": "p-002",
+            "label": "Project 2: Beol",
+            "description": "This is the second project",
+            "mainPageID": "page-002-001",
+            "pages": [
+                "page-002-001",
+                "page-002-002"
+            ]
+        },
+        {
+            "id": "p-003",
+            "label": "Project 3: WordWeb",
+            "description": "This is the third project",
+            "mainPageID": "page-003-001",
+            "pages": [
+                "page-003-001"
+            ]
+        }
+    ],
+    "pages": [
+        {
+            "id": "page-001-001",
+            "label": "First page",
+            "description": "First page of first project",
+            "gridDimension": {"height": 5, "width": 5},
+            "header": [
+                {
+                    "id": "W01",
+                    "widgetType": "wt-001",
+                    "coordinates": {"x": 1, "y": 0},
+                    "dimension": {"height": 1, "width": 4},
+                    "data": "BEOL Title"
+                }
+            ],
+            "body": [
+                {
+                    "id": "W02",
+                    "widgetType": "wt-004",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 3, "width": 2}
+                },
+                {
+                    "id": "W03",
+                    "widgetType": "wt-005",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 3, "width": 2}
+                }
+            ],
+            "footer": [
+                {
+                    "id": "W04",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 0, "y": 4},
+                    "dimension": {"height": 1, "width": 5},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                }
+            ]
+        },
+        {
+            "id": "page-002-001",
+            "label": "First page",
+            "description": "First page of second project",
+            "gridDimension": {"height": 5, "width": 5},
+            "header": [
+                {
+                    "id": "W05",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 1},
+                    "data": "https://picsum.photos/400/200"
+                },
+                {
+                    "id": "W06",
+                    "widgetType": "wt-001",
+                    "coordinates": {"x": 1, "y": 0},
+                    "dimension": {"height": 1, "width": 4},
+                    "data": "Dies ist der Titel Widget!"
+                }
+            ],
+            "body": [
+                {
+                    "id": "W07",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 1, "width": 4},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+                },
+                {
+                    "id": "W08",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 0, "y": 2},
+                    "dimension": {"height": 2, "width": 4},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n\nDuis autem vel eum iriure dolor in hendrerit"
+                }
+            ],
+            "footer": [
+                {
+                    "id": "W09",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 1, "y": 4},
+                    "dimension": {"height": 1, "width": 4},
+                    "data": "Dies ist der Footer"
+                }
+            ]
+        },
+        {
+            "id": "page-002-002",
+            "label": "Second page",
+            "description": "Second page of second project",
+            "gridDimension": {"height": 5, "width": 5},
+            "header": [
+                {
+                    "id": "W10",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 1},
+                    "data": "https://picsum.photos/400/200"
+                },
+                {
+                    "id": "W11",
+                    "widgetType": "wt-001",
+                    "coordinates": {"x": 1, "y": 0},
+                    "dimension": {"height": 1, "width": 4}
+                }
+            ],
+            "body": [
+                {
+                    "id": "W12",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 2, "y": 1},
+                    "dimension": {"height": 3, "width": 3},
+                    "data": "https://picsum.photos/400/400"
+                }
+            ],
+            "footer": [
+                {
+                    "id": "W13",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 1, "y": 4},
+                    "dimension": {"height": 1, "width": 4},
+                    "data": "Dies ist der Footer"
+                }
+            ]
+        },
+        {
+            "id": "page-003-001",
+            "label": "First page",
+            "description": "First page of third project",
+            "gridDimension": {"height": 3, "width": 3},
+            "header": [
+                {
+                    "id": "W14",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 1},
+                    "data": "https://picsum.photos/200/200"
+                },
+                {
+                    "id": "W15",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 2, "y": 0},
+                    "dimension": {"height": 1, "width": 1},
+                    "data": "https://picsum.photos/200/200"
+                }
+            ],
+            "body": [],
+            "footer": [
+                {
+                    "id": "W16",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 2, "width": 3},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+                }
+            ]
+        }
+    ]
 }

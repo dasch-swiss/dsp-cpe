@@ -8,7 +8,7 @@ import { CpePlaygroundComponent } from './cpe-playground.component';
  * mock CpeButtonComponent.
  */
  @Component({
-  selector: '<cpe-button></cpe-button>'
+  template: '<cpe-button></cpe-button>'
 })
 class MockCpeButtonComponent {
   @Input() disabled? = false;
