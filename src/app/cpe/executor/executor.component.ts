@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {Component, Input, OnChanges} from "@angular/core";
 import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";

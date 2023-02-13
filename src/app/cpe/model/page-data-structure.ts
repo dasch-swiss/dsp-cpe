@@ -1,7 +1,7 @@
 export class Project {
     private _pages: Page[] = []
 
-    set pages(pages: Page[]){
+    set pages(pages: Page[]) {
         this._pages = pages;
     }
 
