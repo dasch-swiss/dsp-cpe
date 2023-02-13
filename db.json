@@ -186,27 +186,5 @@
                 }
             ]
         }
-    ],
-    "widgettypes": [
-        {
-            "id": "wt-001",
-            "type": "title-widget"
-        },
-        {
-            "id": "wt-002",
-            "type": "image-widget"
-        },
-        {
-            "id": "wt-003",
-            "type": "text-widget"
-        },
-        {
-            "id": "wt-004",
-            "type": "search-widget"
-        },
-        {
-            "id": "wt-005",
-            "type": "result-widget"
-        }
     ]
 }

@@ -6,8 +6,6 @@ const projectsGetRoute = "http://localhost:3000/projects/get/"
 const projectsRoute = "http://localhost:3000/projects"
 const pagesGetRoute = "http://localhost:3000/pages/get/"
 const pagesRoute = "http://localhost:3000/pages"
-const widgetTypesGetRoute = "http://localhost:3000/widgettypes/get/"
-const widgetTypeRoute = "http://localhost:3000/widgettype"
 
 /**
  * The base interface for all resources.
@@ -90,20 +88,4 @@ export class CpeApiService {
         const url = `${pagesGetRoute}${id}`;
         return this._httpClient.get<iPage>(url);
     }
-
-    /**
-     * returns all the widget types via the api route
-     */
-    getWidgetTypes(): Observable<any> {
-        return this._httpClient.get<iPage>(widgetTypeRoute);
-    }
-
-    /**
-     * gets a specific widget type by the id via the api route
-     */
-    getWidgetType(id: string): Observable<any> {
-        const url = `${widgetTypesGetRoute}${id}`;
-        return this._httpClient.get<any>(url);
-    }
-
 }
