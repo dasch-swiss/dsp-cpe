@@ -37,7 +37,7 @@ export class ProjectRepositoryService {
     /**
      * get a project via the api service. Return a Project as Promise.
      */
-    getProjectByIdFull(id: string): Observable<any> {
+    getProjectByIdFull(id: string): Observable<Project> {
         return this._apiService.getProject(id)
             .pipe(
                 mergeMap((project: iProject) => forkJoin([of(project), from(project.pages)
