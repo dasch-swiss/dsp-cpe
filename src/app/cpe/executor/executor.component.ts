@@ -12,7 +12,6 @@ export class ExecutorComponent implements OnInit {
     @Input() pageStructure: Project;
     @Input() pageId: string;
     headerDashboard: Array<GridsterItem> = [];
-    footerGridOptions: GridsterConfig;
     footerDashboard: Array<GridsterItem> = [];
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];

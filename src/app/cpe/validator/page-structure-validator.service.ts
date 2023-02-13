@@ -34,7 +34,6 @@ export class PageStructureValidatorService {
             }
         }
 
-
         // Example rule 3: Header widgets should be placed above footer widgets
         for (let page of projectStructure.pages) {
             if (page.header.length > 0 && page.footer.length > 0) {
