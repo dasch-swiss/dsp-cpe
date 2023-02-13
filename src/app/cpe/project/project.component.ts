@@ -4,6 +4,7 @@ import {PageStructureValidatorService} from "../validator/page-structure-validat
 import {ProjectRepositoryService} from "../../services/project-repository.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {Project} from "../model/page-data-structure";
 
 @Component({
     selector: "app-project",
@@ -11,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProjectComponent implements OnInit, OnDestroy {
 
-    project: any | undefined = undefined;
+    project: Project;
 
     page_id: string
 
