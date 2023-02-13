@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
     templateUrl: "./executor.component.html",
     styleUrls: ["./executor.component.scss"]
 })
-export class ExecutorComponent implements OnInit {
+export class ExecutorComponent implements OnChanges {
     @Input() pageStructure: Project;
     @Input() pageId: string;
     headerDashboard: Array<GridsterItem> = [];
@@ -19,7 +19,7 @@ export class ExecutorComponent implements OnInit {
     constructor(private router: Router) {
     }
 
-    ngOnInit() {
+    ngOnChanges() {
         let page;
         if (this.pageId) {
             page = this.pageStructure.pages.find((page: Page) => page.hasPageID(this.pageId));
