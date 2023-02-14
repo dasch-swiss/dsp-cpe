@@ -6,7 +6,6 @@ import { CpeComponent } from './cpe/cpe.component';
 import { GridsterModule } from 'angular-gridster2';
 import { ExecutorComponent } from './cpe/executor/executor.component';
 import { GuiElementsModule } from "./gui-elements-module/gui-elements.module";
-import { PlaygroundModule } from "./playground/playground.module";
 import { RollbarErrorHandler } from './rollbar';
 import { AppInitService } from './app-init.service';
 import { CpeInstrumentationToken } from '../config/cpe-tokens';
@@ -33,7 +32,6 @@ import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.compo
         BrowserModule,
         AppRoutingModule,
         GuiElementsModule,
-        PlaygroundModule,
         GridsterModule
     ],
     providers: [
