@@ -123,8 +123,8 @@
         },
         {
             "id": "page-001-002",
-            "label": "First page",
-            "description": "First page of first project",
+            "label": "Second page",
+            "description": "Second page of first project",
             "widgets": [
                 {
                     "id": "W11",
