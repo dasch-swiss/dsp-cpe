@@ -20,23 +20,21 @@ export class PageStructureValidatorService {
             throw Error("It should have a header and a footer");
         }
 
-        // // Example rule 3: Header widgets should be placed above footer widgets
-        // for (let page of projectStructure.pages) {
-        //     if (page.header.length > 0 && page.footer.length > 0) {
-        //
-        //         let found = false;
-        //         for (let w_h of page.header) {
-        //             for (let w_f of page.footer) {
-        //                 if (w_h.coordinates.y >= w_f.coordinates.y) {
-        //                     found = true
-        //                 }
-        //             }
-        //         }
-        //
-        //         if (found) {
-        //             throw Error("Header widgets not placed above footer widgets");
-        //         }
-        //     }
-        // }
+        // Example rule 3: Header widgets should be placed above footer widgets
+        if (projectStructure.header.length > 0 && projectStructure.footer.length > 0) {
+            let found = false;
+            for (let w_h of projectStructure.header) {
+                for (let w_f of projectStructure.footer) {
+                    if (w_h.coordinates.y >= w_f.coordinates.y) {
+                        found = true
+                    }
+                }
+            }
+
+            if (found) {
+                throw Error("Header widgets not placed above footer widgets");
+            }
+        }
+
     }
 }
