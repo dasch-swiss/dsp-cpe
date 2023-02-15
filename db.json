@@ -9,7 +9,7 @@
             "header": [
                 {
                     "id": "W01",
-                    "widgetType": "wt-001",
+                    "widgetType": "title",
                     "coordinates": {"x": 0, "y": 0},
                     "dimension": {"height": 1, "width": 12},
                     "data": "BEOL Title"
@@ -22,7 +22,7 @@
             "footer": [
                 {
                     "id": "W02",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 5},
                     "dimension": {"height": 1, "width": 12},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
@@ -38,14 +38,14 @@
             "header": [
                 {
                     "id": "W03",
-                    "widgetType": "wt-002",
+                    "widgetType": "image",
                     "coordinates": {"x": 0, "y": 0},
                     "dimension": {"height": 1, "width": 2},
                     "data": "https://picsum.photos/400/200"
                 },
                 {
                     "id": "W04",
-                    "widgetType": "wt-001",
+                    "widgetType": "title",
                     "coordinates": {"x": 2, "y": 0},
                     "dimension": {"height": 1, "width": 10},
                     "data": "Dies ist der Titel Widget!"
@@ -58,7 +58,7 @@
             "footer": [
                 {
                     "id": "W05",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 5},
                     "dimension": {"height": 1, "width": 12},
                     "data": "Dies ist der Footer"
@@ -74,14 +74,14 @@
             "header": [
                 {
                     "id": "W06",
-                    "widgetType": "wt-002",
+                    "widgetType": "image",
                     "coordinates": {"x": 0, "y": 0},
                     "dimension": {"height": 1, "width": 2},
                     "data": "https://picsum.photos/200/200"
                 },
                 {
                     "id": "W07",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 2, "y": 0},
                     "dimension": {"height": 1, "width": 10},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
@@ -93,7 +93,7 @@
             "footer": [
                 {
                     "id": "W08",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 4},
                     "dimension": {"height": 2, "width": 12},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
@@ -109,13 +109,13 @@
             "widgets": [
                 {
                     "id": "W09",
-                    "widgetType": "wt-004",
+                    "widgetType": "search",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 4, "width": 3}
                 },
                 {
                     "id": "W10",
-                    "widgetType": "wt-005",
+                    "widgetType": "result",
                     "coordinates": {"x": 0, "y": 2},
                     "dimension": {"height": 4, "width": 5}
                 }
@@ -128,13 +128,13 @@
             "widgets": [
                 {
                     "id": "W11",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 4, "width": 4}
                 },
                 {
                     "id": "W12",
-                    "widgetType": "wt-002",
+                    "widgetType": "image",
                     "coordinates": {"x": 4, "y": 1},
                     "dimension": {"height": 4, "width": 4},
                     "data": "https://picsum.photos/700/300"
@@ -148,14 +148,14 @@
             "widgets": [
                 {
                     "id": "W13",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 1, "width": 4},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
                 },
                 {
                     "id": "W14",
-                    "widgetType": "wt-003",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 2},
                     "dimension": {"height": 2, "width": 4},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n\nDuis autem vel eum iriure dolor in hendrerit"
@@ -169,7 +169,7 @@
             "widgets": [
                 {
                     "id": "W15",
-                    "widgetType": "wt-002",
+                    "widgetType": "image",
                     "coordinates": {"x": 2, "y": 1},
                     "dimension": {"height": 3, "width": 3},
                     "data": "https://picsum.photos/400/400"
