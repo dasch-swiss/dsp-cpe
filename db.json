@@ -16,11 +16,12 @@
                 }
             ],
             "body" : [
-                "page-001-001"
+                "page-001-001",
+                "page-001-002"
             ],
             "footer": [
                 {
-                    "id": "W04",
+                    "id": "W02",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 0, "y": 5},
                     "dimension": {"height": 1, "width": 12},
@@ -36,14 +37,14 @@
             "mainPageID": "page-002-001",
             "header": [
                 {
-                    "id": "W05",
+                    "id": "W03",
                     "widgetType": "wt-002",
                     "coordinates": {"x": 0, "y": 0},
                     "dimension": {"height": 1, "width": 2},
                     "data": "https://picsum.photos/400/200"
                 },
                 {
-                    "id": "W06",
+                    "id": "W04",
                     "widgetType": "wt-001",
                     "coordinates": {"x": 2, "y": 0},
                     "dimension": {"height": 1, "width": 10},
@@ -56,7 +57,7 @@
             ],
             "footer": [
                 {
-                    "id": "W09",
+                    "id": "W05",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 0, "y": 5},
                     "dimension": {"height": 1, "width": 12},
@@ -72,14 +73,14 @@
             "mainPageID": "page-003-001",
             "header": [
                 {
-                    "id": "W14",
+                    "id": "W06",
                     "widgetType": "wt-002",
                     "coordinates": {"x": 0, "y": 0},
                     "dimension": {"height": 1, "width": 2},
                     "data": "https://picsum.photos/200/200"
                 },
                 {
-                    "id": "W15",
+                    "id": "W07",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 2, "y": 0},
                     "dimension": {"height": 1, "width": 10},
@@ -91,7 +92,7 @@
             ],
             "footer": [
                 {
-                    "id": "W16",
+                    "id": "W08",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 0, "y": 4},
                     "dimension": {"height": 2, "width": 12},
@@ -107,16 +108,36 @@
             "description": "First page of first project",
             "widgets": [
                 {
-                    "id": "W02",
+                    "id": "W09",
                     "widgetType": "wt-004",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 4, "width": 3}
                 },
                 {
-                    "id": "W03",
+                    "id": "W10",
                     "widgetType": "wt-005",
                     "coordinates": {"x": 0, "y": 2},
                     "dimension": {"height": 4, "width": 5}
+                }
+            ]
+        },
+        {
+            "id": "page-001-002",
+            "label": "First page",
+            "description": "First page of first project",
+            "widgets": [
+                {
+                    "id": "W11",
+                    "widgetType": "wt-003",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 4, "width": 4}
+                },
+                {
+                    "id": "W12",
+                    "widgetType": "wt-002",
+                    "coordinates": {"x": 4, "y": 1},
+                    "dimension": {"height": 4, "width": 4},
+                    "data": "https://picsum.photos/700/300"
                 }
             ]
         },
@@ -126,14 +147,14 @@
             "description": "First page of second project",
             "widgets": [
                 {
-                    "id": "W07",
+                    "id": "W13",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 1, "width": 4},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
                 },
                 {
-                    "id": "W08",
+                    "id": "W14",
                     "widgetType": "wt-003",
                     "coordinates": {"x": 0, "y": 2},
                     "dimension": {"height": 2, "width": 4},
@@ -147,7 +168,7 @@
             "description": "Second page of second project",
             "widgets": [
                 {
-                    "id": "W12",
+                    "id": "W15",
                     "widgetType": "wt-002",
                     "coordinates": {"x": 2, "y": 1},
                     "dimension": {"height": 3, "width": 3},
