@@ -22,7 +22,7 @@ export class ExecutorComponent implements OnChanges {
     ngOnChanges() {
         let page;
         if (this.pageId) {
-            page = this.pageStructure.pages.find((page: Page) => page.hasPageID(this.pageId));
+            page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageId));
 
             if (!page) {
                 // ToDo show page error
@@ -30,18 +30,18 @@ export class ExecutorComponent implements OnChanges {
             }
 
         } else {
-            page = this.pageStructure.pages.find((page: Page) => page.id === this.pageStructure.mainPageID);
+            page = this.pageStructure.body.find((page: Page) => page.id === this.pageStructure.mainPageID);
 
             if (page) {
                 this.router.navigate(['projects/' + this.pageStructure.id + '/' + page.id]);
             } else {
-                page = this.pageStructure.pages[0];
+                page = this.pageStructure.body[0];
             }
         }
 
-        this.headerDashboard = this.buildPagePart(page.header);
-        this.bodyDashboard = this.buildPagePart(page.body);
-        this.footerDashboard = this.buildPagePart(page.footer);
+        this.headerDashboard = this.buildPagePart(this.pageStructure.header);
+        this.bodyDashboard = this.buildPagePart(page.widgets);
+        this.footerDashboard = this.buildPagePart(this.pageStructure.footer);
 
         this.bodyGridOptions = {
           draggable: {
@@ -52,12 +52,12 @@ export class ExecutorComponent implements OnChanges {
           },
           displayGrid: 'always'
         }
-        if (page?.body) {
-          this.bodyGridOptions.minCols = page?.gridDimensions.width;
-          this.bodyGridOptions.maxCols = page?.gridDimensions.width;
-          this.bodyGridOptions.minRows = page?.gridDimensions.height;
-          this.bodyGridOptions.maxRows = page?.gridDimensions.height;
-        }
+
+        this.bodyGridOptions.minCols = this.pageStructure.gridDimensions.width;
+        this.bodyGridOptions.maxCols = this.pageStructure.gridDimensions.width;
+        this.bodyGridOptions.minRows = this.pageStructure.gridDimensions.height;
+        this.bodyGridOptions.maxRows = this.pageStructure.gridDimensions.height;
+
     }
 
     buildPagePart(pagePart: Widget[]): Array<GridsterItem> {

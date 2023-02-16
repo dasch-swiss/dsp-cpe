@@ -19,7 +19,7 @@ export class ProjectRepositoryService {
         return this._apiService.getProjects()
             .pipe(
                 map((projects: iProject[]) => projects.map((project: iProject) =>
-                    new Project(project.id, project.label, project.description, project.mainPageID)))
+                    new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension)))
             );
     }
 
@@ -30,7 +30,7 @@ export class ProjectRepositoryService {
         return this._apiService.getProject(id)
             .pipe(
                 map((project: iProject) =>
-                    new Project(project.id, project.label, project.description, project.mainPageID))
+                    new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension))
             );
     }
 
@@ -40,29 +40,29 @@ export class ProjectRepositoryService {
     getProjectByIdFull(id: string): Observable<Project> {
         return this._apiService.getProject(id)
             .pipe(
-                mergeMap((project: iProject) => forkJoin([of(project), from(project.pages)
+                mergeMap((project: iProject) => forkJoin([of(project), from(project.body)
                     .pipe(
-                        mergeMap((pageID: string) => this._apiService.getPage(pageID)
+                        mergeMap(pageID => this._apiService.getPage(pageID)
                             .pipe(
                                 map(
                                     (page: iPage) => {
-                                        const newPage = new Page(page.id, {
-                                            height: page.gridDimension.height,
-                                            width: page.gridDimension.width
-                                        });
-                                        newPage.header = page.header.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
-                                        newPage.body = page.body.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
-                                        newPage.footer = page.footer.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
-                                        return newPage
+                                        const newPage = new Page(page.id)
+                                        newPage.widgets = page.widgets.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
+                                        return newPage;
                                     }
-                                ))),
-                        toArray())
+                                )
+                            )
+                        ),
+                        toArray()
+                    )
                 ])),
                 map(([project, pages]) => {
-                    const newProject = new Project(project.id, project.label, project.description, project.mainPageID)
-                    newProject.pages = pages;
+                    const newProject = new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension);
+                    newProject.header = project.header.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
+                    newProject.body = pages;
+                    newProject.footer = project.footer.map(widget => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
                     return newProject;
                 })
-            );
+            )
     }
 }

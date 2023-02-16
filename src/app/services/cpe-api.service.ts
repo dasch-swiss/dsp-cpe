@@ -21,17 +21,17 @@ export interface iCpeResource {
  */
 export interface iProject extends iCpeResource {
     mainPageID: string;
-    pages: string[];
+    gridDimension: Dimension;
+    header: iWidget[];
+    body: string[];
+    footer: iWidget[]
 }
 
 /**
  * The interface for getting projects from the api service
  */
 export interface iPage extends iCpeResource {
-    gridDimension: Dimension
-    header: iWidget[];
-    body: iWidget[];
-    footer: iWidget[]
+    widgets: iWidget[]
 }
 
 export interface iWidget {

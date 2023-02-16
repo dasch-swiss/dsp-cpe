@@ -4,28 +4,100 @@
             "id": "p-001",
             "label": "Project 1: MLS",
             "description": "This is the first project",
+            "gridDimension": {"height": 6, "width": 12},
             "mainPageID": "page-001-001",
-            "pages": [
-                "page-001-001"
+            "header": [
+                {
+                    "id": "W01",
+                    "widgetType": "title",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 12},
+                    "data": "BEOL Title"
+                }
+            ],
+            "body" : [
+                "page-001-001",
+                "page-001-002"
+            ],
+            "footer": [
+                {
+                    "id": "W02",
+                    "widgetType": "text",
+                    "coordinates": {"x": 0, "y": 5},
+                    "dimension": {"height": 1, "width": 12},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                }
             ]
         },
         {
             "id": "p-002",
             "label": "Project 2: Beol",
             "description": "This is the second project",
+            "gridDimension": {"height": 6, "width": 12},
             "mainPageID": "page-002-001",
-            "pages": [
+            "header": [
+                {
+                    "id": "W03",
+                    "widgetType": "image",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 2},
+                    "data": "https://picsum.photos/400/200"
+                },
+                {
+                    "id": "W04",
+                    "widgetType": "title",
+                    "coordinates": {"x": 2, "y": 0},
+                    "dimension": {"height": 1, "width": 10},
+                    "data": "Dies ist der Titel Widget!"
+                }
+            ],
+            "body": [
                 "page-002-001",
                 "page-002-002"
+            ],
+            "footer": [
+                {
+                    "id": "W05",
+                    "widgetType": "text",
+                    "coordinates": {"x": 0, "y": 5},
+                    "dimension": {"height": 1, "width": 12},
+                    "data": "Dies ist der Footer"
+                }
             ]
         },
         {
             "id": "p-003",
             "label": "Project 3: WordWeb",
             "description": "This is the third project",
+            "gridDimension": {"height": 6, "width": 12},
             "mainPageID": "page-003-001",
-            "pages": [
+            "header": [
+                {
+                    "id": "W06",
+                    "widgetType": "image",
+                    "coordinates": {"x": 0, "y": 0},
+                    "dimension": {"height": 1, "width": 2},
+                    "data": "https://picsum.photos/200/200"
+                },
+                {
+                    "id": "W07",
+                    "widgetType": "text",
+                    "coordinates": {"x": 2, "y": 0},
+                    "dimension": {"height": 1, "width": 10},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+                }
+            ],
+            "body": [
                 "page-003-001"
+            ],
+            "footer": [
+                {
+                    "id": "W08",
+                    "widgetType": "text",
+                    "coordinates": {"x": 0, "y": 4},
+                    "dimension": {"height": 2, "width": 12},
+                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+                }
             ]
         }
     ],
@@ -34,37 +106,38 @@
             "id": "page-001-001",
             "label": "First page",
             "description": "First page of first project",
-            "gridDimension": {"height": 5, "width": 5},
-            "header": [
+            "widgets": [
                 {
-                    "id": "W01",
-                    "widgetType": "wt-001",
-                    "coordinates": {"x": 1, "y": 0},
-                    "dimension": {"height": 1, "width": 4},
-                    "data": "BEOL Title"
-                }
-            ],
-            "body": [
-                {
-                    "id": "W02",
-                    "widgetType": "wt-004",
+                    "id": "W09",
+                    "widgetType": "search",
                     "coordinates": {"x": 0, "y": 1},
-                    "dimension": {"height": 3, "width": 2}
+                    "dimension": {"height": 4, "width": 3}
                 },
                 {
-                    "id": "W03",
-                    "widgetType": "wt-005",
-                    "coordinates": {"x": 0, "y": 1},
-                    "dimension": {"height": 3, "width": 2}
+                    "id": "W10",
+                    "widgetType": "result",
+                    "coordinates": {"x": 0, "y": 2},
+                    "dimension": {"height": 4, "width": 5}
                 }
-            ],
-            "footer": [
+            ]
+        },
+        {
+            "id": "page-001-002",
+            "label": "Second page",
+            "description": "Second page of first project",
+            "widgets": [
                 {
-                    "id": "W04",
-                    "widgetType": "wt-003",
-                    "coordinates": {"x": 0, "y": 4},
-                    "dimension": {"height": 1, "width": 5},
-                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                    "id": "W11",
+                    "widgetType": "text",
+                    "coordinates": {"x": 0, "y": 1},
+                    "dimension": {"height": 4, "width": 4}
+                },
+                {
+                    "id": "W12",
+                    "widgetType": "image",
+                    "coordinates": {"x": 4, "y": 1},
+                    "dimension": {"height": 4, "width": 4},
+                    "data": "https://picsum.photos/700/300"
                 }
             ]
         },
@@ -72,46 +145,20 @@
             "id": "page-002-001",
             "label": "First page",
             "description": "First page of second project",
-            "gridDimension": {"height": 5, "width": 5},
-            "header": [
+            "widgets": [
                 {
-                    "id": "W05",
-                    "widgetType": "wt-002",
-                    "coordinates": {"x": 0, "y": 0},
-                    "dimension": {"height": 1, "width": 1},
-                    "data": "https://picsum.photos/400/200"
-                },
-                {
-                    "id": "W06",
-                    "widgetType": "wt-001",
-                    "coordinates": {"x": 1, "y": 0},
-                    "dimension": {"height": 1, "width": 4},
-                    "data": "Dies ist der Titel Widget!"
-                }
-            ],
-            "body": [
-                {
-                    "id": "W07",
-                    "widgetType": "wt-003",
+                    "id": "W13",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 1},
                     "dimension": {"height": 1, "width": 4},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
                 },
                 {
-                    "id": "W08",
-                    "widgetType": "wt-003",
+                    "id": "W14",
+                    "widgetType": "text",
                     "coordinates": {"x": 0, "y": 2},
                     "dimension": {"height": 2, "width": 4},
                     "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n\nDuis autem vel eum iriure dolor in hendrerit"
-                }
-            ],
-            "footer": [
-                {
-                    "id": "W09",
-                    "widgetType": "wt-003",
-                    "coordinates": {"x": 1, "y": 4},
-                    "dimension": {"height": 1, "width": 4},
-                    "data": "Dies ist der Footer"
                 }
             ]
         },
@@ -119,38 +166,13 @@
             "id": "page-002-002",
             "label": "Second page",
             "description": "Second page of second project",
-            "gridDimension": {"height": 5, "width": 5},
-            "header": [
+            "widgets": [
                 {
-                    "id": "W10",
-                    "widgetType": "wt-002",
-                    "coordinates": {"x": 0, "y": 0},
-                    "dimension": {"height": 1, "width": 1},
-                    "data": "https://picsum.photos/400/200"
-                },
-                {
-                    "id": "W11",
-                    "widgetType": "wt-001",
-                    "coordinates": {"x": 1, "y": 0},
-                    "dimension": {"height": 1, "width": 4}
-                }
-            ],
-            "body": [
-                {
-                    "id": "W12",
-                    "widgetType": "wt-002",
+                    "id": "W15",
+                    "widgetType": "image",
                     "coordinates": {"x": 2, "y": 1},
                     "dimension": {"height": 3, "width": 3},
                     "data": "https://picsum.photos/400/400"
-                }
-            ],
-            "footer": [
-                {
-                    "id": "W13",
-                    "widgetType": "wt-003",
-                    "coordinates": {"x": 1, "y": 4},
-                    "dimension": {"height": 1, "width": 4},
-                    "data": "Dies ist der Footer"
                 }
             ]
         },
@@ -158,33 +180,7 @@
             "id": "page-003-001",
             "label": "First page",
             "description": "First page of third project",
-            "gridDimension": {"height": 3, "width": 3},
-            "header": [
-                {
-                    "id": "W14",
-                    "widgetType": "wt-002",
-                    "coordinates": {"x": 0, "y": 0},
-                    "dimension": {"height": 1, "width": 1},
-                    "data": "https://picsum.photos/200/200"
-                },
-                {
-                    "id": "W15",
-                    "widgetType": "wt-002",
-                    "coordinates": {"x": 2, "y": 0},
-                    "dimension": {"height": 1, "width": 1},
-                    "data": "https://picsum.photos/200/200"
-                }
-            ],
-            "body": [],
-            "footer": [
-                {
-                    "id": "W16",
-                    "widgetType": "wt-003",
-                    "coordinates": {"x": 0, "y": 1},
-                    "dimension": {"height": 2, "width": 3},
-                    "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-                }
-            ]
+            "widgets": []
         }
     ]
 }
