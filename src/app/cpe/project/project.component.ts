@@ -1,66 +1,81 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {NavigationService} from "../../routing-module/navigation.service";
-import {Project} from "../../repository/repository-model";
-import {ProjectRepositoryService} from "../../repository/project-repository.service";
+import {PageStructureValidatorService} from "../validator/page-structure-validator.service";
+import {ProjectRepositoryService} from "../../services/project-repository.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-
+import {Project} from "../model/page-data-structure";
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html'
+    selector: "app-project",
+    templateUrl: "./project.component.html"
 })
 export class ProjectComponent implements OnInit, OnDestroy {
 
-  private _project: Project | undefined = undefined;
+    project: Project;
 
-  private projectRouteSubscription: Subscription;
+    page_id: string
 
-  constructor( private _projectService: ProjectRepositoryService,
-               private _route: ActivatedRoute,
-               private _naviService: NavigationService ) {
-    this.projectRouteSubscription = new Subscription();
-  }
+    private projectRouteSubscription: Subscription;
 
-  ngOnInit(): void {
-    this.projectRouteSubscription = this._route.params.subscribe(parameter => {
-      if (parameter['id'] && parameter['id'] !== this.project?.id) {
-        this.loadProject(parameter['id']);
-      }
-    });
-  }
+    constructor(private _projectService: ProjectRepositoryService,
+                private _validatorService: PageStructureValidatorService,
+                private _route: ActivatedRoute,
+                private _naviService: NavigationService) {
+        this.projectRouteSubscription = new Subscription();
+    }
 
-  get project() {
-    return this._project;
-  }
+    ngOnInit(): void {
+        this.projectRouteSubscription = this._route.params.subscribe(parameter => {
+            if (parameter["id"] && parameter["id"] !== this.project?.id) {
+                this.loadProject(parameter["id"]);
+            }
 
-  /**
-   * Load the project's data. Navigate to the projects component if there is no data for the given project id.
-   * @param projectId: The project to which is navigated.
-   */
-  loadProject(projectId: string) {
-    this._projectService.getProjectById(projectId).then(p => {
-        this._project = p;
-    }).catch(err => console.error());
-  }
+            if (parameter["pageId"]) {
+                this.page_id = parameter["pageId"];
+            }
+        });
+    }
 
-  /**
-   * navigate to a specific page of this project
-   * @param pageId: The page to which is navigated.
-   */
-  goToPage(pageId: string){
-    const projectId = this.project? this.project.id : '';
-    this._naviService.navigateToPage(projectId, pageId);
-  }
+    /**
+     * Load the project's data. Navigate to the projects component if there is no data for the given project id.
+     * @param projectId: The project to which is navigated.
+     */
+    loadProject(projectId: string) {
+        this._projectService.getProjectByIdFull(projectId)
+                        .subscribe({
+                            next: (projectPageStructure) => {
+                                try {
+                                    this._validatorService.validate(projectPageStructure);
+                                    this.project = projectPageStructure;
+                                }
+                                catch(error){
+                                    // TODO Case: Invalid page structure
+                                    console.error(error);
+                                }
+                            },
+                            error: (error) => {
+                                console.error(error);
+                            }
+                        })
+    }
 
-  /**
-   * navigate to the projects component..
-   */
-  goToProjectsOverview(){
-    this._naviService.navigateToProjectsPage();
-  }
+    /**
+     * navigate to a specific page of this project
+     * @param pageId: The page to which is navigated.
+     */
+    goToPage(pageId: string) {
+        this._naviService.navigateToPage(this.project.id, pageId);
+    }
 
-  ngOnDestroy() {
-    this.projectRouteSubscription.unsubscribe();
-  }
+    /**
+     * navigate to the projects component..
+     */
+    goToProjectsOverview() {
+        this._naviService.navigateToProjectsPage();
+    }
+
+    ngOnDestroy() {
+        this.projectRouteSubscription.unsubscribe();
+    }
 }
