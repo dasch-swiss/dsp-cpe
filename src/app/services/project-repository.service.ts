@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {CpeApiService, iPage, iProject} from "./cpe-api.service";
 import {Page, Project, Widget} from "../cpe/model/page-data-structure";
-import {Observable, forkJoin, map, mergeMap, of, from, toArray, tap} from "rxjs";
+import {Observable, forkJoin, map, mergeMap, of, from, toArray} from "rxjs";
 
 
 @Injectable({
