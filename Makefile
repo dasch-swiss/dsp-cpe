@@ -1,10 +1,5 @@
 include vars.mk
 
-.PHONY: build-dsp-cpe-image
-build-dsp-cpe-image: ## build DSP CPE image locally
-	docker build -t $(DOCKER_IMAGE) .
-	docker tag $(DOCKER_IMAGE) $(DOCKER_REPO):latest
-
 .PHONY: docker-build
 docker-build: ## build and publish CPE Docker image locally
 	docker buildx build \
@@ -14,7 +9,7 @@ docker-build: ## build and publish CPE Docker image locally
 		.
 
 .PHONY: docker-publish
-docker-publish: ## publish Sipi Docker image to Docker-Hub
+docker-publish: ## publish Docker image to Docker-Hub
 	docker buildx build \
 		--progress auto \
 		--platform linux/amd64,linux/arm64 \
