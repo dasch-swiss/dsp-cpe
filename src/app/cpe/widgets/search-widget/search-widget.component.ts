@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Observable, of, throwError} from "rxjs";
+import {Observable, of} from "rxjs";
 import {delay} from "rxjs/operators";
 import {ComponentCommunicationService, Events, Status} from "../../../services/component-communication.service";
 
@@ -21,11 +21,7 @@ export class SearchWidgetComponent implements OnInit {
             {id: 1, title: "The first resource"},
             {id: 2, title: "The second resource"},
             {id: 3, title: "The last resource"}
-        ]).pipe(delay(2000))
-    }
-
-    getMockFail(): Observable<any> {
-        return throwError(() => new Error("Failed!"));
+        ]).pipe(delay(2000));
     }
 
     changeBG() {
@@ -35,14 +31,14 @@ export class SearchWidgetComponent implements OnInit {
     search() {
         this._communicationService.emit({event: Events.searchExecuted, status: Status.started});
         this.getMockData()
-            .subscribe(data => {
-                this._communicationService.emit({event: Events.searchExecuted, status: Status.finished, value: data});
-            });
-    }
-
-    searchWithError() {
-        this.getMockFail()
             .subscribe({
+                next: data => {
+                    this._communicationService.emit({
+                        event: Events.searchExecuted,
+                        status: Status.finished,
+                        value: data
+                    });
+                },
                 error: _ => {
                     this._communicationService.emit({
                         event: Events.searchExecuted,
@@ -50,6 +46,6 @@ export class SearchWidgetComponent implements OnInit {
                         errorMsg: "Search failed!"
                     });
                 }
-            })
+            });
     }
 }
