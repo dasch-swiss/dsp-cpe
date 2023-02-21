@@ -15,6 +15,7 @@ export class ExecutorComponent implements OnChanges {
     footerDashboard: Array<GridsterItem> = [];
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
+    error: boolean = false;
 
     constructor(private router: Router) {
     }
@@ -25,8 +26,10 @@ export class ExecutorComponent implements OnChanges {
             page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageId));
 
             if (!page) {
-                // ToDo show page error
+                this.error = true;
                 return;
+            } else {
+                this.error = false;
             }
 
         } else {
