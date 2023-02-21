@@ -187,17 +187,6 @@ export class CpeApiService {
     }
 
     /**
-     * returns all the pages
-     */
-    getPages(): Observable<Page[]> {
-        return of(Object.values(pages).map(page => {
-            const newPage = new Page(page.id, page.label);
-            newPage.widgets = page.widgets.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
-            return newPage;
-        }));
-    }
-
-    /**
      * gets a specific page by the id
      */
     getPage(id: string): Observable<Page> {
