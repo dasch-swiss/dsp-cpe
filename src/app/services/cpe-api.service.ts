@@ -34,6 +34,9 @@ export interface iPage extends iCpeResource {
     widgets: iWidget[]
 }
 
+/**
+ * The interface for getting widgets from the api service
+ */
 export interface iWidget {
     id: string;
     widgetType: string;
