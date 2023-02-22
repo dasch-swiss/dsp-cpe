@@ -47,7 +47,7 @@ export class Page {
         return this.id === pageID;
     }
 
-    constructor(public readonly id: string) {
+    constructor(public readonly id: string, public label: string) {
     }
 }
 

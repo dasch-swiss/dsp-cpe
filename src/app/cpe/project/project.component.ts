@@ -1,10 +1,10 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {NavigationService} from "../../routing-module/navigation.service";
 import {PageStructureValidatorService} from "../validator/page-structure-validator.service";
-import {ProjectRepositoryService} from "../../services/project-repository.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Project} from "../model/page-data-structure";
+import {CpeApiService} from "../../services/cpe-api.service";
 
 @Component({
     selector: "app-project",
@@ -18,7 +18,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     private projectRouteSubscription: Subscription;
 
-    constructor(private _projectService: ProjectRepositoryService,
+    constructor(private _apiService: CpeApiService,
                 private _validatorService: PageStructureValidatorService,
                 private _route: ActivatedRoute,
                 private _naviService: NavigationService) {
@@ -42,7 +42,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
      * @param projectId: The project to which is navigated.
      */
     loadProject(projectId: string) {
-        this._projectService.getProjectByIdFull(projectId)
+        this._apiService.getProject(projectId)
                         .subscribe({
                             next: (projectPageStructure) => {
                                 try {
