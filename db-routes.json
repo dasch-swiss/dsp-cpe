@@ -1,6 +1,0 @@
-{
-  "/projects/list": "/projects",
-  "/projects/get/:id": "/projects/:id",
-  "/pages/list/:id": "/pages/:id",
-  "/pages/get/:id": "/pages/:id"
-}

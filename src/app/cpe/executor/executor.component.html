@@ -1,4 +1,4 @@
-<gridster class="gridster-container" [options]="bodyGridOptions">
+<gridster *ngIf="!error" class="gridster-container" [options]="bodyGridOptions">
 
     <!--  header  -->
     <gridster-item *ngFor="let item of headerDashboard" [item]="item" [ngSwitch]="item['type']">
@@ -24,3 +24,7 @@
     </gridster-item>
 
 </gridster>
+
+<div *ngIf="error">
+    Cannot be displayed!
+</div>

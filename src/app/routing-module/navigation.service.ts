@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProjectRepositoryService} from "../services/project-repository.service";
 import {Project} from "../cpe/model/page-data-structure";
+import {CpeApiService} from "../services/cpe-api.service";
 
 @Injectable({
     providedIn: "root"
@@ -10,7 +10,7 @@ export class NavigationService {
 
     constructor(private _router: Router,
                 private _route: ActivatedRoute,
-                private _projectService: ProjectRepositoryService) {
+                private _apiService: CpeApiService) {
 
     }
 
@@ -35,7 +35,7 @@ export class NavigationService {
      * @param pageId: The id of the page to which is navigated.
      */
     public navigateToPage(projectId: string, pageId: string) {
-        this._projectService.getProjectByIdFull(projectId).subscribe({
+        this._apiService.getProject(projectId).subscribe({
             next: (project: Project) => {
                 if (project.hasPage(pageId)) {
                     this._router.navigate(

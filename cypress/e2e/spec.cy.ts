@@ -3,7 +3,6 @@ describe("Test Navigation", () => {
         cy.visit("/")
         cy.contains("Project 1: MLS")
         cy.contains("Project 2: Beol")
-        cy.contains("Project 3: WordWeb")
     })
 
     it("should navigate to a project", () => {
