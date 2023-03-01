@@ -11,10 +11,10 @@ import {Router} from "@angular/router";
 export class ExecutorComponent implements OnChanges {
     @Input() pageStructure: Project;
     @Input() pageId: string;
-    headerDashboard: Array<GridsterItem> = [];
-    footerDashboard: Array<GridsterItem> = [];
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
+    header: any;
+    footer: any;
     error: boolean = false;
 
     constructor(private router: Router) {
@@ -42,24 +42,23 @@ export class ExecutorComponent implements OnChanges {
             }
         }
 
-        this.headerDashboard = this.buildPagePart(this.pageStructure.header);
+        this.header = this.getHeader(this.pageStructure);
         this.bodyDashboard = this.buildPagePart(page.widgets);
-        this.footerDashboard = this.buildPagePart(this.pageStructure.footer);
+        this.footer = this.getFooter(this.pageStructure);
 
         this.bodyGridOptions = {
-          draggable: {
-            enabled: false
-          },
-          resizable: {
-            enabled: false
-          },
-          displayGrid: 'always'
+            draggable: {
+                enabled: false
+            },
+            resizable: {
+                enabled: false
+            },
+            displayGrid: 'always',
+            minCols: this.pageStructure.gridDimensions.width,
+            maxCols: this.pageStructure.gridDimensions.width,
+            minRows: this.pageStructure.gridDimensions.height,
+            maxRows: this.pageStructure.gridDimensions.height
         }
-
-        this.bodyGridOptions.minCols = this.pageStructure.gridDimensions.width;
-        this.bodyGridOptions.maxCols = this.pageStructure.gridDimensions.width;
-        this.bodyGridOptions.minRows = this.pageStructure.gridDimensions.height;
-        this.bodyGridOptions.maxRows = this.pageStructure.gridDimensions.height;
 
     }
 
@@ -77,6 +76,23 @@ export class ExecutorComponent implements OnChanges {
             });
         }
         return dashboard;
+    }
+
+    getHeader(project: Project) {
+        return {
+            project: project.id,
+            title: project.header.title,
+            logo: project.header.logo,
+            login: project.header.login,
+            pages: project.body
+        }
+    }
+
+    getFooter(project: Project) {
+        return {
+            project: project.id,
+            data: project.footer.data
+        }
     }
 
 }

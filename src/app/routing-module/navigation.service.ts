@@ -42,7 +42,6 @@ export class NavigationService {
                         ["projects/" + projectId + "/" + pageId],
                         {
                             relativeTo: this._route,
-                            skipLocationChange: true,
                             queryParamsHandling: "merge"
                         }
                     );

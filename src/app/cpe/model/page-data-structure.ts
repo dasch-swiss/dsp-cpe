@@ -1,12 +1,12 @@
 export class Project {
-    private _header: Widget[] = [];
+    private _header: any;
     private _body: Page[] = [];
-    private _footer: Widget[] = [];
+    private _footer: any;
 
-    get header(): Widget[] {
+    get header(): any {
         return this._header;
     }
-    set header(header: Widget[]) {
+    set header(header: any) {
         this._header = header;
     }
     get body(): Page[] {
@@ -15,10 +15,10 @@ export class Project {
     set body(body: Page[]) {
         this._body = body;
     }
-    get footer(): Widget[] {
+    get footer(): any {
         return this._footer;
     }
-    set footer(footer: Widget[]) {
+    set footer(footer: any) {
         this._footer = footer;
     }
     hasPage(pageID: string): boolean {

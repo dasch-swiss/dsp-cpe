@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    //"./src/**/*.{html, ts}", // all code gets scanned ...
+    "./src/**/*.{html, ts}", // all code gets scanned ...
     // only tw classes from the gui-elements-module get scanned for ending up in the served/built styles;
     // Make sure there is no space between file endings!
     "./src/app/gui-elements-module/**/*.{html,ts}"

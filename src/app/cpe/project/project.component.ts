@@ -43,36 +43,21 @@ export class ProjectComponent implements OnInit, OnDestroy {
      */
     loadProject(projectId: string) {
         this._apiService.getProject(projectId)
-                        .subscribe({
-                            next: (projectPageStructure) => {
-                                try {
-                                    this._validatorService.validate(projectPageStructure);
-                                    this.project = projectPageStructure;
-                                }
-                                catch(error){
-                                    // TODO Case: Invalid page structure
-                                    console.error(error);
-                                }
-                            },
-                            error: (error) => {
-                                console.error(error);
-                            }
-                        })
-    }
-
-    /**
-     * navigate to a specific page of this project
-     * @param pageId: The page to which is navigated.
-     */
-    goToPage(pageId: string) {
-        this._naviService.navigateToPage(this.project.id, pageId);
-    }
-
-    /**
-     * navigate to the projects component..
-     */
-    goToProjectsOverview() {
-        this._naviService.navigateToProjectsPage();
+            .subscribe({
+                next: (projectPageStructure) => {
+                    try {
+                        this._validatorService.validate(projectPageStructure);
+                        this.project = projectPageStructure;
+                    }
+                    catch(error){
+                        // TODO Case: Invalid page structure
+                        console.error(error);
+                    }
+                },
+                error: (error) => {
+                    console.error(error);
+                }
+            })
     }
 
     ngOnDestroy() {

@@ -8,85 +8,63 @@ const projects: {[key: string]: any} = {
         "id": "p-001",
         "label": "Project 1: MLS",
         "description": "This is the first project",
-        "gridDimension": {"height": 6, "width": 12},
+        "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-001-001",
-        "header": [
-            {
-                "id": "W01",
-                "widgetType": "title",
-                "coordinates": {"x": 0, "y": 0},
-                "dimension": {"height": 1, "width": 12},
-                "data": "BEOL Title"
-            }
-        ],
+        "header": {
+            "id": "H01",
+            "title": "Forschungszentrum Universität Basel",
+            "logo": "./assets/logo-1.png",
+            "login": true
+        },
         "body" : [
             "page-001-001",
-            "page-001-002"
+            "page-001-002",
+            "page-001-003"
         ],
-        "footer": [
-            {
-                "id": "W02",
-                "widgetType": "text",
-                "coordinates": {"x": 0, "y": 5},
-                "dimension": {"height": 1, "width": 12},
-                "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-            }
-        ]
+        "footer": {
+            "id": "F01",
+            "data": "©DaSCH - Swiss National Data and Service Center for the Humanities"
+        }
     },
     "p-002": {
         "id": "p-002",
         "label": "Project 2: Beol",
         "description": "This is the second project",
-        "gridDimension": {"height": 6, "width": 12},
+        "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-002-001",
-        "header": [
-            {
-                "id": "W03",
-                "widgetType": "image",
-                "coordinates": {"x": 0, "y": 0},
-                "dimension": {"height": 1, "width": 2},
-                "data": "https://picsum.photos/400/200"
-            },
-            {
-                "id": "W04",
-                "widgetType": "title",
-                "coordinates": {"x": 2, "y": 0},
-                "dimension": {"height": 1, "width": 10},
-                "data": "Dies ist der Titel Widget!"
-            }
-        ],
+        "header": {
+            "id": "H02",
+            "title": "Musiklexikon der Schweiz",
+            "logo": "./assets/logo-2.png",
+            "login": false
+        },
         "body": [
             "page-002-001",
             "page-002-002"
         ],
-        "footer": [
-            {
-                "id": "W05",
-                "widgetType": "text",
-                "coordinates": {"x": 0, "y": 5},
-                "dimension": {"height": 1, "width": 12},
-                "data": "Dies ist der Footer"
-            }
-        ]
+        "footer": {
+            "id": "F02",
+            "data": "©DaSCH - Swiss National Data and Service Center for the Humanities"
+        }
     }
 }
 
 const pages: {[key: string]: any} = {
     "page-001-001": {
         "id": "page-001-001",
-        "label": "First page",
+        "label": "Suche",
         "widgets": [
             {
-                "id": "W09",
+                "id": "W01",
                 "widgetType": "search",
-                "coordinates": {"x": 0, "y": 1},
-                "dimension": {"height": 4, "width": 3}
+                "coordinates": {"x": 0, "y": 2},
+                "dimension": {"height": 6, "width": 3}
             },
             {
-                "id": "W10",
+                "id": "W02",
                 "widgetType": "result",
-                "coordinates": {"x": 0, "y": 2},
-                "dimension": {"height": 4, "width": 5}
+                "coordinates": {"x": 3, "y": 2},
+                "dimension": {"height": 6, "width": 5}
             }
         ]
     },
@@ -95,16 +73,35 @@ const pages: {[key: string]: any} = {
         "label": "Second page",
         "widgets": [
             {
-                "id": "W11",
+                "id": "W03",
                 "widgetType": "text",
                 "coordinates": {"x": 0, "y": 1},
-                "dimension": {"height": 4, "width": 4}
+                "dimension": {"height": 6, "width": 4}
             },
             {
-                "id": "W12",
+                "id": "W04",
                 "widgetType": "image",
                 "coordinates": {"x": 4, "y": 1},
-                "dimension": {"height": 4, "width": 4},
+                "dimension": {"height": 6, "width": 4},
+                "data": "https://picsum.photos/700/300"
+            }
+        ]
+    },
+    "page-001-003": {
+        "id": "page-001-003",
+        "label": "Third page",
+        "widgets": [
+            {
+                "id": "W03",
+                "widgetType": "text",
+                "coordinates": {"x": 0, "y": 1},
+                "dimension": {"height": 6, "width": 4}
+            },
+            {
+                "id": "W04",
+                "widgetType": "image",
+                "coordinates": {"x": 4, "y": 1},
+                "dimension": {"height": 6, "width": 4},
                 "data": "https://picsum.photos/700/300"
             }
         ]
@@ -114,16 +111,16 @@ const pages: {[key: string]: any} = {
         "label": "First page",
         "widgets": [
             {
-                "id": "W13",
+                "id": "W05",
                 "widgetType": "text",
-                "coordinates": {"x": 0, "y": 1},
-                "dimension": {"height": 1, "width": 4},
+                "coordinates": {"x": 0, "y": 2},
+                "dimension": {"height": 2, "width": 4},
                 "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
             },
             {
-                "id": "W14",
+                "id": "W06",
                 "widgetType": "text",
-                "coordinates": {"x": 0, "y": 2},
+                "coordinates": {"x": 0, "y": 3},
                 "dimension": {"height": 2, "width": 4},
                 "data": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n\nDuis autem vel eum iriure dolor in hendrerit"
             }
@@ -134,7 +131,7 @@ const pages: {[key: string]: any} = {
         "label": "Second page",
         "widgets": [
             {
-                "id": "W15",
+                "id": "W07",
                 "widgetType": "image",
                 "coordinates": {"x": 2, "y": 1},
                 "dimension": {"height": 3, "width": 3},
@@ -157,8 +154,8 @@ export class CpeApiService {
     getProjects(): Observable<Project[]> {
         return of(Object.values(projects).map(project => {
             const newProject = new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension);
-            newProject.header = project.header.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
-            newProject.footer = project.footer.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
+            newProject.header = project.header;
+            newProject.footer = project.footer;
             return newProject;
         }));
     }
@@ -171,14 +168,14 @@ export class CpeApiService {
             const project = projects[id];
             const newProject = new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension);
 
-            newProject.header = project.header.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
+            newProject.header = project.header;
             newProject.body = project.body.map((pageID: string) => {
                 const page = pages[pageID];
                 const newPage = new Page(page.id, page.label);
                 newPage.widgets = page.widgets.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
                 return newPage;
             });
-            newProject.footer = project.footer.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
+            newProject.footer = project.footer;
 
             return of(newProject);
         } else {
