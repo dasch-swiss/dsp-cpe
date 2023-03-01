@@ -13,7 +13,6 @@ export class HeaderWidgetComponent implements OnInit{
     }
 
     ngOnInit() {
-        console.log(this.data);
     }
 
     goToPage(pageId: string) {

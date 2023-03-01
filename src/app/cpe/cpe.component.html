@@ -1,8 +1,6 @@
 <div *ngIf="projects">
-    <div style="font-weight: bold">List of projects</div>
-    <div style="display: flex; flex-direction: row;">
-        <div class="project-buttons" *ngFor="let project of projects" style="margin: 10px">
-            <cpe-button (click) ="goToProject(project.id)" [text]="project.label"></cpe-button>
-        </div>
+    <div>List of projects</div>
+    <div class="flex gap-4">
+        <cpe-button *ngFor="let project of projects" (click) ="goToProject(project.id)" [text]="project.label"></cpe-button>
     </div>
 </div>
