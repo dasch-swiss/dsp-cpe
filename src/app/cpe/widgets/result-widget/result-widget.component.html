@@ -1,9 +1,15 @@
 <div [ngStyle]="{'background-color': color}">Result widget</div>
 
-<div *ngIf="!loading">
-    <div *ngFor="let r of result">
-        <div class="bg-emerald-800 border">{{r.title}}</div>
+<div class="flex flex-col gap-4 mx-8" *ngIf="!loading">
+
+    <div class="flex gap-4 shadow" *ngFor="let r of result; let i = index">
+        <div>{{i + 1}}</div>
+        <div class="grid grid-cols-1">
+            <div>{{r.title}}</div>
+            <div [innerHTML]=r.passage></div>
+        </div>
     </div>
+
 </div>
 
 <div *ngIf="loading">... Search is going on</div>

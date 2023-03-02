@@ -1,17 +1,18 @@
-<div>Search widget</div>
-<br>
-<cpe-button
-    id="button-01"
-    [text]="'Change background'"
-    (click)="changeBG()"
-    [disabled]="false"
-    [variant]="'Primary'">
-</cpe-button>
-<br>
-<cpe-button
-    id="button-02"
-    [text]="'Search'"
-    (click)="search()"
-    [disabled]="false"
-    [variant]="'Primary'">
-</cpe-button>
+<div class="flex items-center justify-center h-full mx-8">
+    <input class="border flex-grow" type="search-input">
+    <cpe-button
+        id="button-02"
+        [text]="'Search'"
+        (click)="search()"
+        [disabled]="false"
+        [variant]="'Primary'">
+    </cpe-button>
+    <cpe-button
+        id="button-01"
+        [text]="'Reset'"
+        (click)="changeBG()"
+        [disabled]="false"
+        [variant]="'Primary'">
+    </cpe-button>
+    <br>
+</div>

@@ -6,7 +6,7 @@ import {Page, Project, Widget} from "../cpe/model/page-data-structure";
 const projects: {[key: string]: any} = {
     "p-001": {
         "id": "p-001",
-        "label": "Archäologie",
+        "label": "Archaeology",
         "description": "This is the first project",
         "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-001-001",
@@ -27,7 +27,7 @@ const projects: {[key: string]: any} = {
     },
     "p-002": {
         "id": "p-002",
-        "label": "Englische Literatur",
+        "label": "English literature",
         "description": "This is the second project",
         "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-002-001",
@@ -65,7 +65,7 @@ const pages: {[key: string]: any} = {
     },
     "page-001-002": {
         "id": "page-001-002",
-        "label": "Ägypten",
+        "label": "Egypt",
         "widgets": [
             {
                 "id": "W04",
@@ -113,19 +113,19 @@ const pages: {[key: string]: any} = {
     },
     "page-002-001": {
         "id": "page-002-001",
-        "label": "Suche",
+        "label": "Search",
         "widgets": [
             {
                 "id": "W01",
                 "widgetType": "search",
-                "coordinates": {"x": 0, "y": 2},
-                "dimension": {"height": 6, "width": 3}
+                "coordinates": {"x": 2, "y": 1},
+                "dimension": {"height": 1, "width": 8}
             },
             {
                 "id": "W02",
                 "widgetType": "result",
-                "coordinates": {"x": 3, "y": 2},
-                "dimension": {"height": 6, "width": 5}
+                "coordinates": {"x": 2, "y": 2},
+                "dimension": {"height": 7, "width": 8}
             }
         ]
     },

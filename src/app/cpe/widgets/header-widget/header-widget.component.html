@@ -13,7 +13,7 @@
         <div class="hidden md:flex gap-2">
             <cpe-button *ngFor="let page of data.pages" (click)="goToPage(page.id)" [text]="page['label']"></cpe-button>
         </div>
-        <cpe-button *ngIf="data.login" [text]="'Login'"></cpe-button>
+        <cpe-button [variant]="'Secondary'" *ngIf="data.login" [text]="'Login'"></cpe-button>
     </div>
 
 </div>
