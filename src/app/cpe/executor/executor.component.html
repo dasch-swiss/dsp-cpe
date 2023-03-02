@@ -5,9 +5,8 @@
 <div class="gridster-container" style="height: calc(100vh - 120px)">
 
     <!--  body  -->
-    <gridster *ngIf="!error"  [options]="bodyGridOptions" style="height: auto">
+    <gridster *ngIf="!error" [options]="bodyGridOptions" style="height: auto">
         <gridster-item *ngFor="let item of bodyDashboard" [item]="item" [ngSwitch]="item['type']">
-            <app-title-widget *ngSwitchCase="'title'" [title]="item['data']"></app-title-widget>
             <app-image-widget *ngSwitchCase="'image'" [data]="item['data']"></app-image-widget>
             <app-text-widget *ngSwitchCase="'text'" [text]="item['data']"></app-text-widget>
             <app-search-widget *ngSwitchCase="'search'"></app-search-widget>
@@ -15,8 +14,12 @@
         </gridster-item>
     </gridster>
 
-    <div *ngIf="error">
-        Cannot be displayed!
+    <!--  error page  -->
+    <div class="flex flex-col items-center justify-center h-full" *ngIf="error">
+        <div>
+            The page couldn't be displayed.<br>
+            Go back or try another page.
+        </div>
     </div>
 </div>
 

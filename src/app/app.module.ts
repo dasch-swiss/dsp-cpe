@@ -13,7 +13,6 @@ import { ProjectComponent } from './cpe/project/project.component';
 import { SearchWidgetComponent } from './cpe/widgets/search-widget/search-widget.component';
 import { ResultWidgetComponent } from './cpe/widgets/result-widget/result-widget.component';
 import { ImageWidgetComponent } from './cpe/widgets/image-widget/image-widget.component';
-import { TitleWidgetComponent } from './cpe/widgets/title-widget/title-widget.component';
 import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.component';
 import { HeaderWidgetComponent } from './cpe/widgets/header-widget/header-widget.component';
 import { FooterWidgetComponent } from './cpe/widgets/footer-widget/footer-widget.component';
@@ -26,7 +25,6 @@ import { FooterWidgetComponent } from './cpe/widgets/footer-widget/footer-widget
         SearchWidgetComponent,
         ResultWidgetComponent,
         ImageWidgetComponent,
-        TitleWidgetComponent,
         TextWidgetComponent,
         HeaderWidgetComponent,
         FooterWidgetComponent

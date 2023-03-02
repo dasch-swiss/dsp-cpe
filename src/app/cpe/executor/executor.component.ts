@@ -27,6 +27,8 @@ export class ExecutorComponent implements OnChanges {
 
             if (!page) {
                 this.error = true;
+                this.header = this.getHeader(this.pageStructure);
+                this.footer = this.getFooter(this.pageStructure);
                 return;
             } else {
                 this.error = false;
