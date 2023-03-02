@@ -1,23 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {Component} from "@angular/core";
 
-import { HeaderWidgetComponent } from './header-widget.component';
+/**
+ * mock host component.
+ */
+@Component({
+    template: '<app-header-widget [data]="data"></app-header-widget>'
+})
+class MockHostComponent {
+    data: any;
 
-describe('HeaderWidgetComponent', () => {
-  let component: HeaderWidgetComponent;
-  let fixture: ComponentFixture<HeaderWidgetComponent>;
+    constructor() {
+        this.data = "This is a Header";
+    }
+}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HeaderWidgetComponent ]
-    })
-    .compileComponents();
+describe("HeaderWidgetComponent", () => {
+    let component: MockHostComponent;
+    let fixture: ComponentFixture<MockHostComponent>;
 
-    fixture = TestBed.createComponent(HeaderWidgetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [MockHostComponent]
+        })
+            .compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+        fixture = TestBed.createComponent(MockHostComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it("should create", () => {
+        expect(component).toBeTruthy();
+    });
 });
