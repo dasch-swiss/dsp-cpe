@@ -1,13 +1,19 @@
 describe("Test Navigation", () => {
     it("should visit the home page with all the projects", () => {
         cy.visit("/")
-        cy.contains("Project 1: MLS")
-        cy.contains("Project 2: Beol")
+        cy.contains("Archäologie")
+        cy.contains("Englische Literatur")
     })
 
-    it("should navigate to a project", () => {
+    it("should navigate to first project", () => {
         cy.visit("/projects")
-        cy.get(".project-buttons").find("cpe-button").first().click()
-        cy.contains("This is the first project")
+        cy.get("cpe-button").first().click()
+        cy.contains("Institut für Archäologische Wissenschaften")
+    })
+
+    it("should navigate to second project", () => {
+        cy.visit("/projects")
+        cy.get("cpe-button").first().next().click()
+        cy.contains("Englisches Seminar")
     })
 })
