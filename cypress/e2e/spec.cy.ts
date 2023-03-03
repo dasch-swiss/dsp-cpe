@@ -2,7 +2,7 @@ describe("Test Navigation", () => {
     it("should visit the home page with all the projects", () => {
         cy.visit("/")
         cy.contains("Archaeology")
-        cy.contains("English literature")
+        cy.contains("English studies")
     })
 
     it("should navigate to first project", () => {

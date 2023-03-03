@@ -7,7 +7,8 @@ const projects: {[key: string]: any} = {
     "p-001": {
         "id": "p-001",
         "label": "Archaeology",
-        "description": "This is the first project",
+        "description": "Our institute is an educational organization dedicated to teaching scientific and historical inquiry, cultural understanding, and the importance of protecting our nation’s rich cultural resources",
+        "image": "./assets/wall.jpg",
         "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-001-001",
         "header": {
@@ -27,8 +28,9 @@ const projects: {[key: string]: any} = {
     },
     "p-002": {
         "id": "p-002",
-        "label": "English literature",
-        "description": "This is the second project",
+        "label": "English studies",
+        "description": "The English seminar conducts research and teaching in English linguistics and Anglophone literary and cultural studies at a high level of excellence.",
+        "image": "./assets/globe-outside.jpg",
         "gridDimension": {"height": 10, "width": 12},
         "mainPageID": "page-002-001",
         "header": {
@@ -190,7 +192,7 @@ export class CpeApiService {
      */
     getProjects(): Observable<Project[]> {
         return of(Object.values(projects).map(project => {
-            const newProject = new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension);
+            const newProject = new Project(project.id, project.label, project.description, project.image, project.mainPageID, project.gridDimension);
             newProject.header = project.header;
             newProject.footer = project.footer;
             return newProject;
@@ -203,7 +205,7 @@ export class CpeApiService {
     getProject(id: string): Observable<Project> {
         if (projects.hasOwnProperty(id)) {
             const project = projects[id];
-            const newProject = new Project(project.id, project.label, project.description, project.mainPageID, project.gridDimension);
+            const newProject = new Project(project.id, project.label, project.description, project.image, project.mainPageID, project.gridDimension);
 
             newProject.header = project.header;
             newProject.body = project.body.map((pageID: string) => {

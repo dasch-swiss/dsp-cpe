@@ -28,6 +28,7 @@ export class Project {
     constructor(public readonly id: string,
                 public label: string,
                 public description: string,
+                public image: string,
                 public mainPageID: string,
                 public gridDimensions: Dimension
     ) {

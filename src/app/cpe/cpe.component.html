@@ -1,6 +1,14 @@
-<div *ngIf="projects">
-    <div>List of projects</div>
-    <div class="flex gap-4">
-        <cpe-button *ngFor="let project of projects" (click) ="goToProject(project.id)" [text]="project.label"></cpe-button>
+<div>
+    <div class="flex flex-col items-center justify-center gap-4 mt-16">
+        <div class="text-4xl">Demo Page of CPE</div>
+        <div>Welcome! Please choose a project below:</div>
+    </div>
+
+    <div class="grid justify-center gap-8 m-8" style="grid-template-columns: repeat(auto-fit, minmax(250px, 500px))">
+        <div class="cursor-pointer drop-shadow-md rounded" style="background-color: whitesmoke;" *ngFor="let project of projects" (click) ="goToProject(project.id)">
+            <div class="text-xl font-semibold m-4">{{project.label}}</div>
+            <img [alt]="'no infos'" [src]="project.image"/>
+            <div class="m-4">{{project.description}}</div>
+        </div>
     </div>
 </div>
