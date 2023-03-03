@@ -5,7 +5,7 @@
 <div class="gridster-container" style="height: calc(100vh - 120px)">
 
     <!--  body  -->
-    <gridster *ngIf="!error" [options]="bodyGridOptions" style="height: auto">
+    <gridster [ngClass]="showGrid? 'show-grid' : 'hide-grid'" *ngIf="!error" [options]="bodyGridOptions" style="height: auto">
         <gridster-item *ngFor="let item of bodyDashboard" [item]="item" [ngSwitch]="item['type']">
             <app-image-widget *ngSwitchCase="'image'" [data]="item['data']"></app-image-widget>
             <app-text-widget *ngSwitchCase="'text'" [text]="item['data']"></app-text-widget>
