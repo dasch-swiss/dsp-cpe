@@ -13,7 +13,7 @@ class MockHostComponent {
     pageID: string
 
     constructor() {
-        this.data = new Project("p01", "label 1", "description", "p1", {height: 5, width: 5});
+        this.data = new Project("p01", "label 1", "description", "./assets/test.jpg", "p1", {height: 5, width: 5});
         this.data.header = {
             "id": "H01",
             "title": "Test title",
