@@ -15,6 +15,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     project: Project;
 
     page_id: string
+    error: boolean = false;
 
     private projectRouteSubscription: Subscription;
 
@@ -50,11 +51,12 @@ export class ProjectComponent implements OnInit, OnDestroy {
                         this.project = projectPageStructure;
                     }
                     catch(error){
-                        // TODO Case: Invalid page structure
+                        this.error = true;
                         console.error(error);
                     }
                 },
                 error: (error) => {
+                    this.error = true;
                     console.error(error);
                 }
             })
