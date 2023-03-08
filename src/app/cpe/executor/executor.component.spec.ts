@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Page, Project, Widget} from "../model/page-data-structure";
+import {Page, Project, Widget, Header} from "../model/page-data-structure";
 
 /**
  * mock host component.
@@ -14,12 +14,7 @@ class MockHostComponent {
 
     constructor() {
         this.data = new Project("p01", "label 1", "description", "./assets/test.jpg", "p1", {height: 5, width: 5});
-        this.data.header = {
-            "id": "H01",
-            "title": "Test title",
-            "logo": "test-logo.jpg",
-            "login": false
-        };
+        this.data.header = new Header("H01", "Test title", "test-logo.jpg", false);
         const testPage = new Page("page01", "label for page");
         testPage.widgets = [new Widget("w02", "wt-003", {x: 0, y: 1}, {height: 2, width: 5}, "nothing")];
         this.data.body = [testPage];

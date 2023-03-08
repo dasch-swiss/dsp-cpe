@@ -1,12 +1,12 @@
 export class Project {
-    private _header: any;
+    private _header: Header;
     private _body: Page[] = [];
-    private _footer: any;
+    private _footer: Footer;
 
-    get header(): any {
+    get header(): Header {
         return this._header;
     }
-    set header(header: any) {
+    set header(header: Header) {
         this._header = header;
     }
     get body(): Page[] {
@@ -15,10 +15,10 @@ export class Project {
     set body(body: Page[]) {
         this._body = body;
     }
-    get footer(): any {
+    get footer(): Footer {
         return this._footer;
     }
-    set footer(footer: any) {
+    set footer(footer: Footer) {
         this._footer = footer;
     }
     hasPage(pageID: string): boolean {
@@ -32,6 +32,23 @@ export class Project {
                 public mainPageID: string,
                 public gridDimensions: Dimension
     ) {
+    }
+}
+
+export class Header {
+    private _pages: string[] = [];
+    get pages(): string[] {
+        return this._pages;
+    }
+    set pages(body: string[]) {
+        this._pages = body;
+    }
+    constructor(private readonly _id: string, public title: string, public logo: string, public login: boolean) {
+    }
+}
+
+export class Footer {
+    constructor(private readonly _id: string, public data: string) {
     }
 }
 

@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from "@angular/core";
-import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
+import {Footer, Header, Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";
 import {ComponentCommunicationService, Events} from "../../services/component-communication.service";

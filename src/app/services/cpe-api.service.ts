@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable, of, throwError} from "rxjs";
-import {Page, Project, Widget} from "../cpe/model/page-data-structure";
+import {Footer, Header, Page, Project, Widget} from "../cpe/model/page-data-structure";
 
 const projects: {[key: string]: any} = {
     "p-001": {
@@ -193,8 +193,9 @@ export class CpeApiService {
     getProjects(): Observable<Project[]> {
         return of(Object.values(projects).map(project => {
             const newProject = new Project(project.id, project.label, project.description, project.image, project.mainPageID, project.gridDimension);
-            newProject.header = project.header;
-            newProject.footer = project.footer;
+            newProject.header = new Header(project.header.id, project.header.title, project.header.logo, project.header.login);
+            newProject.header.pages = project.body;
+            newProject.footer = new Footer(project.footer.id, project.footer.data);
             return newProject;
         }));
     }
@@ -207,14 +208,15 @@ export class CpeApiService {
             const project = projects[id];
             const newProject = new Project(project.id, project.label, project.description, project.image, project.mainPageID, project.gridDimension);
 
-            newProject.header = project.header;
+            newProject.header = new Header(project.header.id, project.header.title, project.header.logo, project.header.login);
+            newProject.header.pages = project.body;
             newProject.body = project.body.map((pageID: string) => {
                 const page = pages[pageID];
                 const newPage = new Page(page.id, page.label);
                 newPage.widgets = page.widgets.map((widget: any) => new Widget(widget.id, widget.widgetType, widget.coordinates, widget.dimension, widget.data));
                 return newPage;
             });
-            newProject.footer = project.footer;
+            newProject.footer = new Footer(project.footer.id, project.footer.data);
 
             return of(newProject);
         } else {
