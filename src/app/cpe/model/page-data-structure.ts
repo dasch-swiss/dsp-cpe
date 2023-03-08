@@ -69,9 +69,6 @@ export class Page {
     }
 }
 
-/**
- *
- */
 export class Widget {
     get dimension() {
         return this._dimension;
