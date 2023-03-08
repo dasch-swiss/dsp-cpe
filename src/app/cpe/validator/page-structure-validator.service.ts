@@ -50,7 +50,7 @@ export class PageStructureValidatorService {
 
                 if (widget.coordinates.x + widget.dimension.width > projectStructure.gridDimensions.width
                     || widget.coordinates.y + widget.dimension.height > projectStructure.gridDimensions.height) {
-                    throw Error("Size of the widget are out of bounds");
+                    throw Error("Size of the widget are out of boundary");
                 }
             }
         }
