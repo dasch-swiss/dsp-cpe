@@ -31,26 +31,27 @@ export class PageStructureValidatorService {
             throw Error("It should have at least a page in the body");
         }
 
-        // Example rule 4
+        // Example rule 4 ...
         for (let page of projectStructure.body) {
             for (let widget of page.widgets) {
+                // ...grid dimensions of widgets are positive numbers
                 if (widget.dimension.width <= 0 || widget.dimension.height <= 0) {
                     throw Error("Grid dimension values of widget are invalid");
                 }
-
+                // ...grid dimensions of widget have the right size
                 if (widget.dimension.width < this.MIN_WIDGET_DIMENSION.width
                     || widget.dimension.height < this.MIN_WIDGET_DIMENSION.height) {
                     throw Error("Size of widget have wrong dimensions");
                 }
-
+                // ...coordinates of widgets are valid
                 if (widget.coordinates.x < 0
                     || widget.coordinates.y < 0) {
                     throw Error("Coordinates of the widget are invalid");
                 }
-
+                // ...widgets are placed within bounds
                 if (widget.coordinates.x + widget.dimension.width > projectStructure.gridDimensions.width
                     || widget.coordinates.y + widget.dimension.height > projectStructure.gridDimensions.height) {
-                    throw Error("Size of the widget are out of boundary");
+                    throw Error("Size of the widget are out of bounds");
                 }
             }
         }
