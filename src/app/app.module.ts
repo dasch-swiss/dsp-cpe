@@ -13,9 +13,9 @@ import { ProjectComponent } from './cpe/project/project.component';
 import { SearchWidgetComponent } from './cpe/widgets/search-widget/search-widget.component';
 import { ResultWidgetComponent } from './cpe/widgets/result-widget/result-widget.component';
 import { ImageWidgetComponent } from './cpe/widgets/image-widget/image-widget.component';
-import { TitleWidgetComponent } from './cpe/widgets/title-widget/title-widget.component';
 import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.component';
-
+import { HeaderWidgetComponent } from './cpe/widgets/header-widget/header-widget.component';
+import { FooterWidgetComponent } from './cpe/widgets/footer-widget/footer-widget.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,8 +25,9 @@ import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.compo
         SearchWidgetComponent,
         ResultWidgetComponent,
         ImageWidgetComponent,
-        TitleWidgetComponent,
-        TextWidgetComponent
+        TextWidgetComponent,
+        HeaderWidgetComponent,
+        FooterWidgetComponent
     ],
     imports: [
         BrowserModule,

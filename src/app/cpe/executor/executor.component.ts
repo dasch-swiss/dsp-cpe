@@ -1,23 +1,32 @@
-import {Component, Input, OnChanges} from "@angular/core";
-import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
+import {Component, Input, OnChanges, OnInit} from "@angular/core";
+import {Footer, Header, Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";
+import {ComponentCommunicationService, Events} from "../../services/component-communication.service";
 
 @Component({
     selector: "app-executor",
     templateUrl: "./executor.component.html",
     styleUrls: ["./executor.component.scss"]
 })
-export class ExecutorComponent implements OnChanges {
+export class ExecutorComponent implements OnChanges, OnInit {
     @Input() pageStructure: Project;
     @Input() pageId: string;
-    headerDashboard: Array<GridsterItem> = [];
-    footerDashboard: Array<GridsterItem> = [];
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
+    header: any;
+    footer: any;
     error: boolean = false;
+    showGrid: boolean = false;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private _communicationService: ComponentCommunicationService) {
+    }
+
+    ngOnInit() {
+        this._communicationService.on(Events.showGrid, _ => {
+                this.showGrid = !this.showGrid;
+            }, () => {}, _ => {}
+        );
     }
 
     ngOnChanges() {
@@ -27,6 +36,8 @@ export class ExecutorComponent implements OnChanges {
 
             if (!page) {
                 this.error = true;
+                this.header = this.getHeader(this.pageStructure);
+                this.footer = this.getFooter(this.pageStructure);
                 return;
             } else {
                 this.error = false;
@@ -36,30 +47,29 @@ export class ExecutorComponent implements OnChanges {
             page = this.pageStructure.body.find((page: Page) => page.id === this.pageStructure.mainPageID);
 
             if (page) {
-                this.router.navigate(['projects/' + this.pageStructure.id + '/' + page.id]);
+                this.router.navigate(["projects/" + this.pageStructure.id + "/" + page.id]);
             } else {
                 page = this.pageStructure.body[0];
             }
         }
 
-        this.headerDashboard = this.buildPagePart(this.pageStructure.header);
+        this.header = this.getHeader(this.pageStructure);
         this.bodyDashboard = this.buildPagePart(page.widgets);
-        this.footerDashboard = this.buildPagePart(this.pageStructure.footer);
+        this.footer = this.getFooter(this.pageStructure);
 
         this.bodyGridOptions = {
-          draggable: {
-            enabled: false
-          },
-          resizable: {
-            enabled: false
-          },
-          displayGrid: 'always'
+            draggable: {
+                enabled: false
+            },
+            resizable: {
+                enabled: false
+            },
+            displayGrid: "always",
+            minCols: this.pageStructure.gridDimensions.width,
+            maxCols: this.pageStructure.gridDimensions.width,
+            minRows: this.pageStructure.gridDimensions.height,
+            maxRows: this.pageStructure.gridDimensions.height
         }
-
-        this.bodyGridOptions.minCols = this.pageStructure.gridDimensions.width;
-        this.bodyGridOptions.maxCols = this.pageStructure.gridDimensions.width;
-        this.bodyGridOptions.minRows = this.pageStructure.gridDimensions.height;
-        this.bodyGridOptions.maxRows = this.pageStructure.gridDimensions.height;
 
     }
 
@@ -77,6 +87,23 @@ export class ExecutorComponent implements OnChanges {
             });
         }
         return dashboard;
+    }
+
+    getHeader(project: Project) {
+        return {
+            project: project.id,
+            title: project.header.title,
+            logo: project.header.logo,
+            login: project.header.login,
+            pages: project.body
+        }
+    }
+
+    getFooter(project: Project) {
+        return {
+            project: project.id,
+            data: project.footer.data
+        }
     }
 
 }

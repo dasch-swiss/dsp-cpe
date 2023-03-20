@@ -7,7 +7,6 @@ import {ComponentCommunicationService, Events} from "../../../services/component
     styleUrls: ["./result-widget.component.scss"]
 })
 export class ResultWidgetComponent implements OnInit {
-    color = "#ffffff";
     result: any[]
     loading: Boolean;
     error: Boolean;
@@ -19,22 +18,15 @@ export class ResultWidgetComponent implements OnInit {
         this.setUp();
 
         this._communicationService.on(Events.searchExecuted, (value) => {
-            this.setUp();
-            this.loading = false;
-            this.result = value;
-        }, () => {
-            this.error = false;
-            this.result = [];
-            this.loading = true;
-        }, _ => {
-            this.error = true;
-        });
-
-        this._communicationService.on(Events.changeBackground, _ => {
-                this.color = "#729eee";
+                this.setUp();
+                this.loading = false;
+                this.result = value;
             }, () => {
-            },
-            _ => {
+                this.error = false;
+                this.result = [];
+                this.loading = true;
+            }, _ => {
+                this.error = true;
             }
         );
     }

@@ -50,7 +50,7 @@ export interface EventPackage {
 // possible events that can be emitted.
 export enum Events {
     searchExecuted,
-    changeBackground
+    showGrid
 }
 
 export enum Status {

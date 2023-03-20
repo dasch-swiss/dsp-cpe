@@ -18,7 +18,7 @@ export class NavigationService {
      * navigates to a specific project
      */
     public navigateToProjectsPage() {
-        this._router.navigate(["projects"], {replaceUrl: false})
+        this._router.navigate(["projects"], { skipLocationChange: true })
     }
 
     /**
@@ -26,7 +26,7 @@ export class NavigationService {
      * @param projectId: The project to which is navigated.
      */
     public navigateToProject(projectId: string) {
-        this._router.navigate(["projects/" + projectId], {replaceUrl: false});
+        this._router.navigate(["projects/" + projectId], { skipLocationChange: true });
     }
 
     /**
@@ -42,7 +42,6 @@ export class NavigationService {
                         ["projects/" + projectId + "/" + pageId],
                         {
                             relativeTo: this._route,
-                            replaceUrl: false,
                             queryParamsHandling: "merge"
                         }
                     );

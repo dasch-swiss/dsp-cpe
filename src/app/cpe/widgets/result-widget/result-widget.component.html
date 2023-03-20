@@ -1,11 +1,18 @@
-<div [ngStyle]="{'background-color': color}">Result widget</div>
+<div *ngIf="!loading" class="flex flex-col gap-4 m-4">
 
-<div *ngIf="!loading">
-    <div *ngFor="let r of result">
-        <div class="bg-emerald-800 border">{{r.title}}</div>
+    <div class="flex items-center gap-4 shadow hover:bg-blue-100" *ngFor="let res of result; let i = index">
+        <div class="mx-4">{{i + 1}}</div>
+        <div class=" grid grid-cols-1 my-4">
+            <div class="font-semibold">{{res.title}} ({{res.published}})</div>
+            <div class="text-sm italic">{{res.author}}</div>
+            <div class="mt-2" [innerHTML]=res.passage></div>
+        </div>
     </div>
+
 </div>
 
-<div *ngIf="loading">... Search is going on</div>
+<div class="flex flex-col items-center">
+    <div *ngIf="loading" >... searching</div>
 
-<div *ngIf="error">Ohh, there was an error!</div>
+    <div *ngIf="error">Ohh, there was an error!</div>
+</div>
