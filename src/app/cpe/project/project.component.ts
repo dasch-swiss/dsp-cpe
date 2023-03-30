@@ -56,8 +56,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
                     }
                 },
                 error: (error) => {
-                    this.error = true;
-                    console.error(error);
+                    throw Error(error);
                 }
             })
     }

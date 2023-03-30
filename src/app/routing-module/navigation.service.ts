@@ -45,6 +45,8 @@ export class NavigationService {
                             queryParamsHandling: "merge"
                         }
                     );
+                } else {
+                    throw Error("No page on this project with that Id was found");
                 }
             },
             error: (error) => {

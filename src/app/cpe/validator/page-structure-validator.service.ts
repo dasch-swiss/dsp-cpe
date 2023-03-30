@@ -5,14 +5,13 @@ import {Dimension, Project} from "../model/page-data-structure";
     providedIn: "root"
 })
 export class PageStructureValidatorService {
-    private readonly MIN_GRID_DIMENSION: Dimension = { width: 6, height: 6 }
-    private readonly MAX_GRID_DIMENSION: Dimension = { width: 12, height: 12 }
-    private readonly MIN_WIDGET_DIMENSION: Dimension = { width: 1, height: 1 }
+    readonly MIN_GRID_DIMENSION: Dimension = { width: 6, height: 6 }
+    readonly MAX_GRID_DIMENSION: Dimension = { width: 12, height: 12 }
+    readonly MIN_WIDGET_DIMENSION: Dimension = { width: 1, height: 1 }
     constructor() {
     }
 
     validate(projectStructure: Project) {
-
         // Example rule 1: Grid dimensions are positive numbers
         if (projectStructure.gridDimensions.width <= 0 || projectStructure.gridDimensions.height <= 0) {
             throw Error("Grid dimension values of page are invalid");
