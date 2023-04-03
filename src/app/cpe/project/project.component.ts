@@ -14,7 +14,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     project: Project;
 
-    page_id: string
+    pageID: string
     error: boolean = false;
 
     private projectRouteSubscription: Subscription;
@@ -32,18 +32,18 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 this.loadProject(parameter["id"]);
             }
 
-            if (parameter["pageId"]) {
-                this.page_id = parameter["pageId"];
+            if (parameter["pageID"]) {
+                this.pageID = parameter["pageID"];
             }
         });
     }
 
     /**
      * Load the project's data. Navigate to the projects component if there is no data for the given project id.
-     * @param projectId: The project to which is navigated.
+     * @param projectID: The project to which is navigated.
      */
-    loadProject(projectId: string) {
-        this._apiService.getProject(projectId)
+    loadProject(projectID: string) {
+        this._apiService.getProject(projectID)
             .subscribe({
                 next: (projectPageStructure) => {
                     try {
@@ -57,7 +57,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 },
                 error: (error) => {
                     this.error = true;
-                    console.error(error);
+                    throw Error(error);
                 }
             })
     }

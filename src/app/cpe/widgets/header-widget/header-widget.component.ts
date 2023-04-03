@@ -15,8 +15,8 @@ export class HeaderWidgetComponent implements OnInit{
     ngOnInit() {
     }
 
-    goToPage(pageId: string) {
-        this._naviService.navigateToPage(this.data.project, pageId);
+    goToPage(pageID: string) {
+        this._naviService.navigateToPage(this.data.project, pageID);
     }
 
 }

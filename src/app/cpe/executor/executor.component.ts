@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from "@angular/core";
-import {Footer, Header, Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
+import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";
 import {ComponentCommunicationService, Events} from "../../services/component-communication.service";
@@ -11,7 +11,7 @@ import {ComponentCommunicationService, Events} from "../../services/component-co
 })
 export class ExecutorComponent implements OnChanges, OnInit {
     @Input() pageStructure: Project;
-    @Input() pageId: string;
+    @Input() pageID: string;
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
     header: any;
@@ -31,8 +31,8 @@ export class ExecutorComponent implements OnChanges, OnInit {
 
     ngOnChanges() {
         let page;
-        if (this.pageId) {
-            page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageId));
+        if (this.pageID) {
+            page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageID));
 
             if (!page) {
                 this.error = true;
@@ -45,11 +45,11 @@ export class ExecutorComponent implements OnChanges, OnInit {
 
         } else {
             page = this.pageStructure.body.find((page: Page) => page.id === this.pageStructure.mainPageID);
-
-            if (page) {
+            if (page) {    
                 this.router.navigate(["projects/" + this.pageStructure.id + "/" + page.id]);
             } else {
                 page = this.pageStructure.body[0];
+                this.router.navigate(["projects/" + this.pageStructure.id + "/" + page.id]);   
             }
         }
 

@@ -14,7 +14,7 @@ const ROUTES: Routes = [
         component: ProjectComponent,
     },
     {
-        path: "projects/:id/:pageId",
+        path: "projects/:id/:pageID",
         component: ProjectComponent,
     },
     {
