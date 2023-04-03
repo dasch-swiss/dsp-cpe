@@ -14,7 +14,7 @@ import { PageStructureValidatorService } from '../validator/page-structure-valid
 })
 class MockExecutorComponent {
     @Input() pageStructure: Project;
-    @Input() pageId: string;
+    @Input() pageID: string;
 }
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -24,7 +24,7 @@ describe('ProjectComponent', () => {
   let mockValidatorService: jasmine.SpyObj<PageStructureValidatorService>
   beforeEach(async () => {
     mockActivatedRoute = {
-      params: new BehaviorSubject({ id: 'testId', pageId: 'testPageId' }),
+      params: new BehaviorSubject({ id: 'testID', pageID: 'testPageID' }),
     };
     mockApiService = jasmine.createSpyObj(['getProject']);
     mockValidatorService = jasmine.createSpyObj('PageStructureValidatorService', ['validate']);
@@ -69,22 +69,22 @@ describe('ProjectComponent', () => {
 
   it('should load project when id parameter changes', () => {
     spyOn(component, 'loadProject');
-    mockActivatedRoute.params.next({ id: 'testId2', pageId: 'testPageId' });
+    mockActivatedRoute.params.next({ id: 'testID2', pageID: 'testPageID' });
     fixture.detectChanges();
 
-    expect(component.loadProject).toHaveBeenCalledWith('testId2');
+    expect(component.loadProject).toHaveBeenCalledWith('testID2');
   });
 
-  it('should set page_id when pageId parameter is present', () => {
-    mockActivatedRoute.params.next({ id: 'testId', pageId: 'testPageId2' });
+  it('should set pageID when pageID parameter is present', () => {
+    mockActivatedRoute.params.next({ id: 'testID', pageID: 'testPageID2' });
     fixture.detectChanges();
 
-    expect(component.page_id).toEqual('testPageId2');
+    expect(component.pageID).toEqual('testPageID2');
   });
 
   it('should display error when invalid pageStructure is returned', fakeAsync(() => {
     mockValidatorService.validate.and.throwError('test Error');
-    component.loadProject("testId");
+    component.loadProject("testID");
     flush();
     tick();
     fixture.detectChanges();
@@ -93,7 +93,7 @@ describe('ProjectComponent', () => {
 
   it('should display executor when a valid pageStructure is returned', fakeAsync(() => {
     mockValidatorService.validate.and.stub();
-    component.loadProject("testId");
+    component.loadProject("testID");
     flush();
     tick();
     fixture.detectChanges();
@@ -101,10 +101,10 @@ describe('ProjectComponent', () => {
     expect(elem).toBeTruthy();
   }));
 
-  it('should throw error when the api returns an error', fakeAsync(() => {
+  it('loadProject() should throw an error when the api returns an error', fakeAsync(() => {
     mockApiService.getProject.and.throwError("Test error");
     try {
-        component.loadProject("testId");
+        component.loadProject("testID");
         flush();
         tick();
         fail("Expected error to be thrown");

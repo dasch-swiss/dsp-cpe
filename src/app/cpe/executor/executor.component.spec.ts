@@ -2,7 +2,7 @@ import {Component, Input} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Page, Project, Widget, Header, Footer} from "../model/page-data-structure";
 import {ComponentCommunicationService, Events} from "../../services/component-communication.service";
-import { EventPackage, Status } from "src/app/services/component-communication.service";
+import { Status } from "src/app/services/component-communication.service";
 import { GridsterModule } from "angular-gridster2";
 import { ExecutorComponent } from "./executor.component";
 import { By } from '@angular/platform-browser';
@@ -64,7 +64,7 @@ class MockFooterWidgetComponent {
  */
 @Component({
     template: `
-    <app-executor [pageId]="pageID" [pageStructure]="data"></app-executor>
+    <app-executor [pageID]="pageID" [pageStructure]="data"></app-executor>
   `})
 class MockHostComponent {
     data: Project;
@@ -124,7 +124,7 @@ describe("ExecutorComponent", () => {
         expect(gridsterElement.classList).toContain('show-grid');
     });
 
-    it("should display header, footer and body given a correct pageId", () => {
+    it("should display header, footer and body given a correct pageID", () => {
         /* Test if header is setup correctly */
         const header = fixture.nativeElement.querySelector('app-header-widget');
         expect(header).toBeTruthy();
@@ -147,21 +147,21 @@ describe("ExecutorComponent", () => {
         expect(gridsterElement).toBeTruthy();
     });
 
-    it("should display error message with a wrong pageId", () => {
+    it("should display error message with a wrong pageID", () => {
         component.pageID = "INVALID";
         fixture.detectChanges();
         // Test that the gridster container contains the error message
         expect(fixture.debugElement.query(By.css('.gridster-container')).nativeElement.innerHTML.indexOf("The page couldn't be displayed.")).not.toEqual(-1);
     });
 
-    it("should redirect if there is no pageId but a mainPageId is defined", () => {
+    it("should redirect if there is no pageID but a mainPageId is defined", () => {
         const navigateSpy = spyOn(router, 'navigate');
         component.pageID = undefined;
         fixture.detectChanges();
         expect(navigateSpy).toHaveBeenCalledWith(["projects/" + component.data.id + "/" + component.data.mainPageID]);
     });
 
-    it("should redirect to first page if there is no pageId and no (or an invalid) mainPageId defined", () => {
+    it("should redirect to first page if there is no pageID and no (or an invalid) mainPageId defined", () => {
         const navigateSpy = spyOn(router, 'navigate');
         component.pageID = undefined;
         component.data.mainPageID = "undefined";

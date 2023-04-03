@@ -20,7 +20,7 @@ export class CpeComponent implements OnInit {
         })
     }
 
-    goToProject(projectId: string) {
-        this._naviService.navigateToProject(projectId);
+    goToProject(projectID: string) {
+        this._naviService.navigateToProject(projectID);
     }
 }

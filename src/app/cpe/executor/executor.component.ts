@@ -11,7 +11,7 @@ import {ComponentCommunicationService, Events} from "../../services/component-co
 })
 export class ExecutorComponent implements OnChanges, OnInit {
     @Input() pageStructure: Project;
-    @Input() pageId: string;
+    @Input() pageID: string;
     bodyGridOptions: GridsterConfig;
     bodyDashboard: Array<GridsterItem> = [];
     header: any;
@@ -31,8 +31,8 @@ export class ExecutorComponent implements OnChanges, OnInit {
 
     ngOnChanges() {
         let page;
-        if (this.pageId) {
-            page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageId));
+        if (this.pageID) {
+            page = this.pageStructure.body.find((page: Page) => page.hasPageID(this.pageID));
 
             if (!page) {
                 this.error = true;

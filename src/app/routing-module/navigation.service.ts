@@ -23,30 +23,30 @@ export class NavigationService {
 
     /**
      * navigates to a specific project
-     * @param projectId: The project to which is navigated.
+     * @param projectID: The project to which is navigated.
      */
-    public navigateToProject(projectId: string) {
-        this._router.navigate(["projects/" + projectId], { skipLocationChange: true });
+    public navigateToProject(projectID: string) {
+        this._router.navigate(["projects/" + projectID], { skipLocationChange: true });
     }
 
     /**
      * navigates to a specific page of a specific project.
-     * @param projectId: The id of the project.
-     * @param pageId: The id of the page to which is navigated.
+     * @param projectID: The id of the project.
+     * @param pageID: The id of the page to which is navigated.
      */
-    public navigateToPage(projectId: string, pageId: string) {
-        this._apiService.getProject(projectId).subscribe({
+    public navigateToPage(projectID: string, pageID: string) {
+        this._apiService.getProject(projectID).subscribe({
             next: (project: Project) => {
-                if (project.hasPage(pageId)) {
+                if (project.hasPage(pageID)) {
                     this._router.navigate(
-                        ["projects/" + projectId + "/" + pageId],
+                        ["projects/" + projectID + "/" + pageID],
                         {
                             relativeTo: this._route,
                             queryParamsHandling: "merge"
                         }
                     );
                 } else {
-                    throw Error("No page on this project with that Id was found");
+                    throw Error("No page on this project with that ID was found");
                 }
             },
             error: (error) => {

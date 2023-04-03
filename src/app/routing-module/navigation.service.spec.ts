@@ -49,14 +49,14 @@ describe("NavigationService", () => {
         }
     }));
 
-    it("should throw error if navigateToProjectsPage is called with invalid pageId", fakeAsync(() => {
+    it("should throw error if navigateToProjectsPage is called with invalid pageID", fakeAsync(() => {
         try {
             service.navigateToPage("test", "INVALID");
             flush();
             tick();
             fail("Expected error to be thrown");
         } catch(error) {
-            expect(error).toEqual(new Error("No page on this project with that Id was found"));
+            expect(error).toEqual(new Error("No page on this project with that ID was found"));
         }
     }));
 
