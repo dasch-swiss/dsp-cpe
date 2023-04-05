@@ -47,7 +47,7 @@ class MockResultWidgetComponent { }
  @Component({
     selector: 'app-header-widget'
 })
-class MockHeaderWidgetComponent { 
+class MockHeaderWidgetComponent {
     @Input() data: any;
 }
 /**
@@ -117,11 +117,12 @@ describe("ExecutorComponent", () => {
         expect(component).toBeTruthy();
     });
 
-    it("should have show-grid class when 'showGrid' Event was emitted", () => {
+    it("should have bg-primary class when 'showGrid' Event was emitted", () => {
+        // bg-primary makes the grid visible in contrary to bg-surface
         component.communicationService.emit({event: Events.showGrid, status: Status.finished});
         fixture.detectChanges();
         const gridsterElement = fixture.nativeElement.querySelector('gridster');
-        expect(gridsterElement.classList).toContain('show-grid');
+        expect(gridsterElement.classList).toContain('bg-primary');
     });
 
     it("should display header, footer and body given a correct pageID", () => {
