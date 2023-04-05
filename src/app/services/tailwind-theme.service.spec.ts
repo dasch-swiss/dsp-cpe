@@ -138,7 +138,8 @@ describe('TailwindThemeService styles Components with TW-class', () => {
         // expect the resulting color of the mock component to equal what we have selected as theme.secondary in
         // or service
         if (hexColorOfDiv) {
-            expect(hexColorOfDiv).toEqual('#f59e0b' || '#336790');
+            const allowedHexColors = ['#f59e0b', '#336790'];
+            expect(allowedHexColors).toContain(hexColorOfDiv);
         }
     });
 });
