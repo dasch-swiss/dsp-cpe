@@ -1,5 +1,6 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {Component} from "@angular/core";
+import { FooterWidgetComponent } from "./footer-widget.component";
 
 /**
  * mock host component.
@@ -21,7 +22,7 @@ describe("FooterWidgetComponent", () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [MockHostComponent]
+            declarations: [MockHostComponent, FooterWidgetComponent]
         })
             .compileComponents();
 

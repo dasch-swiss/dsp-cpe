@@ -5,6 +5,7 @@ import {NavigationService} from "../routing-module/navigation.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CpeApiService} from "../services/cpe-api.service";
+import { Project } from "./model/page-data-structure";
 
 /**
  * mock host component.
@@ -45,4 +46,10 @@ describe("CpeComponent", () => {
     it("should create", () => {
         expect(component).toBeTruthy();
     });
+    it("should create correct overview if initialized with correct project data", () => {
+        component.projects = [new Project("p01", "label 1", "description", "./assets/test.jpg", "page02", {height: 5, width: 5})];
+        fixture.detectChanges();
+        const elem = fixture.nativeElement.querySelector('div');
+        expect(elem.innerHTML.indexOf("label 1")).not.toEqual(-1);
+    })
 });
