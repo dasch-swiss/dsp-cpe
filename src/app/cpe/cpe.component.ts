@@ -5,8 +5,7 @@ import {CpeApiService} from "../services/cpe-api.service";
 
 @Component({
     selector: "app-cpe",
-    templateUrl: "./cpe.component.html",
-    styleUrls: ["./cpe.component.scss"]
+    templateUrl: "./cpe.component.html"
 })
 export class CpeComponent implements OnInit {
     projects: Project[] = [];

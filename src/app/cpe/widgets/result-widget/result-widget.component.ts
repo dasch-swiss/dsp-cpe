@@ -3,8 +3,7 @@ import {ComponentCommunicationService, Events} from "../../../services/component
 
 @Component({
     selector: "app-result-widget",
-    templateUrl: "./result-widget.component.html",
-    styleUrls: ["./result-widget.component.scss"]
+    templateUrl: "./result-widget.component.html"
 })
 export class ResultWidgetComponent implements OnInit {
     result: any[]

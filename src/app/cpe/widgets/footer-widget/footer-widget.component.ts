@@ -3,8 +3,7 @@ import {ComponentCommunicationService, Events, Status} from "../../../services/c
 
 @Component({
   selector: 'app-footer-widget',
-  templateUrl: './footer-widget.component.html',
-  styleUrls: ['./footer-widget.component.scss']
+  templateUrl: './footer-widget.component.html'
 })
 export class FooterWidgetComponent implements OnInit{
     @Input() data: any;
@@ -16,6 +15,7 @@ export class FooterWidgetComponent implements OnInit{
     }
 
     changeGridColor() {
+        console.log('fuuu')
         this._communicationService.emit({event: Events.showGrid, status: Status.finished});
     }
 

@@ -1,13 +1,12 @@
 import {Component, Input, OnChanges, OnInit} from "@angular/core";
-import {Footer, Header, Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
+import {Page, Project, Widget} from "src/app/cpe/model/page-data-structure"
 import {GridsterConfig, GridsterItem} from "angular-gridster2";
 import {Router} from "@angular/router";
 import {ComponentCommunicationService, Events} from "../../services/component-communication.service";
 
 @Component({
     selector: "app-executor",
-    templateUrl: "./executor.component.html",
-    styleUrls: ["./executor.component.scss"]
+    templateUrl: "./executor.component.html"
 })
 export class ExecutorComponent implements OnChanges, OnInit {
     @Input() pageStructure: Project;
@@ -64,7 +63,7 @@ export class ExecutorComponent implements OnChanges, OnInit {
             resizable: {
                 enabled: false
             },
-            displayGrid: "always",
+            displayGrid: "none",
             minCols: this.pageStructure.gridDimensions.width,
             maxCols: this.pageStructure.gridDimensions.width,
             minRows: this.pageStructure.gridDimensions.height,
