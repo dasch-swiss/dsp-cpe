@@ -4,6 +4,8 @@ import { HeaderWidgetComponent } from "./header-widget.component";
 import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import {GuiElementsModule } from "../../../gui-elements-module/gui-elements.module";
+import {CpeButtonComponent} from "../../../gui-elements-module/buttons/cpe-button/cpe-button.component";
 
 /**
  * mock host component.
@@ -25,7 +27,7 @@ describe("HeaderWidgetComponent", () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [MockHostComponent, HeaderWidgetComponent],
+            declarations: [MockHostComponent, HeaderWidgetComponent, CpeButtonComponent],
             providers: [{provide: ActivatedRoute, useValue: {
                 params: of({id: '123'})
             }}],
