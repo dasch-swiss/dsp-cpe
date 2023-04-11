@@ -4,7 +4,6 @@ import { HeaderWidgetComponent } from "./header-widget.component";
 import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import {GuiElementsModule } from "../../../gui-elements-module/gui-elements.module";
 import {CpeButtonComponent} from "../../../gui-elements-module/buttons/cpe-button/cpe-button.component";
 
 /**
