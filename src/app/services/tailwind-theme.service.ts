@@ -54,8 +54,6 @@ export class TailwindThemeService {
             for (const themeKey in response.themes) {
                 this.setTheme(themeKey, response.themes[themeKey]);
             }
-            // set/apply the selected theme
-            this._selectedTheme = response.selectedTheme;
             this.applyTheme(response.selectedTheme);
         });
     }
@@ -68,7 +66,7 @@ export class TailwindThemeService {
         let theme = this._themes[themeId];
         if (!theme) { // fallback
             console.warn(`No theme ${themeId} found. Switching to default theme.`);
-            theme = this.getTheme('default');
+            theme = defaultTheme;
         }
         // set the css variables
         for (const [key, value] of Object.entries(theme)) {

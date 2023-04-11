@@ -15,7 +15,6 @@ export class FooterWidgetComponent implements OnInit{
     }
 
     changeGridColor() {
-        console.log('fuuu')
         this._communicationService.emit({event: Events.showGrid, status: Status.finished});
     }
 
