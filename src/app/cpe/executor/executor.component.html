@@ -1,9 +1,9 @@
-<div class="bg-surface">
+<div>
     <!--  header  -->
     <app-header-widget [data]="header"></app-header-widget>
 
     <!--  body container -->
-    <div class="gridster-container bg-surface" style="height: calc(100vh - 120px)">
+    <div class="gridster-container" style="height: calc(100vh - 120px)">
 
         <!--  body  -->
         <gridster [class]="showGrid? 'bg-primary' : 'bg-surface'" *ngIf="!error" [options]="bodyGridOptions" style="height: auto">
