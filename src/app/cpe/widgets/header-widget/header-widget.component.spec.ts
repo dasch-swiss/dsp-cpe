@@ -1,9 +1,21 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import { HeaderWidgetComponent } from "./header-widget.component";
 import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import {Variant} from "../../../gui-elements-module/buttons/cpe-button/cpe-button.component";
+
+/**
+ * Mock CpeButtonComponent
+ */
+@Component({
+    selector: 'cpe-button'
+})
+class MockCpeButtonComponent {
+    @Input() text: string;
+    @Input() variant: Variant;
+}
 
 /**
  * mock host component.
@@ -25,7 +37,7 @@ describe("HeaderWidgetComponent", () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [MockHostComponent, HeaderWidgetComponent],
+            declarations: [MockHostComponent, HeaderWidgetComponent, MockCpeButtonComponent],
             providers: [{provide: ActivatedRoute, useValue: {
                 params: of({id: '123'})
             }}],

@@ -1,0 +1,37 @@
+{   "selectedTheme": "cpe-2",
+    "themes":
+    {
+        "cpe": {
+            "black": "#000000",
+            "white": "#FFFFFF",
+            "primary": "#336790",
+            "secondary": "#FFFFFF",
+            "highlight": "#74A2CF",
+            "disabledText": "#9CA3AF",
+            "disabledBackground": "#E5E7EB",
+            "selected": "#D6E0E8",
+            "checked": "#D6E0E8",
+            "unchecked": "#E5E7EB",
+            "warningText": "#F59E0B",
+            "warningBackground": "#FEF3C7",
+            "surface": "#FFFFFF",
+            "surfaceText": "#000000"
+        },
+        "cpe-2": {
+            "black": "#000000",
+            "white": "#FFFFFF",
+            "primary": "#F59E0B",
+            "secondary": "#FEF3C7",
+            "highlight": "#74A2CF",
+            "disabledText": "#9CA3AF",
+            "disabledBackground": "#E5E7EB",
+            "selected": "#D6E0E8",
+            "checked": "#D6E0E8",
+            "unchecked": "#E5E7EB",
+            "warningText": "#F59E0B",
+            "warningBackground": "#FEF3C7",
+            "surface": "#000000",
+            "surfaceText": "#FFFFFF"
+        }
+    }
+}

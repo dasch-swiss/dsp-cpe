@@ -6,8 +6,7 @@ import {ComponentCommunicationService, Events} from "../../services/component-co
 
 @Component({
     selector: "app-executor",
-    templateUrl: "./executor.component.html",
-    styleUrls: ["./executor.component.scss"]
+    templateUrl: "./executor.component.html"
 })
 export class ExecutorComponent implements OnChanges, OnInit {
     @Input() pageStructure: Project;
@@ -64,7 +63,7 @@ export class ExecutorComponent implements OnChanges, OnInit {
             resizable: {
                 enabled: false
             },
-            displayGrid: "always",
+            displayGrid: "none",
             minCols: this.pageStructure.gridDimensions.width,
             maxCols: this.pageStructure.gridDimensions.width,
             minRows: this.pageStructure.gridDimensions.height,
