@@ -25,12 +25,11 @@ export class CpeButtonComponent extends GuiElement implements OnInit {
   ngOnInit() {
     switch (this.variant) {
       case "Primary": {
-        this.style = "inline-flex items-center rounded border border-transparent bg-primary px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
-        // this.style = "inline-flex items-center rounded border border-transparent "  +primary + " px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2";
+        this.style = "inline-flex items-center rounded border border-transparent bg-primary px-2.5 py-1.5 text-xs font-medium text-secondary shadow-sm hover:bg-secondary hover:text-primary hover:ring-primary";
         break;
       }
       case "Secondary": {
-        this.style = "inline-flex items-center rounded border border-transparent bg-secondary px-2.5 py-1.5 text-xs font-medium text-black shadow-sm hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:ring-primary";
+        this.style = "inline-flex items-center rounded border border-transparent bg-secondary px-2.5 py-1.5 text-xs font-medium text-primary shadow-sm hover:bg-primary hover:text-secondary hover:ring-primary";
         break;
       }
     }
