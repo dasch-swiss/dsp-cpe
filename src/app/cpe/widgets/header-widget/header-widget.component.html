@@ -1,15 +1,15 @@
-<div style="background-color: lightgrey;" class="h-[90px] px-4 flex items-center justify-between gap-4">
-
+<div class="h-[90px] px-4 flex items-center justify-between gap-4">
     <div class="md:hidden shrink-0">
         <img class="h-[30px]" src="assets/hamburger.png"/>
     </div>
 
     <div class="flex items-center gap-2">
-        <img class="h-[70px]" [src]="data.logo"/>
-        <div class="text-lg font-medium md:text-xl font-semibold">{{data.title}}</div>
+        <img class="h-[70px] bg-surface" [src]="data.logo"/>
+        <div class="text-lg font-medium md:text-xl font-semibold text-primary">{{data.title}}</div>
     </div>
 
     <div class="md:flex items-center gap-6">
+        <cpe-button [variant]="'Secondary'" (click)="toggleTheme()" [text]="'Change theme'"></cpe-button>
         <div class="hidden md:flex gap-2">
             <cpe-button *ngFor="let page of data.pages" (click)="goToPage(page.id)" [text]="page['label']"></cpe-button>
         </div>

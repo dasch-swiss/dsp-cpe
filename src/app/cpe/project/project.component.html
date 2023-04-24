@@ -1,8 +1,9 @@
-<div *ngIf="project">
+
+<div *ngIf="project" class="bg-surface text-surfaceText">
     <app-executor [pageStructure]="project" [pageID]="pageID"></app-executor>
 </div>
 
-<div *ngIf="error" class="flex flex-col h-screen items-center justify-center">
+<div *ngIf="error" class="flex flex-col h-screen items-center justify-center bg-surface text-surfaceText">
     <div>
         Either the project structure or the page id is invalid!
     </div>

@@ -16,6 +16,8 @@ import { ImageWidgetComponent } from './cpe/widgets/image-widget/image-widget.co
 import { TextWidgetComponent } from './cpe/widgets/text-widget/text-widget.component';
 import { HeaderWidgetComponent } from './cpe/widgets/header-widget/header-widget.component';
 import { FooterWidgetComponent } from './cpe/widgets/footer-widget/footer-widget.component';
+import { TailwindThemeService } from "./services/tailwind-theme.service";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,6 +49,7 @@ import { FooterWidgetComponent } from './cpe/widgets/footer-widget/footer-widget
             useClass: RollbarErrorHandler,
             deps: [AppInitService]
         },
+        TailwindThemeService
     ],
     bootstrap: [AppComponent]
 })
