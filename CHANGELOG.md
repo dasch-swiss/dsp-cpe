@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.1](https://github.com/dasch-swiss/dsp-cpe/compare/v0.1.0...v0.1.1) (2023-04-25)
+
+
+### Maintenance
+
+* **deps:** bump ua-parser-js from 0.7.32 to 0.7.35 ([8c59914](https://github.com/dasch-swiss/dsp-cpe/commit/8c599143ac19c21a68aa0280a6591cdf59b45d8b))
+* remove unused import ([27eb26c](https://github.com/dasch-swiss/dsp-cpe/commit/27eb26c8059393dd9d0ca255864eb746e065bafc))
+* **themes:** change selected theme ([be37047](https://github.com/dasch-swiss/dsp-cpe/commit/be370479b05035aa2ec71567ce61e0cb44b8e69a))
+* **theming:** remove unnecessary bg and text colours ([43c7d88](https://github.com/dasch-swiss/dsp-cpe/commit/43c7d8821411c6d3aef8f9aba27fc3fa849cf659))
+* **theming:** restyle the ui elements slightly ([1d73cd7](https://github.com/dasch-swiss/dsp-cpe/commit/1d73cd747d381d3dd3e745d08fdb022c914c271c))
+* **theming:** set text and bg color in parent components ([d0917cf](https://github.com/dasch-swiss/dsp-cpe/commit/d0917cff5ffba8892de5782464a7305ee98ca7a6))
+
 ## [0.1.0](https://github.com/dasch-swiss/dsp-cpe/compare/v0.0.0...v0.1.0) (2023-04-03)
 
 
@@ -37,5 +49,3 @@
 * hide grid ([b68fc0b](https://github.com/dasch-swiss/dsp-cpe/commit/b68fc0bb29819910643dd759515b5cb749e1da07))
 * improved validator & error page ([025c966](https://github.com/dasch-swiss/dsp-cpe/commit/025c9662d1b3e17d2b7fa1097ca3b783ce1c75d7))
 * release-please and notification jobs ([5d7e877](https://github.com/dasch-swiss/dsp-cpe/commit/5d7e87777ba4eccd302146a4f06a3ff81e08e7b7))
-
-
